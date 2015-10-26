@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>{% block title %}Eland {% endblock %}</title>
+	<link type="text/css" rel="stylesheet" href="{{ asset('bundles/app/default/m/css/common.css') }}">
+	<script type="text/javascript" src="{{ asset('bundles/app/default/m/js/jquery-1.9.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/app/default/m/js/touch.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/app/default/m/js/common.js') }}"></script>
+	
+	<script type="text/javascript">
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth / 640;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)) {
+			var version = parseFloat(RegExp.$1);
+			if (version > 2.3) {
+				document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+			} else {
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		function wxShare(data){
+			wx.config({
+				debug: false,
+				appId: data.appId,
+				timestamp: data.timestamp,
+				nonceStr: data.nonceStr,
+				signature: data.signature,
+				jsApiList: [
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage'
+				]
+			});
+			wx.ready(function () {
+				wx.onMenuShareAppMessage({
+					title: data.shareTitle,
+					desc: data.shareDesc,
+					link: data.shareUrl,
+					imgUrl: data.imgUrl,
+					trigger: function (res) {},
+					success: function (res) {},
+					cancel: function (res) {},
+					fail: function (res) {}
+				});
+				wx.onMenuShareTimeline({
+					title: data.shareDesc,
+					desc: data.shareDesc,
+					link: data.shareUrl,
+					imgUrl: data.imgUrl,
+					trigger: function (res) {},
+					success: function (res) {},
+					cancel: function (res) {},
+					fail: function (res) {}
+				});
+			});
+		}
+	</script>
+</head>
+<body>
+	{% block body %}{% endblock %}
+	{% block javascripts %}
+		<script type="text/javascript">
+			var wxData = {
+				appId: "{{ app.session.get('wx_app_id') }}",
+				timestamp: "{{ app.session.get('wx_timestamp') }}",
+				nonceStr: "{{ app.session.get('wx_nonce_str') }}",
+				signature: "{{ app.session.get('wx_signature') }}",
+				imgUrl: "http://{{ app.request.host }}{{ asset('/bundles/app/default/m/') }}{{ app.session.get('wx_img_url') }}",
+				shareTitle: "{{ app.session.get('wx_title') }}",
+				shareDesc: "{{ app.session.get('wx_desc') }}",
+				shareUrl: "{{ app.session.get('wx_share_url') }}",
+			}
+			wxShare(wxData);
+		</script>
+	{% endblock %}
+	</body>
+	</html>

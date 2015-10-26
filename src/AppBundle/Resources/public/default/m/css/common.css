@@ -1,0 +1,136 @@
+/* Global Setting */
+body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'SimHei',Arial; background:#FFF;}
+table{border-collapse:collapse;}
+td,th{padding:0;}
+ul,li,dd,dl,dt{margin:0; padding:0; list-style:none; word-break:break-all;}
+img{border:0;}
+p{margin:0; word-break:break-all;}
+h1,h2,h3,h4{margin:0;padding:0; font-weight:normal; font-size:14px;}
+em{ font-size:12px; font-style:normal;}
+hr{background:none;border:none;border-bottom:1px solid #CCC;#border-bottom:0;}
+.clear {clear:both;height:0;font-size:1px;line-height: 0px;}
+a{text-decoration:none; border:0; outline:none; blr:expression(this.onFocus=this.blur());}
+select,input,textarea{font-family:inherit; outline:none;}
+
+.wrapper{ width:1000px; margin:0 auto; border:none; padding:0;}
+.innerDiv{ width:100%; height:100%; position:relative;}
+.abs{ position:absolute;}
+.bgImg{ left:0; top:0px; /*-61*/}
+
+.page{ width:640px; height:1130px; overflow:hidden; position:absolute; left:50%; top:0; margin-left:-320px;}
+
+.h1008{ width:640px; /*height:1008px;*/}
+
+
+/*page1*/
+.btn01{ left:178px; top:1000px;}
+
+/*page2*/
+.selBtn{ left:188px;}
+.selBtn1{ top:288px;}
+.selBtn2{ top:600px;}
+.selBtn .selOn{ display:none;}
+.selBtn .selOff{ display:inline;}
+.selBtnSeled .selOn{ display:inline;}
+.selBtnSeled .selOff{ display:none;}
+.btn02{ left:178px; top:935px;}
+
+/*page3*/
+.manSelBlock{ width:640px; height:370px; text-align:center; position:absolute; left:0; top:365px;}
+.manLeft{ position:absolute; left:5px; top:53px; opacity:0.5; width:270px; z-index:0;}
+.manCenter{ position:absolute; left:140px; top:0px; opacity:1; z-index:1;}
+.manRight{ position:absolute; left:365px; top:53px; opacity:0.5; width:270px; z-index:0;}
+.btn03{ left:178px; top:935px;}
+
+/*page4*/
+.manSelFace{ width:640px; text-align:center; position:absolute; left:0; top:338px;}
+
+.manSelTop{ width:640px; position:absolute; left:0; top:338px; height:690px;}
+.clothLine{ position:absolute; left:-813px; top:0; height:690px; overflow:hidden;}
+.clothLine img{ float:left;}
+
+.manSelBottom{ width:640px; position:absolute; left:0; top:888px; height:550px;}
+.clothLine2{ position:absolute; left:-813px; top:-550px;}
+.clothLine2 img{ float:left;}
+
+.page4Sel{ -webkit-transform:scale(0.7); -moz-transform:scale(0.7); -ms-transform:scale(0.7);}
+.btn04{ left:178px; top:1000px;}
+
+.cSWT{ width:640px; height:690px; position:absolute; left:0; top:338px;}
+.cSWB{ width:640px; height:550px; position:absolute; left:0; top:888px;}
+
+/*page5*/
+.page5Sel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:250px;}
+.manSeledFace{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manSeledTop{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manSeledBottom{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.btn05{ left:70px; top:1000px;}
+.btn06{ left:343px; top:1000px;}
+
+.myTitle{ position:absolute; bottom:80px; right:20px; color:#FFF; font-size:60px; text-align:right; width:490px;}
+
+.popBg{ position:fixed; left:0; top:0; width:100%; height:100%; background:#000000; filter:alpha(opacity=80); -webkit-opacity:0.8; opacity:0.8}
+.page5s{ background:url(../images/page6Img01.png) 0 0 no-repeat; width:640px; height:832px; position:fixed; left:50%; top:50%; margin:-416px 0 0 -320px;}
+.closeBtn{ position:fixed; top:30px; right:30px;}
+.myTitleTxt{ background:none; border:none; font-size:30px; color:#000000; position:absolute; left:60px; top:297px; padding:0 10px; width:506px; line-height:100px;}
+.btn14{ left:205px; top:732px;}
+
+/*page6*/
+.cOuter{ position:absolute; left:64px; top:324px;}
+.btn07{ left:70px; top:920px;}
+.btn08{ left:343px; top:920px;}
+
+/*page7*/
+.btn11{ left:256px; top:286px;}
+.btn09{ left:70px; top:890px;}
+.btn10{ left:343px; top:890px;}
+.infoTxt{ background:none; border:none; position:absolute; left:65px; padding:0 20px 0 100px; width:390px; height:76px; line-height:76px; color:#282828; font-size:40px;}
+.infoTxt1{ top:682px;}
+.infoTxt2{ top:771px;}
+
+.popRule{ background:url(../images/rule.png) 0 0 no-repeat; width:513px; height:899px; position:fixed; left:50%; top:50%; margin:-450px 0 0 -256px;}
+
+/*page8*/
+.endImg{ position:absolute; left:64px; top:220px;}
+.btn12{ left:49px; top:945px;}
+.btn13{ left:315px; top:945px;}
+.page8Img01{ left:272px; top:1033px;}
+
+.popShare{ position:fixed; top:0; left:50%; margin-left:-320px;}
+
+/*page11*/
+.voteEndImg{ position:absolute; left:64px; top:175px;}
+
+/*page10*/
+.shareEndImg{ position:absolute; left:64px; top:160px;}
+.voteBtn{ left:155px; top:900px; color:#FFFFFF; font-size:30px;}
+.voteBtn span{ color:#b10002; font-size:40px;}
+.voteBtn img{ vertical-align:-15px;}
+
+.btn16{ left:55px; top:980px;}
+.btn17{ left:345px; top:980px;}
+
+.popList{ background:url(../images/page10Img04.png) 0 0 no-repeat; width:640px; height:965px; position:absolute; left:50%; top:0; margin:0 0 0 -320px;}
+.myRank{ color:#FFFFFF; width:640px; height:40px; line-height:40px; font-size:30px; text-align:center; position:absolute; left:0; top:817px;}
+.myRank span{ font-size:35px; font-weight:bold;}
+
+.voteList{ position:absolute; left:149px; top:213px; width:400px; height:550px; overflow:hidden;}
+.vlLine{ width:400px; height:145px; overflow:hidden;}
+.vFace{ position:absolute; left:0; top:0; border-radius:47px;}
+.vName{ position:absolute; left:100px; top:10px; overflow:hidden; width:150px; height:34px; line-height:34px; font-size:30px; color:#b10002;}
+.vVotes{ position:absolute; right:20px; top:10px; overflow:hidden; width:125px; height:34px; line-height:34px; font-size:30px; color:#b10002; text-align:right; word-break:break-all;}
+.vVotes img{ padding-left:5px; vertical-align:-4px;}
+.vLine{ background:url(../images/page10Img03.png) 0 0 no-repeat; width:282px; height:28px;}
+.vLineOuter{ position:absolute; left:99px; top:54px; width:282px; height:28px;}
+
+
+/*page11*/
+.voteEndImg{ position:absolute; left:64px; top:175px;}
+.btn20{ left:75px; top:890px;}
+.btn19{ left:178px; top:1005px;}
+.voteTxt{ position:absolute; left:0; top:135px; width:640px; height:30px; line-height:30px; color:#FFFFFF; text-align:center; font-size:22px;}
+.page11Img01{ left:143px; top:350px;}
+
+
+
+

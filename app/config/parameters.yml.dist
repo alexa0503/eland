@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: '3306'
+    database_name: china_reading
+    database_user: china_reading
+    database_password: qLrFDNqXt88XBRqj
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: cn
+    secret: bec8ba4263a43f67fdc3dff696ebdd63
+    wechat_appid: null
+    wechat_secret: null
