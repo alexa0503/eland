@@ -5,12 +5,12 @@ parameters:
     knp_menu.renderer.twig.options:
             currentClass: active
 
-#services:
-    #listener.wechat:
-         #class: AppBundle\EventListener\OAuthListener
-         #arguments: [ "@router", "@service_container" ]
-         #tags:
-           #- { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+services:
+    listener.wechat:
+         class: AppBundle\EventListener\OAuthListener
+         arguments: [ "@router", "@service_container" ]
+         tags:
+           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
            #- { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
            #- { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 #    service_name:
