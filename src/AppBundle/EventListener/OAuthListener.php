@@ -38,7 +38,7 @@ class OAuthListener
 		//$session->set('open_id', 'o5mOVuGapiB3tzYysVcE4xstN3s4');
 		//$session->set('user_id', 1);
 		if($request->getClientIp() == '127.0.0.1'){
-			$session->set('open_id', 'o5mOVuGapiB3tzYysVcE4xstN3s4');
+			$session->set('open_id', 'o2-sBj0oOQJCIq6yR7I9HtrqxZcY');
 			$session->set('user_id', 1);
 		}
 		else{
