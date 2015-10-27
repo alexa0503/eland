@@ -75,6 +75,11 @@
 							{% endif %}
 						</div>
 					</div>
+					<div class="manSelFace2">
+		                    <div class="innerDiv">
+		                        <img src="">
+		                    </div>
+		                </div>
 					<div class="cSWT"></div>
 					<div class="cSWB"></div>
 				</div>
@@ -95,6 +100,7 @@
 	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/manF'+mRle+'.png');
 	{% else %}
 	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'.png');
+	$('.manSelFace2 img').attr('src','{{ asset("bundles/app/default/m/") }}iimages/girlF'+mRle+'b.png');
 	{% endif %}
 	
 	$('.manSelTop').touchwipe({
