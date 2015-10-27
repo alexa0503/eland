@@ -39,7 +39,7 @@ class DefaultController extends Controller
 		if( null != $this->getUser()->getCover() ){
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
-		
+
 		if($request->attributes->get('_route') !== '_pc_index')
 			return $this->render('AppBundle:default:m/index.html.twig');
 		else
@@ -134,12 +134,14 @@ class DefaultController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$cover = new Entity\Cover;
 			$user = $this->getUser();
+			$cover->setGender($request->get('gender'));
 			$cover->setUser($user);
 			$cover->setImgUrl($sign_path);
 			$cover->setStyle($request->get('cover'));
 			$cover->setHairStyle($request->get('hair'));
 			$cover->setCloth1($request->get('cloth1'));
 			$cover->setCloth2($request->get('cloth2'));
+			$cover->setFavourNum(0);
 			$cover->setUsername('');
 			$cover->setMobile('');
 			$cover->setCreateIp($request->getClientIp());

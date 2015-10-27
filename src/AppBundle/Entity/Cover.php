@@ -24,6 +24,10 @@ class Cover
      */
     protected $imgUrl;
     /**
+     * @ORM\Column(name="gender",type="integer")
+     */
+    protected $gender;
+    /**
      * @ORM\Column(name="style",type="integer")
      */
     protected $style;
@@ -326,5 +330,28 @@ class Cover
     {
         ++$this->favourNum;
         return $this;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param integer $gender
+     * @return Cover
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return integer 
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 }

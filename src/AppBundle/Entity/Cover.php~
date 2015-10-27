@@ -24,6 +24,10 @@ class Cover
      */
     protected $imgUrl;
     /**
+     * @ORM\Column(name="gender",type="integer")
+     */
+    protected $gender;
+    /**
      * @ORM\Column(name="style",type="integer")
      */
     protected $style;
