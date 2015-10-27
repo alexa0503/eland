@@ -1,0 +1,128 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+	<div class="page page3">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page3.jpg" class="abs bgImg">
+				<div class="manSelBlock">
+					<div class="innerDiv">
+						{% if app.request.get('gender') == 0 %}
+							<img src="{{ asset('bundles/app/default/m/') }}images/selMan1.png" class="manLeft">
+							<img src="{{ asset('bundles/app/default/m/') }}images/selMan3.png" class="manCenter">
+							<img src="{{ asset('bundles/app/default/m/') }}images/selMan2.png" class="manRight">
+							{% else %}
+							<img src="{{ asset('bundles/app/default/m/') }}images/selGirl1.png" class="manLeft">
+							<img src="{{ asset('bundles/app/default/m/') }}images/selGirl3.png" class="manCenter">
+							<img src="{{ asset('bundles/app/default/m/') }}images/selGirl2.png" class="manRight">
+						{% endif %}
+					</div>
+				</div>
+				<form action="{{ url('_m_select',{step:1,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn03" onClick="goPage4();"><img src="{{ asset('bundles/app/default/m/') }}images/btn03.png"></a><input type="hidden" value="" name="hair" id="hair" /></form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function(){
+			$('.manSelBlock').touchwipe({
+				min_move_x: 40, //横向灵敏度
+				min_move_y: 40, //纵向灵敏度
+				wipeLeft: function() {
+					manGoLeft();
+				}, //左侧滑动事件
+				wipeRight: function() {
+					manGoRight();
+				}, //右侧滑动事件
+				preventDefaultEvents: true //阻止默认事件
+			});
+		});
+
+		var isMoving=false;
+		var mRle=2;
+		function manGoLeft(){
+			if(!isMoving){
+				isMoving=true;
+				if(mRle=='2'){
+					mRle='3';
+					$('.manLeft').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manCenter').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manRight').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manLeft').css('z-index','0');
+						$('.manCenter').css('z-index','0');
+						$('.manRight').css('z-index','1');
+					});
+				}
+				else if(mRle=='3'){
+					mRle='1';
+					$('.manCenter').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manRight').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manLeft').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manCenter').css('z-index','0');
+						$('.manRight').css('z-index','0');
+						$('.manLeft').css('z-index','1');
+					});
+				}
+				else if(mRle=='1'){
+					mRle='2';
+					$('.manRight').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manLeft').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manCenter').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manRight').css('z-index','0');
+						$('.manLeft').css('z-index','0');
+						$('.manCenter').css('z-index','1');
+					});
+				}
+			}
+		}
+
+		function manGoRight(){
+			if(!isMoving){
+				isMoving=true;
+				if(mRle=='2'){
+					mRle='1';
+					$('.manCenter').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manRight').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manLeft').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manRight').css('z-index','0');
+						$('.manCenter').css('z-index','0');
+						$('.manLeft').css('z-index','1');
+					});
+				}
+				else if(mRle=='1'){
+					mRle='3';
+					$('.manLeft').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manCenter').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manRight').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manCenter').css('z-index','0');
+						$('.manLeft').css('z-index','0');
+						$('.manRight').css('z-index','1');
+					});
+				}
+				else if(mRle=='3'){
+					mRle='2';
+					$('.manRight').stop().animate({left:365,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manLeft').stop().animate({left:5,top:53,opacity:0.5,width:270},500,'linear');
+					$('.manCenter').stop().animate({left:140,top:0,opacity:1,width:363},500,'linear',function(){
+						isMoving=false;
+						$('.manRight').css('z-index','0');
+						$('.manLeft').css('z-index','0');
+						$('.manCenter').css('z-index','1');
+					});
+				}
+			}
+		}
+
+		function goPage4(){
+			$('#hair').val(mRle);
+			$('#form-select').submit();
+			//window.location.href="{{ url('_m_select',{step:1,gender:app.request.get('gender')}) }}";
+		}
+	</script>
+{% endblock %}

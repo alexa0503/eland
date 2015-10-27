@@ -1,0 +1,215 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+	<div class="page page4">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page4.jpg" class="abs bgImg">
+				<div class="page4Sel">
+					<div class="manSelFace">
+						<div class="innerDiv">
+							<img src="">
+						</div>
+					</div>
+					<div class="manSelBottom">
+						<div class="innerDiv">
+							{% if app.request.get('gender') == 1 %}
+								<div class="clothLine2" style="width:7348px;">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB1.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB2.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB3.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB4.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB5.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB6.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB7.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB8.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB9.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB10.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB11.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB12.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB13.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB14.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB15.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlB16.png">
+								</div>
+								{% else %}
+								<div class="clothLine2" style="width:2718px;">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB1.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB2.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB3.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB4.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB5.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manB6.png">
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="manSelTop">
+						<div class="innerDiv">
+							{% if app.request.get('gender') == 1 %}
+								<div class="clothLine" style="width:7348px; overflow:visible;">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT1.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT2.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT3.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT4.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT5.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT6.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT7.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT8.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT9.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT10.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT11.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT12.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT13.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT14.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/girlT15.png">
+								</div>
+								{% else %}
+								<div class="clothLine" style="width:2718px;">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT1.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT2.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT3.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT4.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT5.png">
+									<img src="{{ asset('bundles/app/default/m/') }}images/manT6.png">
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="cSWT"></div>
+					<div class="cSWB"></div>
+				</div>
+
+
+				<form action="{{ url('_m_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"></a><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /><input type="hidden" value="" name="cloth1" id="cloth1" /><input type="hidden" value="" name="cloth2" id="cloth2" /></form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function(){
+	//var mRle=queryString('mRle');
+	var mRle = '{{ app.request.get("hair") }}';
+	{% if app.request.get('gender') == 0 %}
+	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/manF'+mRle+'.png');
+	{% else %}
+	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'.png');
+	{% endif %}
+	
+	$('.manSelTop').touchwipe({
+		min_move_x: 40, //横向灵敏度
+		min_move_y: 40, //纵向灵敏度
+		wipeLeft: function() {
+			manGoLeft();
+			}, //左侧滑动事件
+			wipeRight: function() {
+				manGoRight();
+			}, //右侧滑动事件
+		//preventDefaultEvents: true //阻止默认事件
+	});
+
+	$('.manSelBottom').touchwipe({
+		min_move_x: 40, //横向灵敏度
+		min_move_y: 40, //纵向灵敏度
+		wipeLeft: function() {
+			manGoLeft2();
+			}, //左侧滑动事件
+			wipeRight: function() {
+				manGoRight2();
+			}, //右侧滑动事件
+		//preventDefaultEvents: true //阻止默认事件
+	});
+});
+
+		var isMoving=false;
+		var mCloth=3;
+		var mCloth2=3;
+		var mMax=6;
+		function manGoLeft(){
+			if(!isMoving){
+				isMoving=true;
+				if(mCloth==mMax){
+					mCloth=1;
+				}
+				else{
+					mCloth=parseInt(mCloth)+1;
+				}
+				$('.clothLine').stop().animate({marginLeft:-453},500,'linear',function(){
+					var firstHtml='<img src="'+$('.clothLine img').eq(0).attr('src')+'">';
+					$('.clothLine img').eq(0).remove();
+					$('.clothLine').append(firstHtml);
+					$('.clothLine').css('margin-left','0');
+					isMoving=false;
+				});
+			}
+		}
+
+		function manGoRight(){
+			if(!isMoving){
+				isMoving=true;
+				if(mCloth==1){
+					mCloth=mMax;
+				}
+				else{
+					mCloth=parseInt(mCloth)-1;
+				}
+				$('.clothLine').stop().animate({marginLeft:453},500,'linear',function(){
+					var lastHtml='<img src="'+$('.clothLine img').eq(parseInt(mMax)-1).attr('src')+'">';
+					$('.clothLine img').eq(parseInt(mMax)-1).remove();
+					var oldHtml=$('.clothLine').html();
+					$('.clothLine').html(lastHtml+oldHtml);
+					$('.clothLine').css('margin-left','0');
+					isMoving=false;
+				});
+			}
+		}
+
+		function manGoLeft2(){
+			if(!isMoving){
+				isMoving=true;
+				if(mCloth2==mMax){
+					mCloth2=1;
+				}
+				else{
+					mCloth2=parseInt(mCloth2)+1;
+				}
+				$('.clothLine2').stop().animate({marginLeft:-453},500,'linear',function(){
+					var firstHtml='<img src="'+$('.clothLine2 img').eq(0).attr('src')+'">';
+					$('.clothLine2 img').eq(0).remove();
+					$('.clothLine2').append(firstHtml);
+					$('.clothLine2').css('margin-left','0');
+					isMoving=false;
+				});
+			}
+		}
+
+		function manGoRight2(){
+			if(!isMoving){
+				isMoving=true;
+				if(mCloth2==1){
+					mCloth2=mMax;
+				}
+				else{
+					mCloth2=parseInt(mCloth2)-1;
+				}
+				$('.clothLine2').stop().animate({marginLeft:453},500,'linear',function(){
+					var lastHtml='<img src="'+$('.clothLine2 img').eq(parseInt(mMax)-1).attr('src')+'">';
+					$('.clothLine2 img').eq(parseInt(mMax)-1).remove();
+					var oldHtml=$('.clothLine2').html();
+					$('.clothLine2').html(lastHtml+oldHtml);
+					$('.clothLine2').css('margin-left','0');
+					isMoving=false;
+				});
+			}
+		}
+
+		function goPage5(){
+			//var mRle=queryString('mRle');
+			//window.location.href="selManSign.html?mRle="+mRle+"&mCloth="+mCloth+"&mCloth2="+mCloth2;
+			$('#cloth1').val(mCloth);
+			$('#cloth2').val(mCloth2);
+			$('#form-select').submit();
+		}
+	</script>
+{% endblock %}

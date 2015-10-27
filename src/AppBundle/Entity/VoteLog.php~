@@ -1,0 +1,35 @@
+<?php
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="t_vote_log")
+ */
+class VoteLog
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /**
+     * @ORM\ManyToOne(targetEntity="WechatUser", inversedBy="logs")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="WechatUser", inversedBy="voteLogs")
+     * @ORM\JoinColumn(name="voter_id", referencedColumnName="id")
+     */
+    protected $voter;
+    /**
+     * @ORM\Column(name="create_time",type="datetime")
+     */
+    protected $createTime;
+    /**
+     * @ORM\Column(name="create_ip",type="string", length=60)
+     */
+    protected $createIp;
+}

@@ -65,11 +65,10 @@ class OAuthListener
 			$session->set('wx_nonce_str', $wx->nonceStr);
 			$session->set('wx_signature', $wx->signature);
 			$session->set('wx_share_url', $request->getUriForPath('/'));
-			$session->set('wx_title', 'Hold住全民军训，赢神器！');
-			$session->set('wx_desc', '我正在接受教官的超规格军训！');
+			$session->set('wx_title', 'Eland');
+			$session->set('wx_desc', 'Eland');
 			$session->set('wx_img_url', 'images/share.jpg');
 		}
-		$session->set('isWinner', null);
 	}
 	/*
 	public function onKernelResponse(FilterResponseEvent $event)

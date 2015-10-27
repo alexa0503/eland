@@ -38,11 +38,12 @@
 		
 		function goPage3(){
 			var selSex=$('.selBtn').index($('.selBtnSeled'));//0男 1女
+
 			if(selSex=='0'){
-				window.location.href='selMan.html';
+				window.location.href='{{ url("_m_select",{gender:0}) }}';
 			}
 			else if(selSex=='1'){
-				window.location.href='selGirl.html';
+				window.location.href='{{ url("_m_select",{gender:1}) }}';
 			}
 			else{
 				alert('请选择性别');

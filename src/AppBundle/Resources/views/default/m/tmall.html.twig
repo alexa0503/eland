@@ -1,0 +1,83 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+<div class="page page9">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page9.png" usemap="#Map" class="abs bgImg">
+            <map name="Map">
+              <area shape="rect" coords="20,772,164,909" href="javascript:void(0);" onClick="changeTm(1);">
+              <area shape="rect" coords="173,772,315,910" href="javascript:void(0);" onClick="changeTm(2);">
+              <area shape="rect" coords="323,773,466,913" href="javascript:void(0);" onClick="changeTm(3);">
+              <area shape="rect" coords="474,772,617,912" href="javascript:void(0);" onClick="changeTm(4);">
+              <area shape="rect" coords="97,921,240,1046" href="javascript:void(0);" onClick="changeTm(5);">
+              <area shape="rect" coords="249,920,388,1044" href="javascript:void(0);" onClick="changeTm(6);">
+              <area shape="rect" coords="399,922,539,1043" href="javascript:void(0);" onClick="changeTm(7);">
+            </map>
+            <div class="link link1">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+              </div>
+          </div>
+            <div class="link link2" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <div class="link link3" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <div class="link link4" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <div class="link link5" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <div class="link link6" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <div class="link link7" style="display:none;">
+                <div class="innerDiv">
+                    <a href="javascript:void(0);" class="linkLink1"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="640" height="260"></a>
+                    <a href="javascript:void(0);" class="linkLink2"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="365" height="138"></a>
+                </div>
+            </div>
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link1On">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link2On" style="display:none;">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link3On" style="display:none;">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link4On" style="display:none;">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link5On" style="display:none;">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link6On" style="display:none;">
+            <img src="{{ asset('bundles/app/default/m/') }}images/logoOn.png" class="abs linkOn link7On" style="display:none;">
+            
+            <a href="{{ url('_m_share') }}" class="abs btn15"><img src="{{ asset('bundles/app/default/m/') }}images/btn15.png"></a>
+  </div>
+</div>
+
+<!--<input type="button" value="manGoLeft" onClick="manGoLeft();" style="position:fixed; left:50px; top:50px;">
+<input type="button" value="manGoRight" onClick="manGoRight();" style="position:fixed; left:50px; top:100px;">-->
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+<script>
+function changeTm(ex){
+	$('.link').hide();
+	$('.linkOn').hide();
+	$('.link'+ex).show();
+	$('.link'+ex+'On').show();
+	}
+</script>
+{% endblock %}

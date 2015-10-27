@@ -1,0 +1,246 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+	<div class="page page5">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page5.jpg" class="abs bgImg">
+				<div class="page5Sel">
+					<img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="bgBook bgBook1">
+					<img src="{{ asset('bundles/app/default/m/') }}images/book2.jpg" class="bgBook bgBook2" style="display:none;">
+					<img src="{{ asset('bundles/app/default/m/') }}images/book3.jpg" class="bgBook bgBook3" style="display:none;">
+					<img src="{{ asset('bundles/app/default/m/') }}images/book4.jpg" class="bgBook bgBook4" style="display:none;">
+					<div class="manSeledFace">
+						<img src="">
+					</div>
+					<div class="manSeledBottom">
+						<img src="">
+					</div>
+					<div class="manSeledTop">
+						<img src="">
+					</div>
+
+					<p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
+				</div>
+
+
+				<a href="javascript:void(0);" onClick="showPage5s();" class="abs btn05"><img src="{{ asset('bundles/app/default/m/') }}images/btn05.png"></a>
+				<a href="javascript:void(0);" class="abs btn06" onClick="goPage6();"><img src="{{ asset('bundles/app/default/m/') }}images/btn06.png"></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="popBg" style="display:none;"></div>
+	<div class="page5s pop" style="display:none;">
+		<div class="innerDiv">
+			<input type="text" maxlength="16" class="myTitleTxt" id="myTitleTxt">
+			<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
+			<a href="javascript:void(0);" class="abs btn14" onClick="confirmTitle();"><img src="{{ asset('bundles/app/default/m/') }}images/btn14.png"></a>
+		</div>
+	</div>
+
+	<div class="page page6" style="display:none;">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page6.jpg" class="abs bgImg">
+				<div class="cOuter">
+					<canvas id="canvas" width="513" height="510"></canvas>
+				</div>
+
+				<a href="javascript:void(0);" onClick="reDraw();" class="abs btn07"><img src="{{ asset('bundles/app/default/m/') }}images/btn07.png"></a>
+				<a href="javascript:void(0);" onClick="submitImgs();" class="abs btn08"><img src="{{ asset('bundles/app/default/m/') }}images/btn08.png"></a>
+			</div>
+		</div>
+	</div>
+	<img src="" id="image_png" style="display:none;">
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		var mRle;
+		var mCloth;
+		var mCloth2;
+
+		$(document).ready(function(){
+			mRle = '{{ app.request.get("hair") }}';
+			mCloth = '{{ app.request.get("cloth1") }}';
+			mCloth2 = '{{ app.request.get("cloth2") }}';
+			{% if app.request.get('gender') == 1 %}
+			$('.manSeledFace img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlF'+mRle+'.png');
+			$('.manSeledTop img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlT'+mCloth+'.png');
+			$('.manSeledBottom img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlB'+mCloth2+'.png');
+			{% else %}
+			$('.manSeledFace img').attr('src','{{ asset('bundles/app/default/m/') }}images/manF'+mRle+'.png');
+			$('.manSeledTop img').attr('src','{{ asset('bundles/app/default/m/') }}images/manT'+mCloth+'.png');
+			$('.manSeledBottom img').attr('src','{{ asset('bundles/app/default/m/') }}images/manB'+mCloth2+'.png');
+			{% endif %}
+
+			$('.page5Sel').touchwipe({
+		min_move_x: 40, //横向灵敏度
+		min_move_y: 40, //纵向灵敏度
+		wipeLeft: function() {
+			manGoLeft();
+			}, //左侧滑动事件
+			wipeRight: function() {
+				manGoRight();
+			}, //右侧滑动事件
+		//preventDefaultEvents: true //阻止默认事件
+	});
+		});
+
+var isMoving=false;
+var mBook=1;
+function manGoLeft(){
+	if(!isMoving){
+		isMoving=true;
+		if(mBook==4){
+			mBook=1;
+		}
+		else{
+			mBook=parseInt(mBook)+1;
+		}
+		$('.bgBook').hide();
+		$('.bgBook'+mBook).fadeIn(200);
+		isMoving=false;
+	}
+}
+function manGoRight(){
+	if(!isMoving){
+		isMoving=true;
+		if(mBook==1){
+			mBook=4;
+		}
+		else{
+			mBook=parseInt(mBook)-1;
+		}
+		$('.bgBook').hide();
+		$('.bgBook'+mBook).fadeIn(200);
+		isMoving=false;
+	}
+}
+
+function showPage5s(){
+	$('.popBg').show();
+	$('.pop').hide();
+	$('.page5s').show();
+}
+
+function confirmTitle(){
+	var myTitle=$('.myTitleTxt').val();
+	$('.myTitle').html(myTitle);
+	closePop();
+}
+
+function goPage6(){
+	$('.page5').fadeOut(500);
+	$('.page6').fadeIn(500);
+	goDraw();
+}
+
+
+var canvas;
+var ctx;
+//按下标记
+var onoff = false;
+var oldx = 0;
+var oldy = 0;
+//设置颜色
+var linecolor = "black";
+//设置线宽
+var linw = 10;
+
+function down(event){
+	onoff = true;
+	if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+		var touch = event.touches[0];
+		oldx=touch.pageX-64;
+		oldy=touch.pageY-324;
+	}
+	else if(/(Android)/i.test(navigator.userAgent)){
+		var touch = event.touches[0];
+		oldx=touch.pageX-64;
+		oldy=touch.pageY-324;
+	}
+	else{
+		oldx=event.pageX-64;
+		oldy=event.pageY-324;
+	}
+	
+}
+
+function up(){
+	onoff = false;
+}
+
+function draw(event){
+	if(onoff == true){
+		event.stopPropagation();//禁止手势缩放
+		event.preventDefault();//在页面滑动时禁止事件
+		
+		if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+			var touch = event.touches[0];
+			var newx=touch.pageX-64;
+			var newy=touch.pageY-324;
+		}
+		else if(/(Android)/i.test(navigator.userAgent)){
+			var touch = event.touches[0];
+			var newx=touch.pageX-64;
+			var newy=touch.pageY-324;
+		}
+		else{
+			var newx=event.pageX-64;
+			var newy=event.pageY-324;
+		}
+		
+		ctx.beginPath();
+		ctx.moveTo(oldx,oldy);
+		ctx.lineTo(newx,newy);
+		ctx.strokeStyle='black';
+		ctx.lineWidth=linw;
+		ctx.lineCap="round";
+		ctx.stroke();
+
+		oldx = newx;
+		oldy = newy;
+	};
+};
+
+
+function goDraw(){
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext("2d");
+	
+	canvas.addEventListener("touchmove",draw,true);
+	canvas.addEventListener("touchstart",down,false);
+	canvas.addEventListener("touchend",up,false);
+
+	canvas.addEventListener("mousemove",draw,true);
+	canvas.addEventListener("mousedown",down,false);
+	canvas.addEventListener("mouseup",up,false);
+}
+
+function reDraw(){
+	ctx.clearRect(0,0,513,510);
+}
+
+function submitImgs(){
+	var img_png_src = canvas.toDataURL("image/png");
+	document.getElementById("image_png").src = img_png_src;
+	var data = {
+		img: img_png_src,
+		gender:'{{ app.request.get("gender") }}',
+		hair:'{{ app.request.get("hair") }}',
+		cloth1:'{{ app.request.get("cloth1") }}',
+		cloth2:'{{ app.request.get("cloth2") }}',
+		title:$('#myTitleTxt').val(),
+		cover:mBook
+	}
+	var url = '{{ url("_m_combine") }}';
+	$.post(url, data, function(json){
+		if( json.ret == 0)
+			window.location.href='{{ url("_m_info") }}';
+		else
+			alert(json.msg);
+	},"JSON");
+}
+</script>
+{% endblock %}

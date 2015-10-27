@@ -18,3 +18,15 @@ function closePop(){
 	$('.popBg').hide();
 	$('.pop').hide();
 	}
+	
+var wHeight;
+$(document).ready(function(){
+	window.addEventListener('touchmove', function (e) { e.preventDefault();e.stopPropagation(); }, false);
+	
+	wHeight=$(window).height();
+	if(wHeight<832){
+		wHeight=832;
+		}
+	var sBl=wHeight/1130;
+	$('.page').css('-webkit-transform','translate(0,'+(-(1130-(1130*sBl))/2)+'px'+') scale('+sBl+')');
+	});

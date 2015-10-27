@@ -1,0 +1,52 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+	<div class="page page8">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page10.png" class="abs bgImg">
+				<img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="shareEndImg">
+				<a href="javascript:void(0);" class="abs voteBtn"><img src="{{ asset('bundles/app/default/m/') }}images/page10Img01.png"> 您已获得：<span>{{ user.cover.favourNum }}</span> 个赞</a>
+				<a href="{{ url('_m_tmall') }}" class="abs btn16"><img src="{{ asset('bundles/app/default/m/') }}images/btn16.png"></a>
+				<a href="javascript:void(0);" onClick="showList();" class="abs btn17"><img src="{{ asset('bundles/app/default/m/') }}images/btn17.png"></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="popBg" style="display:none;"></div>
+	<div class="pop popList" style="display:none;">
+		<div class="innerDiv">
+			<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
+			<div class="voteList">
+				{% for cover in covers %}
+				<div class="vlLine">
+					<div class="innerDiv">
+						<img class="vFace" src="{{ asset('bundles/app/default/m/') }}images/selGirl1.png" width="95" height="95">
+						<p class="vName">{{ cover.user.nickName}}</p>
+						<p class="vVotes">{{ cover.favourNum }}<img src="{{ asset('bundles/app/default/m/') }}images/page10Img02.png"></p>
+						<div class="vLineOuter">
+							<div class="vLine" style="width:70%;"></div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<p class="myRank">您的当前排名<span>{{ ranking }}</span>名</p>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+
+		$(document).ready(function(){
+
+		});
+
+		function showList(){
+			window.scroll(0,0);
+			$('.popBg').show();
+			$('.pop').hide();
+			$('.popList').show();
+		}
+	</script>
+{% endblock %}

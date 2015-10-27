@@ -1,5 +1,5 @@
 /* Global Setting */
-body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'SimHei',Arial; background:#FFF;}
+body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'SimHei',Arial; background:url(../images/bg.jpg) top center no-repeat #FFF;}
 table{border-collapse:collapse;}
 td,th{padding:0;}
 ul,li,dd,dl,dt{margin:0; padding:0; list-style:none; word-break:break-all;}
@@ -17,7 +17,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .abs{ position:absolute;}
 .bgImg{ left:0; top:0px; /*-61*/}
 
-.page{ width:640px; height:1130px; overflow:hidden; position:absolute; left:50%; top:0; margin-left:-320px;}
+.page{ width:640px; height:1130px; overflow:visible; position:absolute; left:50%; top:0; margin-left:-320px;}
 
 .h1008{ width:640px; /*height:1008px;*/}
 
@@ -43,7 +43,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .btn03{ left:178px; top:935px;}
 
 /*page4*/
-.manSelFace{ width:640px; text-align:center; position:absolute; left:0; top:338px;}
+.manSelFace,.manSelFace2{ width:640px; text-align:center; position:absolute; left:0; top:338px;}
 
 .manSelTop{ width:640px; position:absolute; left:0; top:338px; height:690px;}
 .clothLine{ position:absolute; left:-813px; top:0; height:690px; overflow:hidden;}
@@ -61,7 +61,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 /*page5*/
 .page5Sel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:250px;}
-.manSeledFace{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manSeledFace,.manSeledFace2{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
 .manSeledTop{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
 .manSeledBottom{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
 .btn05{ left:70px; top:1000px;}
@@ -98,9 +98,6 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 .popShare{ position:fixed; top:0; left:50%; margin-left:-320px;}
 
-/*page11*/
-.voteEndImg{ position:absolute; left:64px; top:175px;}
-
 /*page10*/
 .shareEndImg{ position:absolute; left:64px; top:160px;}
 .voteBtn{ left:155px; top:900px; color:#FFFFFF; font-size:30px;}
@@ -131,6 +128,23 @@ select,input,textarea{font-family:inherit; outline:none;}
 .voteTxt{ position:absolute; left:0; top:135px; width:640px; height:30px; line-height:30px; color:#FFFFFF; text-align:center; font-size:22px;}
 .page11Img01{ left:143px; top:350px;}
 
-
-
-
+/*page9*/
+.link{ position:absolute; left:0; top:60px; width:640px; height:662px;}
+.link1{ background:url(../images/page9Img01.png) 0 0 no-repeat;}
+.link2{ background:url(../images/page9Img02.png) 0 0 no-repeat;}
+.link3{ background:url(../images/page9Img03.png) 0 0 no-repeat;}
+.link4{ background:url(../images/page9Img04.png) 0 0 no-repeat;}
+.link5{ background:url(../images/page9Img05.png) 0 0 no-repeat;}
+.link6{ background:url(../images/page9Img06.png) 0 0 no-repeat;}
+.link7{ background:url(../images/page9Img07.png) 0 0 no-repeat;}
+.linkLink1{ position:absolute; left:0; top:170px;}
+.linkLink2{ position:absolute; left:68px; top:521px;}
+.linkOn{}
+.link1On{ left:24px; top:771px;}
+.link2On{ left:175px; top:771px;}
+.link3On{ left:324px; top:771px;}
+.link4On{ left:475px; top:771px;}
+.link5On{ left:100px; top:903px;}
+.link6On{ left:250px; top:903px;}
+.link7On{ left:400px; top:903px;}
+.btn15{ left:24px; top:17px;}

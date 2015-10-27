@@ -1,0 +1,47 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+<div class="page page11">
+	<div class="h1008">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page10.png" class="abs bgImg">
+            <p class="voteTxt"><span>{{ user.nickName }}</span>不一Young的搭配</p>
+            <img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="voteEndImg">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page11Img01.png" class="abs page11Img01" style="display:none;">
+            <a href="javascript:void(0);" onClick="voteThis();" class="abs btn20"><img src="{{ asset('bundles/app/default/m/') }}images/btn20.png"></a>
+            <a href="{{ url('_m_index') }}" class="abs btn19"><img src="{{ asset('bundles/app/default/m/') }}images/btn19.png"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		
+		$(document).ready(function(){
+			
+		});
+		
+		function showList(){
+			window.scroll(0,0);
+			$('.popBg').show();
+			$('.pop').hide();
+			$('.popList').show();
+		}
+		
+		function voteThis(){
+			var url = '{{ url("_m_vote_post",{id:app.request.get("id")}) }}';
+			$.post(url,function(json){
+				if(json.ret == 0){
+					$('.page11Img01').fadeIn(500);
+					setTimeout(function(){
+						$('.page11Img01').fadeOut(500);
+					},1500);
+				}
+				else{
+					alert(json.msg);
+				}
+			},"JSON");
+		}
+
+	</script>
+{% endblock %}

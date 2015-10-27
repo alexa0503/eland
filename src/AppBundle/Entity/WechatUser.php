@@ -43,10 +43,6 @@ class WechatUser
      */
     protected $country;
     /**
-     * @ORM\Column(name="is_full_answer",type="boolean")
-     */
-    protected $isFullAnswer = false;
-    /**
      * @ORM\Column(name="create_time",type="datetime")
      */
     protected $createTime;
@@ -55,25 +51,17 @@ class WechatUser
      */
     protected $createIp;
     /**
-     * @ORM\OneToMany(targetEntity="AnswerLog", mappedBy="user")
-     * @ORM\OrderBy({"answerType" = "ASC"})
+     * @ORM\OneToOne(targetEntity="Cover", mappedBy="user")
+     */
+    protected $cover;
+    /**
+     * @ORM\OneToMany(targetEntity="VoteLog", mappedBy="user")
      */
     protected $logs;
     /**
-     * @ORM\OneToMany(targetEntity="ShareLog", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="VoteLog", mappedBy="voter")
      */
-    protected $shareLogs;
-    /**
-     * @ORM\OneToMany(targetEntity="Form", mappedBy="user")
-     */
-    protected $forms;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->creations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $voteLogs;
 
     /**
      * Get id
@@ -291,38 +279,45 @@ class WechatUser
     {
         return $this->createIp;
     }
-    
 
     /**
-     * Set isFullAnswer
+     * Set cover
      *
-     * @param boolean $isFullAnswer
+     * @param \AppBundle\Entity\Cover $cover
      * @return WechatUser
      */
-    public function setIsFullAnswer($isFullAnswer)
+    public function setCover(\AppBundle\Entity\Cover $cover = null)
     {
-        $this->isFullAnswer = $isFullAnswer;
+        $this->cover = $cover;
 
         return $this;
     }
 
     /**
-     * Get isFullAnswer
+     * Get cover
      *
-     * @return boolean 
+     * @return \AppBundle\Entity\Cover 
      */
-    public function getIsFullAnswer()
+    public function getCover()
     {
-        return $this->isFullAnswer;
+        return $this->cover;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->logs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->voteLogs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Add logs
      *
-     * @param \AppBundle\Entity\AnswerLog $logs
+     * @param \AppBundle\Entity\VoteLog $logs
      * @return WechatUser
      */
-    public function addLog(\AppBundle\Entity\AnswerLog $logs)
+    public function addLog(\AppBundle\Entity\VoteLog $logs)
     {
         $this->logs[] = $logs;
 
@@ -332,9 +327,9 @@ class WechatUser
     /**
      * Remove logs
      *
-     * @param \AppBundle\Entity\AnswerLog $logs
+     * @param \AppBundle\Entity\VoteLog $logs
      */
-    public function removeLog(\AppBundle\Entity\AnswerLog $logs)
+    public function removeLog(\AppBundle\Entity\VoteLog $logs)
     {
         $this->logs->removeElement($logs);
     }
@@ -350,68 +345,35 @@ class WechatUser
     }
 
     /**
-     * Add shareLogs
+     * Add voteLogs
      *
-     * @param \AppBundle\Entity\ShareLog $shareLogs
+     * @param \AppBundle\Entity\VoteLog $voteLogs
      * @return WechatUser
      */
-    public function addShareLog(\AppBundle\Entity\ShareLog $shareLogs)
+    public function addVoteLog(\AppBundle\Entity\VoteLog $voteLogs)
     {
-        $this->shareLogs[] = $shareLogs;
+        $this->voteLogs[] = $voteLogs;
 
         return $this;
     }
 
     /**
-     * Remove shareLogs
+     * Remove voteLogs
      *
-     * @param \AppBundle\Entity\ShareLog $shareLogs
+     * @param \AppBundle\Entity\VoteLog $voteLogs
      */
-    public function removeShareLog(\AppBundle\Entity\ShareLog $shareLogs)
+    public function removeVoteLog(\AppBundle\Entity\VoteLog $voteLogs)
     {
-        $this->shareLogs->removeElement($shareLogs);
+        $this->voteLogs->removeElement($voteLogs);
     }
 
     /**
-     * Get shareLogs
+     * Get voteLogs
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getShareLogs()
+    public function getVoteLogs()
     {
-        return $this->shareLogs;
-    }
-
-    /**
-     * Add forms
-     *
-     * @param \AppBundle\Entity\Form $forms
-     * @return WechatUser
-     */
-    public function addForm(\AppBundle\Entity\Form $forms)
-    {
-        $this->forms[] = $forms;
-
-        return $this;
-    }
-
-    /**
-     * Remove forms
-     *
-     * @param \AppBundle\Entity\Form $forms
-     */
-    public function removeForm(\AppBundle\Entity\Form $forms)
-    {
-        $this->forms->removeElement($forms);
-    }
-
-    /**
-     * Get forms
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getForms()
-    {
-        return $this->forms;
+        return $this->voteLogs;
     }
 }
