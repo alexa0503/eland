@@ -36,6 +36,10 @@ class DefaultController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{
+		if( null != $this->getUser()->getCover() ){
+			return $this->redirect($this->generateUrl('_m_info'));
+		}
+		
 		if($request->attributes->get('_route') !== '_pc_index')
 			return $this->render('AppBundle:default:m/index.html.twig');
 		else
