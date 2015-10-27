@@ -17,7 +17,7 @@
 						{% endif %}
 					</div>
 				</div>
-				<form action="{{ url('_m_select',{step:1,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn03" onClick="goPage4();"><img src="{{ asset('bundles/app/default/m/') }}images/btn03.png"></a><input type="hidden" value="" name="hair" id="hair" /></form>
+				<form action="{{ url('_m_select',{step:1,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn03" onClick="goPage4();"><img src="{{ asset('bundles/app/default/m/') }}images/btn03.png"></a><input type="hidden" value="2" name="hair" id="hair" /></form>
 			</div>
 		</div>
 	</div>
@@ -79,6 +79,7 @@ function manGoLeft(){
 					}
 		}
 		$('#hair').val(mRle);
+		alert(mRle);
 	}
 	
 function manGoRight(){
