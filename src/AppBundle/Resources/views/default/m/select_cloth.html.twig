@@ -94,7 +94,8 @@
                 </div>
 {% endif %}
             </div>
-            <a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"></a>
+            <form action="{{ url('_m_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"><input type="hidden" value="3" name="cloth1" id="cloth1" /><input type="hidden" value="3" name="cloth2" id="cloth2" /><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /></a></form>
+
         </div>
     </div>
 </div>
@@ -183,6 +184,8 @@
 					isMoving=false;
 				});
 			}
+			$('#cloth1').val(mCloth);
+			$('#cloth2').val(mCloth2);
 		}
 
 		function manGoRight(){
@@ -222,6 +225,8 @@
 					isMoving=false;
 				});
 			}
+			$('#cloth1').val(mCloth);
+			$('#cloth2').val(mCloth2);
 		}
 
 		function manGoRight2(){
@@ -242,13 +247,13 @@
 					isMoving=false;
 				});
 			}
+			$('#cloth1').val(mCloth);
+			$('#cloth2').val(mCloth2);
 		}
 
 		function goPage5(){
 			//var mRle=queryString('mRle');
 			//window.location.href="selManSign.html?mRle="+mRle+"&mCloth="+mCloth+"&mCloth2="+mCloth2;
-			$('#cloth1').val(mCloth);
-			$('#cloth2').val(mCloth2);
 			$('#form-select').submit();
 		}
 	</script>
