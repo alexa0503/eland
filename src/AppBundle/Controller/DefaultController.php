@@ -71,6 +71,9 @@ class DefaultController extends Controller
 		if( null != $this->getUser()->getCover() && null != $this->getUser()->getCover()->getUsername() ){
 			return $this->redirect($this->generateUrl('_m_share'));
 		}
+		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
+	            'id' => $user->getId(),
+	        )));
 		return $this->render('AppBundle:default:m/info.html.twig',array(
 			'user'=>$this->getUser()
 			));
