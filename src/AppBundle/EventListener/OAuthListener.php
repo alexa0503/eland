@@ -65,7 +65,7 @@ class OAuthListener
 			$session->set('wx_nonce_str', $wx->nonceStr);
 			$session->set('wx_signature', $wx->signature);
 			$session->set('wx_share_url', $request->getUriForPath('/'));
-			$session->set('wx_title', '搭出不一"Young"');
+			$session->set('wx_title', '搭出不一\"Young\"');
 			$session->set('wx_desc', '年轻的Show场，由你搭配不一样的时尚');
 			$session->set('wx_img_url', '/bundles/app/default/m/images/share.jpg');
 		}
