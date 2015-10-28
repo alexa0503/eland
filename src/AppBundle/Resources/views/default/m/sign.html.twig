@@ -18,6 +18,11 @@
 					<div class="manSeledTop">
 						<img src="">
 					</div>
+					{% if app.request.get('gender') == 1 %}
+					<div class="manSeledFace2">
+							<img src="">
+		                </div>
+		              {% endif %}
 
 					<p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
 				</div>
@@ -66,6 +71,7 @@
 			mCloth2 = '{{ app.request.get("cloth2") }}';
 			{% if app.request.get('gender') == 1 %}
 			$('.manSeledFace img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlF'+mRle+'.png');
+			$('.manSeledFace2 img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlF'+mRle+'b.png');
 			$('.manSeledTop img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlT'+mCloth+'.png');
 			$('.manSeledBottom img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlB'+mCloth2+'.png');
 			{% else %}
