@@ -73,7 +73,7 @@
 				timestamp: "{{ app.session.get('wx_timestamp') }}",
 				nonceStr: "{{ app.session.get('wx_nonce_str') }}",
 				signature: "{{ app.session.get('wx_signature') }}",
-				imgUrl: "http://{{ app.request.host }}{{ asset('/bundles/app/default/m/') }}{{ app.session.get('wx_img_url') }}",
+				imgUrl: "{{ app.session.get('wx_img_url') }}",
 				shareTitle: "{{ app.session.get('wx_title') | raw }}",
 				shareDesc: "{{ app.session.get('wx_desc') | raw }}",
 				shareUrl: "{{ app.session.get('wx_share_url') }}",
