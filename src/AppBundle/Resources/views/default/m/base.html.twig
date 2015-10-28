@@ -78,7 +78,6 @@
 				shareDesc: "{{ app.session.get('wx_desc') | raw }}",
 				shareUrl: "{{ app.session.get('wx_share_url') }}",
 			}
-			alert(wxData.imgUrl);
 			wxShare(wxData);
 		</script>
 	{% endblock %}
