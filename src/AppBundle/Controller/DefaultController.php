@@ -213,7 +213,7 @@ class DefaultController extends Controller
 	{
 		$user = $this->getUser();
 		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
-	            'user_id' => $user->getId(),
+	            'id' => $user->getId(),
 	        )));
 		$repository = $this->getDoctrine()->getRepository('AppBundle:Cover');
 		$query = $repository->createQueryBuilder('a')
