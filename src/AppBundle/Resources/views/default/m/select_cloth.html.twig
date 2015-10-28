@@ -1,94 +1,103 @@
 {% extends 'AppBundle:default:m/layout.html.twig' %}
 {% block content %}
 	<div class="page page4">
-		<div class="h1008">
-			<div class="innerDiv">
-				<img src="{{ asset('bundles/app/default/m/') }}images/page4.jpg" class="abs bgImg">
-				<div class="page4Sel">
-					<div class="manSelFace">
-						<div class="innerDiv">
-							<img src="">
-						</div>
-					</div>
-					<div class="manSelBottom">
-						<div class="innerDiv">
-							{% if app.request.get('gender') == 1 %}
-								<div class="clothLine2" style="width:7348px;">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB1.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB2.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB3.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB4.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB5.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB6.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB7.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB8.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB9.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB10.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB11.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB12.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB13.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB14.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB15.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlB16.png">
-								</div>
-								{% else %}
-								<div class="clothLine2" style="width:2718px;">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB1.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB2.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB3.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB4.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB5.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manB6.png">
-								</div>
-							{% endif %}
-						</div>
-					</div>
-					<div class="manSelTop">
-						<div class="innerDiv">
-							{% if app.request.get('gender') == 1 %}
-								<div class="clothLine" style="width:7348px; overflow:visible;">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT1.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT2.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT3.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT4.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT5.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT6.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT7.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT8.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT9.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT10.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT11.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT12.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT13.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT14.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/girlT15.png">
-								</div>
-								{% else %}
-								<div class="clothLine" style="width:2718px;">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT1.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT2.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT3.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT4.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT5.png">
-									<img src="{{ asset('bundles/app/default/m/') }}images/manT6.png">
-								</div>
-							{% endif %}
-						</div>
-					</div>
-					<div class="manSelFace2">
-		                    <div class="innerDiv">
-		                        <img src="">
-		                    </div>
-		                </div>
-					<div class="cSWT"></div>
-					<div class="cSWB"></div>
-				</div>
+	<div class="h1008">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page4.png" class="abs bgImg">
+            <div class="page4Sel">
+{% if app.request.get('gender') == 1 %}
+                <div class="manSelFace">
+                    <div class="innerDiv">
+                        <img src="">
+                    </div>
+                </div>
+                <div class="manSelBottom">
+                    <div class="innerDiv">
+                        <div class="clothLine2" style="width:7348px;">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB1.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB2.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB4.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB5.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB6.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB7.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB8.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB9.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB10.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB11.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB12.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB13.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB14.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB15.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB16.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="manSelTop">
+                    <div class="innerDiv">
+                        <div class="clothLine" style="width:7348px; overflow:visible;">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT1.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT2.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT4.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT5.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT6.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT7.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT8.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT9.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT10.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT11.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT12.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT13.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT14.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT15.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="manSelFace2">
+                    <div class="innerDiv">
+                        <img src="">
+                    </div>
+                </div>
+                <div class="cSWT"></div>
+                <div class="cSWB"></div>
+{% else %}
 
-
-				<form action="{{ url('_m_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"></a><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /><input type="hidden" value="" name="cloth1" id="cloth1" /><input type="hidden" value="" name="cloth2" id="cloth2" /></form>
-			</div>
-		</div>
-	</div>
+                <div class="manSelFace">
+                    <div class="innerDiv">
+                        <img src="">
+                    </div>
+                </div>
+                <div class="manSelBottom">
+                    <div class="innerDiv">
+                        <div class="clothLine2" style="width:2718px;">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB1.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB2.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB4.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB5.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB6.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="manSelTop">
+                    <div class="innerDiv">
+                        <div class="clothLine" style="width:2718px;">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT1.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT2.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT4.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT5.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT6.png">
+                        </div>
+                    </div>
+                </div>
+{% endif %}
+            </div>
+            <a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
