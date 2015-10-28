@@ -107,12 +107,7 @@
 	var mRle = '{{ app.request.get("hair") }}';
 	{% if app.request.get('gender') == 0 %}
 	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/manF'+mRle+'.png');
-	{% else %}
-	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'.png');
-	$('.manSelFace2 img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'b.png');
-	{% endif %}
-	
-	$('.manSelTop').touchwipe({
+		$('.manSelTop').touchwipe({
 		min_move_x: 40, //横向灵敏度
 		min_move_y: 40, //纵向灵敏度
 		wipeLeft: function() {
@@ -136,6 +131,36 @@
 		//preventDefaultEvents: true //阻止默认事件
 	});
 });
+	{% else %}
+	$('.manSelFace img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'.png');
+	$('.manSelFace2 img').attr('src','{{ asset("bundles/app/default/m/") }}images/girlF'+mRle+'b.png');
+	$('.cSWT').touchwipe({
+		min_move_x: 40, //横向灵敏度
+		min_move_y: 40, //纵向灵敏度
+		wipeLeft: function() {
+			manGoLeft();
+			}, //左侧滑动事件
+		wipeRight: function() {
+			manGoRight();
+			}, //右侧滑动事件
+		//preventDefaultEvents: true //阻止默认事件
+		});
+		
+	$('.cSWB').touchwipe({
+		min_move_x: 40, //横向灵敏度
+		min_move_y: 40, //纵向灵敏度
+		wipeLeft: function() {
+			manGoLeft2();
+			}, //左侧滑动事件
+		wipeRight: function() {
+			manGoRight2();
+			}, //右侧滑动事件
+		//preventDefaultEvents: true //阻止默认事件
+		});
+	});
+	{% endif %}
+	
+
 
 		var isMoving=false;
 		var mCloth=3;
