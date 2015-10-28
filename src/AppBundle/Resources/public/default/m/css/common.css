@@ -148,3 +148,8 @@ select,input,textarea{font-family:inherit; outline:none;}
 .link6On{ left:250px; top:903px;}
 .link7On{ left:400px; top:903px;}
 .btn15{ left:24px; top:17px;}
+
+.pageEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:220px;}
+.pageShareEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:160px;}
+.pageVoteEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:175px;}
+.signImg{ width:120px; height:120px; left:370px; top:210px;}

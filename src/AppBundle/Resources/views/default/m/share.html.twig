@@ -4,7 +4,39 @@
 		<div class="h1008">
 			<div class="innerDiv">
 				<img src="{{ asset('bundles/app/default/m/') }}images/page10.png" class="abs bgImg">
-				<img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="shareEndImg">
+            
+		            <div class="pageShareEndSel">
+		                <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
+		                {% if user.cover.gender == 1 %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                <div class="manSeledFace2">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
+		                </div>
+		                {% else %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                {% endif %}
+		                
+		                <img src="/{{ user.cover.imgUrl }}" class="abs signImg">
+		                
+		                <p class="myTitle">{{ user.cover.title }}</p>
+		            </div>
+
 				<a href="javascript:void(0);" class="abs voteBtn"><img src="{{ asset('bundles/app/default/m/') }}images/page10Img01.png"> 您已获得：<span>{{ user.cover.favourNum }}</span> 个赞</a>
 				<a href="{{ url('_m_tmall') }}" class="abs btn16"><img src="{{ asset('bundles/app/default/m/') }}images/btn16.png"></a>
 				<a href="javascript:void(0);" onClick="showList();" class="abs btn17"><img src="{{ asset('bundles/app/default/m/') }}images/btn17.png"></a>

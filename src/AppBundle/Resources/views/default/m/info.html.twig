@@ -19,7 +19,39 @@
 	<div class="h1008">
         <div class="innerDiv">
             <img src="{{ asset('bundles/app/default/m/') }}images/page8.png" class="abs bgImg">
-            <img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="endImg">
+           
+           <div class="pageEndSel">
+                <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
+                {% if user.cover.gender == 1 %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                <div class="manSeledFace2">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
+		                </div>
+		                {% else %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                {% endif %}
+                
+                <img src="/{{ user.cover.imgUrl }}" class="abs signImg">
+                
+                <p class="myTitle">{{ user.cover.title }}</p>
+            </div>
+
             <a href="javascript:void(0);" onClick="showShareNote();" class="abs btn12"><img src="{{ asset('bundles/app/default/m/') }}images/btn12.png"></a>
             <a href="{{ url('_m_tmall') }}" class="abs btn13"><img src="{{ asset('bundles/app/default/m/') }}images/btn13.png"></a>
             <img src="{{ asset('bundles/app/default/m/') }}images/page8Img01.png" class="abs page8Img01">

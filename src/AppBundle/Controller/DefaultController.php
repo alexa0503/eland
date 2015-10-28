@@ -137,6 +137,7 @@ class DefaultController extends Controller
 			$cover->setGender($request->get('gender'));
 			$cover->setUser($user);
 			$cover->setImgUrl($sign_path);
+			$cover->setTitle($request->get('title'));
 			$cover->setStyle($request->get('cover'));
 			$cover->setHairStyle($request->get('hair'));
 			$cover->setCloth1($request->get('cloth1'));
