@@ -71,7 +71,9 @@ class DefaultController extends Controller
 		if( null != $this->getUser()->getCover() && null != $this->getUser()->getCover()->getUsername() ){
 			return $this->redirect($this->generateUrl('_m_share'));
 		}
-		return $this->render('AppBundle:default:m/info.html.twig');
+		return $this->render('AppBundle:default:m/info.html.twig',array(
+			'user'=>$this->getUser()
+			));
 	}
 	/**
 	 * @Route("/post", name="_post")
