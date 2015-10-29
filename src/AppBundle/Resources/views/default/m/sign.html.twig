@@ -3,33 +3,37 @@
 	<div class="page page5">
 		<div class="h1008">
 			<div class="innerDiv">
-				<img src="{{ asset('bundles/app/default/m/') }}images/page5.jpg" class="abs bgImg">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page5.png" class="abs bgImg">
 				<div class="page5Sel">
 					<img src="{{ asset('bundles/app/default/m/') }}images/book1.jpg" class="bgBook bgBook1">
 					<img src="{{ asset('bundles/app/default/m/') }}images/book2.jpg" class="bgBook bgBook2" style="display:none;">
 					<img src="{{ asset('bundles/app/default/m/') }}images/book3.jpg" class="bgBook bgBook3" style="display:none;">
 					<img src="{{ asset('bundles/app/default/m/') }}images/book4.jpg" class="bgBook bgBook4" style="display:none;">
 					<div class="manSeledFace">
-						<img src="">
+						<img src="" class="manInBookImg">
 					</div>
 					<div class="manSeledBottom">
-						<img src="">
+						<img src="" class="manInBookImg">
 					</div>
 					<div class="manSeledTop">
-						<img src="">
+						<img src="" class="manInBookImg">
 					</div>
 					{% if app.request.get('gender') == 1 %}
 					<div class="manSeledFace2">
-							<img src="">
+							<img src="" class="manInBookImg">
 		                </div>
 		              {% endif %}
 
 					<p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
 				</div>
+				
+				
+				<a href="javascript:void(0);" class="abs leftArrow" onClick="manGoLeft();"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="35" height="69"></a>
+				<a href="javascript:void(0);" class="abs rightArrow" onClick="manGoRight();"><img src="{{ asset('bundles/app/default/m/') }}images/space.gif" width="35" height="69"></a>
 
 
-				<a href="javascript:void(0);" onClick="showPage5s();" class="abs btn05"><img src="{{ asset('bundles/app/default/m/') }}images/btn05.png"></a>
-				<a href="javascript:void(0);" class="abs btn06" onClick="goPage6();"><img src="{{ asset('bundles/app/default/m/') }}images/btn06.png"></a>
+				<a href="javascript:void(0);" onClick="showPage5s();_czc.push(['_trackEvent','Mobile_button','输入你的标题']);" class="abs btn05"><img src="{{ asset('bundles/app/default/m/') }}images/btn05.png"></a>
+				<a href="javascript:void(0);" class="abs btn06" onClick="goPage6();_czc.push(['_trackEvent','Mobile_button','留下你的签名']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn06.png"></a>
 			</div>
 		</div>
 	</div>
@@ -46,13 +50,13 @@
 	<div class="page page6" style="display:none;">
 		<div class="h1008">
 			<div class="innerDiv">
-				<img src="{{ asset('bundles/app/default/m/') }}images/page6.jpg" class="abs bgImg">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page6.png" class="abs bgImg">
 				<div class="cOuter">
 					<canvas id="canvas" width="513" height="510"></canvas>
 				</div>
 
-				<a href="javascript:void(0);" onClick="reDraw();" class="abs btn07"><img src="{{ asset('bundles/app/default/m/') }}images/btn07.png"></a>
-				<a href="javascript:void(0);" onClick="submitImgs();" class="abs btn08"><img src="{{ asset('bundles/app/default/m/') }}images/btn08.png"></a>
+				<a href="javascript:void(0);" onClick="reDraw();_czc.push(['_trackEvent','Mobile_button','重新书写']);" class="abs btn07"><img src="{{ asset('bundles/app/default/m/') }}images/btn07.png"></a>
+				<a href="javascript:void(0);" onClick="submitImgs();_czc.push(['_trackEvent','Mobile_button','下一步']);" class="abs btn08"><img src="{{ asset('bundles/app/default/m/') }}images/btn08.png"></a>
 			</div>
 		</div>
 	</div>

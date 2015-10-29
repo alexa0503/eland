@@ -1,5 +1,5 @@
 /* Global Setting */
-body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'SimHei',Arial; background:url(../images/bg.jpg) top center no-repeat #FFF;}
+body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'SimHei',Arial; background:url(../images/bg.jpg) top center repeat #FFF;}
 table{border-collapse:collapse;}
 td,th{padding:0;}
 ul,li,dd,dl,dt{margin:0; padding:0; list-style:none; word-break:break-all;}
@@ -24,6 +24,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 /*page1*/
 .btn01{ left:178px; top:1000px;}
+.indexRule{ left:490px; top:1015px;}
 
 /*page2*/
 .selBtn{ left:188px;}
@@ -47,11 +48,11 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 .manSelTop{ width:640px; position:absolute; left:0; top:338px; height:690px;}
 .clothLine{ position:absolute; left:-813px; top:0; height:690px; overflow:hidden;}
-.clothLine img{ float:left;}
+.clothLine img{ float:left; opacity:0.5;}
 
 .manSelBottom{ width:640px; position:absolute; left:0; top:888px; height:550px;}
 .clothLine2{ position:absolute; left:-813px; top:-550px;}
-.clothLine2 img{ float:left;}
+.clothLine2 img{ float:left; opacity:0.5;}
 
 .page4Sel{ -webkit-transform:scale(0.7); -moz-transform:scale(0.7); -ms-transform:scale(0.7);}
 .btn04{ left:178px; top:1000px;}
@@ -72,7 +73,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .popBg{ position:fixed; left:0; top:0; width:100%; height:100%; background:#000000; filter:alpha(opacity=80); -webkit-opacity:0.8; opacity:0.8}
 .page5s{ background:url(../images/page6Img01.png) 0 0 no-repeat; width:640px; height:832px; position:fixed; left:50%; top:50%; margin:-416px 0 0 -320px;}
 .closeBtn{ position:fixed; top:30px; right:30px;}
-.myTitleTxt{ background:none; border:none; font-size:30px; color:#000000; position:absolute; left:60px; top:297px; padding:0 10px; width:506px; line-height:100px;}
+.myTitleTxt{ background:none; border:none; font-size:30px; color:#000000; position:absolute; left:60px; top:297px; padding:0 10px 275px 10px; width:506px; line-height:100px;}
 .btn14{ left:205px; top:732px;}
 
 /*page6*/
@@ -107,7 +108,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .btn16{ left:55px; top:980px;}
 .btn17{ left:345px; top:980px;}
 
-.popList{ background:url(../images/page10Img04.png) 0 0 no-repeat; width:640px; height:965px; position:absolute; left:50%; top:0; margin:0 0 0 -320px;}
+.popList{ background:url(../images/page10Img04.png) 0 0 no-repeat;}
 .myRank{ color:#FFFFFF; width:640px; height:40px; line-height:40px; font-size:30px; text-align:center; position:absolute; left:0; top:817px;}
 .myRank span{ font-size:35px; font-weight:bold;}
 
@@ -119,7 +120,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .vVotes img{ padding-left:5px; vertical-align:-4px;}
 .vLine{ background:url(../images/page10Img03.png) 0 0 no-repeat; width:282px; height:28px;}
 .vLineOuter{ position:absolute; left:99px; top:54px; width:282px; height:28px;}
-
+.btn18{ left:198px; top:1000px;}
 
 /*page11*/
 .voteEndImg{ position:absolute; left:64px; top:175px;}
@@ -153,3 +154,12 @@ select,input,textarea{font-family:inherit; outline:none;}
 .pageShareEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:160px;}
 .pageVoteEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:175px;}
 .signImg{ width:120px; height:120px; left:370px; top:210px;}
+
+
+.indexKvOuter{ width:640px; height:550px; position:absolute; left:0; top:0;}
+.indexKv{ width:848px; background:url(../images/indexKv.jpg) top center no-repeat; height:535px; overflow:hidden; position:absolute; left:-104px; top:0;}
+
+.leftArrow{ left:13px; top:554px;}
+.rightArrow{ left:594px; top:554px;}
+
+.manInBookImg{ width:350px;}

@@ -9,26 +9,26 @@
 		                <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
 		                {% if user.cover.gender == 1 %}
 		                <div class="manSeledFace">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
 		                </div>
 		                <div class="manSeledBottom">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
 		                </div>
 		                <div class="manSeledTop">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
 		                </div>
 		                <div class="manSeledFace2">
-							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png" class="manInBookImg">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
 		                </div>
 		                {% else %}
 		                <div class="manSeledFace">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
 		                </div>
 		                <div class="manSeledBottom">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
 		                </div>
 		                <div class="manSeledTop">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
 		                </div>
 		                {% endif %}
 		                
@@ -45,7 +45,7 @@
 	</div>
 
 	<div class="popBg" style="display:none;"></div>
-	<div class="page popList pop" style="display:none;">
+	<div class="pop popList" style="display:none;">
 		<div class="innerDiv">
 			<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
 			<div class="voteList">
@@ -63,11 +63,8 @@
 				{% endfor %}
 			</div>
 			<p class="myRank">您的当前排名<span>{{ ranking }}</span>名</p>
-			<a href="javascript:void(0);" onClick="showShareNote();" class="abs btn18"><img src="{{ asset('bundles/app/default/m/') }}images/btn18.png"></a>
 		</div>
 	</div>
-	
-	<img src="{{ asset('bundles/app/default/m/') }}images/shareNote.png" class="pop popShare" onClick="closePop();" style="display:none;">
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -83,11 +80,5 @@
 			$('.pop').hide();
 			$('.popList').show();
 		}
-		
-		function showShareNote(){
-			$('.popBg').show();
-			$('.pop').hide();
-			$('.popShare').show();
-			}
 	</script>
 {% endblock %}

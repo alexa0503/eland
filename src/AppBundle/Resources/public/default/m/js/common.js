@@ -29,4 +29,16 @@ $(document).ready(function(){
 		}
 	var sBl=wHeight/1130;
 	$('.page').css('-webkit-transform','translate(0,'+(-(1130-(1130*sBl))/2)+'px'+') scale('+sBl+')');
+	
+	try{
+    if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) {
+		//非ios
+		$('.page').css('overflow','hidden');
+		}else if(/iPhone|iPod|/i.test(navigator.userAgent)){
+			//ios
+			}
+			else{
+				//pc
+				}
+		}catch(e){}
 	});

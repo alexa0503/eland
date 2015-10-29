@@ -1,0 +1,79 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+<div class="page page11">
+	<div class="h1008">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page10.png" class="abs bgImg">
+            <p class="voteTxt"><span>{{ user.nickName }}</span>不一Young的搭配</p>
+
+             <div class="pageVoteEndSel">
+                <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
+                {% if user.cover.gender == 1 %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                <div class="manSeledFace2">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
+		                </div>
+		                {% else %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                {% endif %}
+                
+                <img src="/{{ user.cover.imgUrl }}" class="abs signImg">
+                
+                <p class="myTitle">{{ user.cover.title }}</p>
+            </div>
+
+            <img src="{{ asset('bundles/app/default/m/') }}images/page11Img01.png" class="abs page11Img01" style="display:none;">
+            <a href="javascript:void(0);" onClick="voteThis();_czc.push(['_trackEvent','Mobile_button','为TA增加人气']);" class="abs btn20"><img src="{{ asset('bundles/app/default/m/') }}images/btn20.png"></a>
+            <a href="{{ url('_m_index') }}" class="abs btn19" onClick="_czc.push(['_trackEvent','Mobile_button','搭出我的不一Young']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn19.png"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		
+		$(document).ready(function(){
+			
+		});
+		
+		function showList(){
+			window.scroll(0,0);
+			$('.popBg').show();
+			$('.pop').hide();
+			$('.popList').show();
+		}
+		
+		function voteThis(){
+			var url = '{{ url("_m_vote_post",{id:app.request.get("id")}) }}';
+			$.post(url,function(json){
+				if(json.ret == 0){
+					$('.page11Img01').fadeIn(500);
+					setTimeout(function(){
+						$('.page11Img01').fadeOut(500);
+					},1500);
+				}
+				else{
+					alert(json.msg);
+				}
+			},"JSON");
+		}
+
+	</script>
+{% endblock %}

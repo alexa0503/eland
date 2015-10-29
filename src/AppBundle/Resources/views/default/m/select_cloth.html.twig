@@ -16,7 +16,7 @@
                         <div class="clothLine2" style="width:7348px;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlB1.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlB2.png">
-                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlB3.png" style="opacity:1;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlB4.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlB5.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlB6.png">
@@ -38,7 +38,7 @@
                         <div class="clothLine" style="width:7348px; overflow:visible;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlT1.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlT2.png">
-                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/girlT3.png" style="opacity:1;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlT4.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlT5.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/girlT6.png">
@@ -73,7 +73,7 @@
                         <div class="clothLine2" style="width:2718px;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manB1.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manB2.png">
-                            <img src="{{ asset('bundles/app/default/m/') }}images/manB3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manB3.png" style="opacity:1;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manB4.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manB5.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manB6.png">
@@ -85,7 +85,7 @@
                         <div class="clothLine" style="width:2718px;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manT1.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manT2.png">
-                            <img src="{{ asset('bundles/app/default/m/') }}images/manT3.png">
+                            <img src="{{ asset('bundles/app/default/m/') }}images/manT3.png" style="opacity:1;">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manT4.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manT5.png">
                             <img src="{{ asset('bundles/app/default/m/') }}images/manT6.png">
@@ -94,7 +94,7 @@
                 </div>
 {% endif %}
             </div>
-            <form action="{{ url('_m_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn04" onClick="goPage5();"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"><input type="hidden" value="3" name="cloth1" id="cloth1" /><input type="hidden" value="3" name="cloth2" id="cloth2" /><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /></a></form>
+            <form action="{{ url('_m_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn04" onClick="goPage5();_czc.push(['_trackEvent','Mobile_button','下一步选择封面']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn04.png"><input type="hidden" value="3" name="cloth1" id="cloth1" /><input type="hidden" value="3" name="cloth2" id="cloth2" /><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /></a></form>
 
         </div>
     </div>
@@ -167,22 +167,46 @@
 		var mCloth=3;
 		var mCloth2=3;
 		var mMax=6;
+		var wMax1=15;
+		var wMax2=16;
+		$('#cloth1').val(mCloth);
+		$('#cloth2').val(mCloth2);
 		function manGoLeft(){
 			if(!isMoving){
 				isMoving=true;
+				{% if app.request.get('gender') == 1 %}
+				if(mCloth==wMax1){
+					mCloth=1;
+				}
+				else{
+					mCloth=parseInt(mCloth)+1;
+				}
+				$('.clothLine img').stop().animate({opacity:0.5},450,'linear');
+				$('.clothLine').stop().animate({marginLeft:-453},500,'linear',function(){
+					var firstHtml='<img src="'+$('.clothLine img').eq(0).attr('src')+'">';
+					$('.clothLine img').eq(0).remove();
+					$('.clothLine').append(firstHtml);
+					$('.clothLine').css('margin-left','0');
+					$('.clothLine img').eq(2).css('opacity','1');
+					isMoving=false;
+				});
+				{% else %}
 				if(mCloth==mMax){
 					mCloth=1;
 				}
 				else{
 					mCloth=parseInt(mCloth)+1;
 				}
+				$('.clothLine img').stop().animate({opacity:0.5},450,'linear');
 				$('.clothLine').stop().animate({marginLeft:-453},500,'linear',function(){
 					var firstHtml='<img src="'+$('.clothLine img').eq(0).attr('src')+'">';
 					$('.clothLine img').eq(0).remove();
 					$('.clothLine').append(firstHtml);
 					$('.clothLine').css('margin-left','0');
+					$('.clothLine img').eq(2).css('opacity','1');
 					isMoving=false;
 				});
+				{% endif %}
 			}
 			$('#cloth1').val(mCloth);
 			$('#cloth2').val(mCloth2);
@@ -191,39 +215,84 @@
 		function manGoRight(){
 			if(!isMoving){
 				isMoving=true;
+				
+				{% if app.request.get('gender') == 1 %}
+				if(mCloth==1){
+					mCloth=wMax1;
+				}
+				else{
+					mCloth=parseInt(mCloth)-1;
+				}
+				$('.clothLine img').stop().animate({opacity:0.5},450,'linear');
+				$('.clothLine').stop().animate({marginLeft:453},500,'linear',function(){
+					var lastHtml='<img src="'+$('.clothLine img').eq(parseInt(wMax1)-1).attr('src')+'">';
+					$('.clothLine img').eq(parseInt(wMax1)-1).remove();
+					var oldHtml=$('.clothLine').html();
+					$('.clothLine').html(lastHtml+oldHtml);
+					$('.clothLine').css('margin-left','0');
+					$('.clothLine img').eq(2).css('opacity','1');
+					isMoving=false;
+				});
+				{% else %}
 				if(mCloth==1){
 					mCloth=mMax;
 				}
 				else{
 					mCloth=parseInt(mCloth)-1;
 				}
+				$('.clothLine img').stop().animate({opacity:0.5},450,'linear');
 				$('.clothLine').stop().animate({marginLeft:453},500,'linear',function(){
 					var lastHtml='<img src="'+$('.clothLine img').eq(parseInt(mMax)-1).attr('src')+'">';
 					$('.clothLine img').eq(parseInt(mMax)-1).remove();
 					var oldHtml=$('.clothLine').html();
 					$('.clothLine').html(lastHtml+oldHtml);
 					$('.clothLine').css('margin-left','0');
+					$('.clothLine img').eq(2).css('opacity','1');
 					isMoving=false;
 				});
+				{% endif %}
 			}
+			$('#cloth1').val(mCloth);
+			$('#cloth2').val(mCloth2);
 		}
 
 		function manGoLeft2(){
 			if(!isMoving){
 				isMoving=true;
+				
+				{% if app.request.get('gender') == 1 %}
+				if(mCloth2==wMax2){
+					mCloth2=1;
+				}
+				else{
+					mCloth2=parseInt(mCloth2)+1;
+				}
+				$('.clothLine2 img').stop().animate({opacity:0.5},450,'linear');
+				$('.clothLine2').stop().animate({marginLeft:-453},500,'linear',function(){
+					var firstHtml='<img src="'+$('.clothLine2 img').eq(0).attr('src')+'">';
+					$('.clothLine2 img').eq(0).remove();
+					$('.clothLine2').append(firstHtml);
+					$('.clothLine2').css('margin-left','0');
+					$('.clothLine2 img').eq(2).css('opacity','1');
+					isMoving=false;
+				});
+				{% else %}
 				if(mCloth2==mMax){
 					mCloth2=1;
 				}
 				else{
 					mCloth2=parseInt(mCloth2)+1;
 				}
+				$('.clothLine2 img').stop().animate({opacity:0.5},450,'linear');
 				$('.clothLine2').stop().animate({marginLeft:-453},500,'linear',function(){
 					var firstHtml='<img src="'+$('.clothLine2 img').eq(0).attr('src')+'">';
 					$('.clothLine2 img').eq(0).remove();
 					$('.clothLine2').append(firstHtml);
 					$('.clothLine2').css('margin-left','0');
+					$('.clothLine2 img').eq(2).css('opacity','1');
 					isMoving=false;
 				});
+				{% endif %}
 			}
 			$('#cloth1').val(mCloth);
 			$('#cloth2').val(mCloth2);
@@ -232,26 +301,49 @@
 		function manGoRight2(){
 			if(!isMoving){
 				isMoving=true;
+				
+				{% if app.request.get('gender') == 1 %}
+				if(mCloth2==1){
+					mCloth2=wMax2;
+				}
+				else{
+					mCloth2=parseInt(mCloth2)-1;
+				}
+				$('.clothLine2 img').stop().animate({opacity:0.5},450,'linear');
+				$('.clothLine2').stop().animate({marginLeft:453},500,'linear',function(){
+					var lastHtml='<img src="'+$('.clothLine2 img').eq(parseInt(wMax2)-1).attr('src')+'">';
+					$('.clothLine2 img').eq(parseInt(wMax2)-1).remove();
+					var oldHtml=$('.clothLine2').html();
+					$('.clothLine2').html(lastHtml+oldHtml);
+					$('.clothLine2').css('margin-left','0');
+					$('.clothLine2 img').eq(2).css('opacity','1');
+					isMoving=false;
+				});
+				{% else %}
 				if(mCloth2==1){
 					mCloth2=mMax;
 				}
 				else{
 					mCloth2=parseInt(mCloth2)-1;
 				}
+				$('.clothLine2 img').stop().animate({opacity:0.5},450,'linear');
 				$('.clothLine2').stop().animate({marginLeft:453},500,'linear',function(){
 					var lastHtml='<img src="'+$('.clothLine2 img').eq(parseInt(mMax)-1).attr('src')+'">';
 					$('.clothLine2 img').eq(parseInt(mMax)-1).remove();
 					var oldHtml=$('.clothLine2').html();
 					$('.clothLine2').html(lastHtml+oldHtml);
 					$('.clothLine2').css('margin-left','0');
+					$('.clothLine2 img').eq(2).css('opacity','1');
 					isMoving=false;
 				});
+				{% endif %}
 			}
 			$('#cloth1').val(mCloth);
 			$('#cloth2').val(mCloth2);
 		}
 
 		function goPage5(){
+			//alert('上衣：'+mCloth+' 裤子：'+mCloth2);
 			//var mRle=queryString('mRle');
 			//window.location.href="selManSign.html?mRle="+mRle+"&mCloth="+mCloth+"&mCloth2="+mCloth2;
 			$('#form-select').submit();

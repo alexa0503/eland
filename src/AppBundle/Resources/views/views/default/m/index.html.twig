@@ -1,7 +1,5 @@
 {% extends 'AppBundle:default:m/layout.html.twig' %}
 {% block content %}
-
-	{% if app.request.get('reset') != 'y' %}
 	<div class="page page1">
 		<div class="h1008">
 			<div class="innerDiv">
@@ -12,13 +10,11 @@
 					</div>
 				</div>
 				<a href="javascript:void(0);" class="abs btn01" onClick="goPage2();_czc.push(['_trackEvent','Mobile_button','立即开始搭配']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn01.png"></a>
-				<a href="javascript:void(0);" class="abs indexRule" onClick="showRule();"><img src="{{ asset('bundles/app/default/m/') }}images/indexRule.png"></a>
 			</div>
 		</div>
 	</div>
-	{% endif %}
 
-	<div class="page page2"{% if app.request.get('reset') != 'y' %} style="display:none;"{% endif %}>
+	<div class="page page2" style="display:none;">
 		<div class="h1008">
 			<div class="innerDiv">
 				<img src="{{ asset('bundles/app/default/m/') }}images/page2.png" class="abs bgImg">
@@ -27,11 +23,6 @@
 				<a href="javascript:void(0);" class="abs btn02" onClick="goPage3();_czc.push(['_trackEvent','Mobile_button','下一步选择发型']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn02.png"></a>
 			</div>
 		</div>
-	</div>
-	
-	<div class="popBg" style="display:none;"></div>
-	<div class="pop popRule" style="display:none;">
-		<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
 	</div>
 {% endblock %}
 {% block javascripts %}
@@ -63,11 +54,5 @@
 				alert('请选择性别');
 			}
 		}
-		
-		function showRule(){
-			$('.popBg').show();
-			$('.pop').hide();
-			$('.popRule').show();
-			}
 	</script>
 {% endblock %}

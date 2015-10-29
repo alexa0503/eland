@@ -1,0 +1,120 @@
+{% extends 'AppBundle:default:m/layout.html.twig' %}
+{% block content %}
+<div class="page page7">
+	<div class="h1008">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page7.png" class="abs bgImg">
+            <a href="javascript:void(0);" onClick="showRule();" class="abs btn11"><img src="{{ asset('bundles/app/default/m/') }}images/btn11.png"></a>
+            
+            <input type="text" class="infoTxt infoTxt1" placeholder="请输入您的姓名">
+            <input type="tel" class="infoTxt infoTxt2" placeholder="请输入您手机" maxlength="11">
+            
+            <a href="javascript:void(0);" onClick="reSetInfo();_czc.push(['_trackEvent','Mobile_button','重新填写']);" class="abs btn09"><img src="{{ asset('bundles/app/default/m/') }}images/btn09.png"></a>
+            <a href="javascript:void(0);" onClick="submitInfo();_czc.push(['_trackEvent','Mobile_button','完成提交']);" class="abs btn10"><img src="{{ asset('bundles/app/default/m/') }}images/btn10.png"></a>
+        </div>
+    </div>
+</div>
+
+<div class="page page8" style="display:none;">
+	<div class="h1008">
+        <div class="innerDiv">
+            <img src="{{ asset('bundles/app/default/m/') }}images/page8.png" class="abs bgImg">
+           
+           <div class="pageEndSel">
+                <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
+                {% if user.cover.gender == 1 %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                <div class="manSeledFace2">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
+		                </div>
+		                {% else %}
+		                <div class="manSeledFace">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
+		                </div>
+		                <div class="manSeledBottom">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
+		                </div>
+		                <div class="manSeledTop">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
+		                </div>
+		                {% endif %}
+                
+                <img src="/{{ user.cover.imgUrl }}" class="abs signImg">
+                
+                <p class="myTitle">{{ user.cover.title }}</p>
+            </div>
+
+            <a href="javascript:void(0);" onClick="showShareNote();_czc.push(['_trackEvent','Mobile_button','分享我的搭配']);" class="abs btn12"><img src="{{ asset('bundles/app/default/m/') }}images/btn12.png"></a>
+            <a href="{{ url('_m_tmall') }}" onClick="_czc.push(['_trackEvent','Mobile_button','前往天猫旗舰店']);" class="abs btn13"><img src="{{ asset('bundles/app/default/m/') }}images/btn13.png"></a>
+            <img src="{{ asset('bundles/app/default/m/') }}images/page8Img01.png" class="abs page8Img01">
+        </div>
+    </div>
+</div>
+
+<div class="popBg" style="display:none;"></div>
+<div class="pop popRule" style="display:none;">
+	<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
+</div>
+<img src="{{ asset('bundles/app/default/m/') }}images/shareNote.png" class="pop popShare" onClick="closePop();" style="display:none;">
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+<script>
+	
+$(document).ready(function(){
+	
+	});
+	
+function showRule(){
+	$('.popBg').show();
+	$('.pop').hide();
+	$('.popRule').show();
+	}
+	
+function reSetInfo(){
+	$('.infoTxt').val('');
+	}
+	
+function submitInfo(){
+	var iName=$.trim($('.infoTxt1').val());
+	var iTel=$.trim($('.infoTxt2').val());
+	if(iName==''||iTel==''){
+		alert('请输入姓名及手机');
+		return;
+		}
+		else{
+			var url = '{{ url("_post") }}';
+			var data = {
+				username:iName,
+				mobile:iTel
+			}
+			$.post(url,data,function(json){
+				if(json.ret == 0)
+					showPage8();
+				else
+					alert(json.msg);
+			},"JSON")
+			
+		}
+	}
+	
+function showPage8(){
+	$('.page7').fadeOut(500);
+	$('.page8').fadeIn(500);
+}
+	
+function showShareNote(){
+	$('.popBg').show();
+	$('.pop').hide();
+	$('.popShare').show();
+	}
+</script>
+{% endblock %}

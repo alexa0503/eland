@@ -9,8 +9,8 @@
             <input type="text" class="infoTxt infoTxt1" placeholder="请输入您的姓名">
             <input type="tel" class="infoTxt infoTxt2" placeholder="请输入您手机" maxlength="11">
             
-            <a href="javascript:void(0);" onClick="reSetInfo();" class="abs btn09"><img src="{{ asset('bundles/app/default/m/') }}images/btn09.png"></a>
-            <a href="javascript:void(0);" onClick="submitInfo();" class="abs btn10"><img src="{{ asset('bundles/app/default/m/') }}images/btn10.png"></a>
+            <a href="javascript:void(0);" onClick="reSetInfo();_czc.push(['_trackEvent','Mobile_button','重新填写']);" class="abs btn09"><img src="{{ asset('bundles/app/default/m/') }}images/btn09.png"></a>
+            <a href="javascript:void(0);" onClick="submitInfo();_czc.push(['_trackEvent','Mobile_button','完成提交']);" class="abs btn10"><img src="{{ asset('bundles/app/default/m/') }}images/btn10.png"></a>
         </div>
     </div>
 </div>
@@ -24,26 +24,26 @@
                 <img src="{{ asset('bundles/app/default/m/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
                 {% if user.cover.gender == 1 %}
 		                <div class="manSeledFace">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png" class="manInBookImg">
 		                </div>
 		                <div class="manSeledBottom">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png" class="manInBookImg">
 		                </div>
 		                <div class="manSeledTop">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
 		                </div>
 		                <div class="manSeledFace2">
-							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png">
+							<img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png" class="manInBookImg">
 		                </div>
 		                {% else %}
 		                <div class="manSeledFace">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png" class="manInBookImg">
 		                </div>
 		                <div class="manSeledBottom">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png" class="manInBookImg">
 		                </div>
 		                <div class="manSeledTop">
-		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png">
+		                    <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png" class="manInBookImg">
 		                </div>
 		                {% endif %}
                 
@@ -52,8 +52,8 @@
                 <p class="myTitle">{{ user.cover.title }}</p>
             </div>
 
-            <a href="javascript:void(0);" onClick="showShareNote();" class="abs btn12"><img src="{{ asset('bundles/app/default/m/') }}images/btn12.png"></a>
-            <a href="{{ url('_m_tmall') }}" class="abs btn13"><img src="{{ asset('bundles/app/default/m/') }}images/btn13.png"></a>
+            <a href="javascript:void(0);" onClick="showShareNote();_czc.push(['_trackEvent','Mobile_button','分享我的搭配']);" class="abs btn12"><img src="{{ asset('bundles/app/default/m/') }}images/btn12.png"></a>
+            <a href="{{ url('_m_tmall') }}" onClick="_czc.push(['_trackEvent','Mobile_button','前往天猫旗舰店']);" class="abs btn13"><img src="{{ asset('bundles/app/default/m/') }}images/btn13.png"></a>
             <img src="{{ asset('bundles/app/default/m/') }}images/page8Img01.png" class="abs page8Img01">
         </div>
     </div>

@@ -31,8 +31,8 @@ class DefaultController extends Controller
 	}
 	/**
 	 * @Route("/", name="_index")
-	 * @Route("/m", name="_m_index")
-	 * @Route("/pc", name="_pc_index")
+	 * @Route("/m/", name="_m_index")
+	 * @Route("/pc/", name="_pc_index")
 	 */
 	public function indexAction(Request $request)
 	{
@@ -251,7 +251,7 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('_index'));
 		}
 		$user = $this->getDoctrine()->getRepository('AppBundle:WechatUser')->find($id);
-		if( null == $user){
+		if( null == $user || null == $user->getCover()){
 			return $this->redirect($this->generateUrl('_index'));
 		}
 		return $this->render('AppBundle:default:m/vote.html.twig', array(
@@ -290,25 +290,41 @@ class DefaultController extends Controller
 			}
 			else{
 				$em = $this->getDoctrine()->getManager();
-				$em->getConnection()->beginTransaction();
-				try {
-					$cover = $user->getCover();
-					$cover->increaseNum();
-					$log = new Entity\VoteLog;
-					$log->setUser($user);
-					$log->setVoter($this->getUser());
-					$log->setCreateTime(new \DateTime("now"));
-					$log->setCreateIp($request->getClientIp());
-					$em->persist($cover);
-					$em->persist($log);
-					$em->flush();
-					$em->getConnection()->commit();
-				 } catch (Exception $e) {
-			            // Rollback the failed transaction attempt
-			            $em->getConnection()->rollback();
-			            $return['ret'] = 1100;
-			            $return['msg'] = $e->getMessage();
-			        }
+				$repo = $em->getRepository('AppBundle:VoteLog');
+				$qb = $repo->createQueryBuilder('a');
+				$qb->select('COUNT(a)');
+				$qb->where('a.user = :user AND a.voter = :voter');
+				$qb->setParameter('user', $user);
+				$qb->setParameter('voter', $this->getUser());
+				$count = $qb->getQuery()->getSingleScalarResult();
+				if($count >= 1){
+					$return = array(
+						'ret'=>1004,
+						'msg'=>'每个人只能投一次票喔'
+					);
+				}
+				else{
+					$em->getConnection()->beginTransaction();
+					try {
+						$cover = $user->getCover();
+						$cover->increaseNum();
+						$log = new Entity\VoteLog;
+						$log->setUser($user);
+						$log->setVoter($this->getUser());
+						$log->setCreateTime(new \DateTime("now"));
+						$log->setCreateIp($request->getClientIp());
+						$em->persist($cover);
+						$em->persist($log);
+						$em->flush();
+						$em->getConnection()->commit();
+					 } catch (Exception $e) {
+				            // Rollback the failed transaction attempt
+				            $em->getConnection()->rollback();
+				            $return['ret'] = 1100;
+				            $return['msg'] = $e->getMessage();
+				        }
+				}
+				
 				
 			}
 		}
