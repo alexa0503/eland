@@ -34,7 +34,7 @@
         
         <a href="javascript:void(0);" class="abs btn18"><img src="{{ asset('bundles/app/default/pc/') }}images/btn18.png" /></a>
         
-        <a href="#" class="shareLink voteLink1">
+        <a href="{{ cloth1.link }}" class="shareLink voteLink1">
         	<div class="topSelUnit">
         	{% if user.cover.gender == 0 %}
                 <img src="{{ asset('bundles/app/default/pc/') }}images/manT{{ user.cover.cloth1 }}.png" />
@@ -42,10 +42,10 @@
 	              <img src="{{ asset('bundles/app/default/pc/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
               {% endif %}
             </div><br />
-            韩国衣恋秋冬新品女连帽休闲毛呢外套
+            {{ cloth1.title }}
         </a>
         
-        <a href="#" class="shareLink voteLink2">
+        <a href="{{ cloth2.link }}" class="shareLink voteLink2">
         	<div class="bottomSelUnit">
         	{% if user.cover.gender == 0 %}
                 <img src="{{ asset('bundles/app/default/pc/') }}images/manB{{ user.cover.cloth2 }}.png" />
@@ -53,7 +53,7 @@
                 <img src="{{ asset('bundles/app/default/pc/') }}images/girlB{{ user.cover.cloth2 }}.png" />
               {% endif %}
             </div><br />
-            ELAND韩国衣恋15年新品牛仔短裙
+            {{ cloth2.title }}
         </a>
         
         <a href="javascript:void(0);" class="abs btn19"><img src="{{ asset('bundles/app/default/pc/') }}images/btn19.png" /></a>

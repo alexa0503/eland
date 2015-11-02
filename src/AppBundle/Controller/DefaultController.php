@@ -293,10 +293,23 @@ class DefaultController extends Controller
 		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
 	            'id' => $id,
 	        )));
-		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false)
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false){
+			if($user->getCover()->getGender() == 0){
+				$cloth1 = $this->getDoctrine()->getRepository('AppBundle:ClothMan1')->find($user->getCover()->getCloth1());
+				$cloth2 = $this->getDoctrine()->getRepository('AppBundle:ClothMan2')->find($user->getCover()->getCloth2());
+			}
+			else{
+				$cloth1 = $this->getDoctrine()->getRepository('AppBundle:ClothWoman1')->find($user->getCover()->getCloth1());
+				$cloth2 = $this->getDoctrine()->getRepository('AppBundle:ClothWoman2')->find($user->getCover()->getCloth2());
+			}
+			
 			return $this->render('AppBundle:default:pc/vote.html.twig', array(
 				'user'=>$user,
+				'cloth1'=>$cloth1,
+				'cloth2'=>$cloth2,
 			));
+
+		}
 		else
 			return $this->render('AppBundle:default:m/vote.html.twig', array(
 				'user'=>$user,
