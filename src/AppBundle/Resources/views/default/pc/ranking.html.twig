@@ -1,0 +1,140 @@
+{% extends 'AppBundle:default:pc/layout.html.twig' %}
+{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page8Bg.jpg) center top no-repeat #000000;}{% endblock %}
+    {% block content %}
+               <div class="rpages">
+
+            <div class="btn_nums" id="rnums"></div>
+  
+        </div>
+    
+      <div class="rank">
+        {% for cover in covers %}
+          <div class="rankBlock">
+              <div class="rankUnit">
+                  <div class="innerDiv">
+                      <a href="#">
+                            <img src="{{ asset('bundles/app/default/pc/') }}images/book{{ cover.style }}.jpg" class="bgBook">
+                            {% if cover.gender == 1 %}
+                              <div class="manRankFace">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ cover.hairStyle }}.png" class="manInBookImg">
+                            </div>
+                            <div class="manRankBottom">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/girlB{{ cover.cloth2 }}.png" class="manInBookImg">
+                            </div>
+                            <div class="manRankTop">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/girlT1{{ cover.cloth1 }}.png" class="manInBookImg">
+                            </div>
+                            <div class="manRankFace2">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ cover.hairStyle }}b.png" class="manInBookImg">
+                            </div>
+                            {% else %}
+                            <div class="manRankFace">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/manF{{ cover.hairStyle }}.png" class="manInBookImg">
+                            </div>
+                            <div class="manRankBottom">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/manB{{ cover.cloth2 }}.png" class="manInBookImg">
+                            </div>
+                            <div class="manRankTop">
+                                <img src="{{ asset('bundles/app/default/pc/') }}images/manT{{ cover.cloth1 }}.png" class="manInBookImg">
+                            </div>
+                          {% endif %}
+                            <img src="/{{ cover.imgUrl }}" class="abs signRankImg">
+                            
+                            <p class="rankTitle">{{ cover.title }}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="zanLine">
+                  <a href="javascript:void(0);" class="btn20"><img src="{{ asset('bundles/app/default/pc/') }}images/btn20.png" /></a>
+                    <div class="zanInfo">
+                      <font class="zanName">{{ cover.user.nickName }}</font><font class="zanPoint">{{ cover.favourNum }}</font>赞
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        
+        <a href="{{ url('_pc_ranking') }}" class="rankType rankType1{% if app.request.get('order') != 'time' %} rankTypeOn{% endif %}">根据人气排列</a>
+        <a href="{{ url('_pc_ranking',{'order':'time'}) }}" class="rankType rankType2{% if app.request.get('order') == 'time' %} rankTypeOn{% endif %}">根据发布时间排列</a>
+        
+      
+        
+        <div class="popBg" style="display:none;"></div>
+        <div class="loginBlock pop" style="display:none;">
+          <div class="innerDiv">
+              <a href="javascript:void(0);" class="abs closeBtn1" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+                <input type="text" class="abs loginTxt loginTxt1" />
+                <input type="text" class="abs loginTxt loginTxt2" />
+                <input type="text" class="abs loginTxt loginTxt3" maxlength="11" />
+                <input type="text" class="abs loginTxt loginTxt4" />
+                <input type="password" class="abs loginTxt loginTxt5" />
+                <input type="password" class="abs loginTxt loginTxt6" />
+                <input type="text" class="abs loginTxt loginTxt7" />
+                
+                <a href="javascript:void(0);" class="abs btn02" onclick="login();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn02.png" /></a>
+                <a href="javascript:void(0);" class="abs btn03" onclick="getYzm();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn03.png" /></a>
+                <a href="javascript:void(0);" class="abs btn04" onclick="register();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn04.png" /></a>
+            </div>
+        </div>
+        
+        <div class="rule pop" style="display:none;">
+          <div class="innerDiv">
+              <a href="javascript:void(0);" class="abs closeBtn2" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+            </div>
+        </div>
+        
+        <div class="tmall pop" style="display:none;">
+          <div class="innerDiv">
+              <a href="javascript:void(0);" class="abs closeBtn3" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+                
+                <a href="#" class="abs link1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn1" rel="1"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn2" rel="2"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn3" rel="3"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn4" rel="4"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn5" rel="5"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link6"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn6" rel="6"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link7"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn7" rel="7"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <img src="{{ asset('bundles/app/default/pc/') }}images/tmallIcon1.png" class="tmallIcon1" style="display:none;" />
+            </div>
+        </div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('.linkBtn').hover(function(){
+                var lrel=$(this).attr('rel');
+                $('.tmallIcon1').css('top',((parseInt(lrel)-1)*100+80)+'px').show();
+            },function(){
+                $('.tmallIcon1').hide();
+            });
+        });
+        
+        function showRule(){
+            $('.popBg').show();
+            $('.pop').hide();
+            $('.rule').show();
+        }
+        
+        function showTmall(){
+            $('.popBg').show();
+            $('.pop').hide();
+            $('.tmall').show();
+        }
+    </script>
+{% endblock %}

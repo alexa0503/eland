@@ -1,33 +1,30 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
 {% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page5Bg.jpg) center top no-repeat #000000;}{% endblock %}
     {% block content %}
-        <div class="wrapper">
-           <div class="innerDiv">
-            
                <div class="pageEndSel">
                 <img src="{{ asset('bundles/app/default/pc/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
               {% if user.cover.gender == 1 %}
                     <div class="manSeledFace">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ user.cover.hairStyle }}.png" class="manInBookImg">
                     </div>
                     <div class="manSeledBottom">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/girlB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/girlB{{ user.cover.cloth2 }}.png" class="manInBookImg">
                     </div>
                     <div class="manSeledTop">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
                     </div>
                     <div class="manSeledFace2">
-              <img src="{{ asset('bundles/app/default/m/') }}images/girlF{{ user.cover.hairStyle }}b.png" class="manInBookImg">
+              <img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ user.cover.hairStyle }}b.png" class="manInBookImg">
                     </div>
                     {% else %}
                     <div class="manSeledFace">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/manF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/manF{{ user.cover.hairStyle }}.png" class="manInBookImg">
                     </div>
                     <div class="manSeledBottom">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/manB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/manB{{ user.cover.cloth2 }}.png" class="manInBookImg">
                     </div>
                     <div class="manSeledTop">
-                        <img src="{{ asset('bundles/app/default/m/') }}images/manT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+                        <img src="{{ asset('bundles/app/default/pc/') }}images/manT{{ user.cover.cloth1 }}.png" class="manInBookImg">
                     </div>
                     {% endif %}
                 
@@ -44,7 +41,6 @@
             <img src="{{ asset('bundles/app/default/pc/') }}images/page5Img1.png" class="abs page5Img1" />
             
             
-            <img src="{{ asset('bundles/app/default/pc/') }}images/logo.png" class="abs logo" />
             
            
           
@@ -83,8 +79,6 @@
                    <img src="{{ asset('bundles/app/default/pc/') }}images/tmallIcon1.png" class="tmallIcon1" style="display:none;" />
                </div>
            </div>
-       </div>
-   </div>
 
 {% endblock %}
 {% block javascripts %}

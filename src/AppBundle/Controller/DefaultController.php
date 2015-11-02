@@ -56,11 +56,14 @@ class DefaultController extends Controller
 	 */
 	public function selectAction(Request $request, $step=0, $gender = 0)
 	{
-		if( null != $this->getUser()->getCover() ){
+		if( null != $this->getUser() && null != $this->getUser()->getCover() ){
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
 
 		if( strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false ){
+			if(null == $this->getUser() ){
+				return $this->redirect($this->generateUrl('_pc_index'));
+			}
 			if($step == 1 )
 				return $this->render('AppBundle:default:pc/select_hair.html.twig');
 			elseif($step == 2 )
@@ -222,6 +225,30 @@ class DefaultController extends Controller
 		));
 	}
 	/**
+	 * @Route("/pc/ranking", name="_pc_ranking")
+	 */
+	public function rankingAction(Request $request)
+	{
+		$repository = $this->getDoctrine()->getRepository('AppBundle:Cover');
+		if( $request->get('order') == 'time' ){
+			$query = $repository->createQueryBuilder('a')
+			->orderBy('a.createTime', 'DESC')
+			->setMaxResults(8)
+			->getQuery();
+		}
+		else{
+			$query = $repository->createQueryBuilder('a')
+			->orderBy('a.favourNum', 'DESC')
+			->setMaxResults(8)
+			->getQuery();
+		}
+		
+		$covers = $query->getResult();
+		return $this->render('AppBundle:default:pc/ranking.html.twig', array(
+			'covers' => $covers,
+		));
+	}
+	/**
 	 * @Route("/m/vote/view/{id}", name="_m_vote")
 	 * @Route("/pc/vote/view/{id}", name="_pc_vote")
 	 */
@@ -237,9 +264,14 @@ class DefaultController extends Controller
 		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
 	            'id' => $id,
 	        )));
-		return $this->render('AppBundle:default:m/vote.html.twig', array(
-			'user'=>$user,
-		));
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false)
+			return $this->render('AppBundle:default:pc/vote.html.twig', array(
+				'user'=>$user,
+			));
+		else
+			return $this->render('AppBundle:default:m/vote.html.twig', array(
+				'user'=>$user,
+			));
 	}
 	/**
 	 * @Route("/m/vote/post/{id}", name="_m_vote_post")
@@ -249,7 +281,7 @@ class DefaultController extends Controller
 	{
 		$return = array(
 			'ret'=>0,
-			'msg'=>''
+			'msg'=>'投票成功'
 		);
 		if( null == $id){
 			$return = array(
@@ -269,6 +301,12 @@ class DefaultController extends Controller
 				$return = array(
 					'ret'=>1003,
 					'msg'=>'不能给自己投票喔'
+				);
+			}
+			elseif (null == $this->getUser()) {
+				$return = array(
+					'ret'=>1200,
+					'msg'=>'请登录后再投票'
 				);
 			}
 			else{
@@ -309,8 +347,6 @@ class DefaultController extends Controller
 				            $return['msg'] = $e->getMessage();
 				        }
 				}
-				
-				
 			}
 		}
 		return new Response(json_encode($return));

@@ -1,0 +1,115 @@
+{% extends 'AppBundle:default:pc/layout.html.twig' %}
+{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page7Bg.jpg) center top no-repeat #000000;}{% endblock %}
+    {% block content %}
+            <div class="pageEndSel">
+            <img src="{{ asset('bundles/app/default/pc/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">
+                {% if user.cover.gender == 1 %}
+	                <div class="manSeledFace">
+	                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+	                </div>
+	                <div class="manSeledBottom">
+	                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+	                </div>
+	                <div class="manSeledTop">
+	                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+	                </div>
+	                <div class="manSeledFace2">
+						<img src="{{ asset('bundles/app/default/pc/') }}images/girlF{{ user.cover.hairStyle }}b.png" class="manInBookImg">
+	                </div>
+                {% else %}
+                <div class="manSeledFace">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/manF{{ user.cover.hairStyle }}.png" class="manInBookImg">
+                </div>
+                <div class="manSeledBottom">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/manB{{ user.cover.cloth2 }}.png" class="manInBookImg">
+                </div>
+                <div class="manSeledTop">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/manT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+                </div>
+                {% endif %}
+                <img src="/{{ user.cover.imgUrl }}" class="abs signImg">
+            
+            <p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
+        </div>
+        
+        <a href="javascript:void(0);" class="abs btn18"><img src="{{ asset('bundles/app/default/pc/') }}images/btn18.png" /></a>
+        
+        <a href="#" class="shareLink voteLink1">
+        	<div class="topSelUnit">
+        	{% if user.cover.gender == 0 %}
+                <img src="{{ asset('bundles/app/default/pc/') }}images/manT{{ user.cover.cloth1 }}.png" />
+                {% else %}
+	              <img src="{{ asset('bundles/app/default/pc/') }}images/girlT{{ user.cover.cloth1 }}.png" class="manInBookImg">
+              {% endif %}
+            </div><br />
+            韩国衣恋秋冬新品女连帽休闲毛呢外套
+        </a>
+        
+        <a href="#" class="shareLink voteLink2">
+        	<div class="bottomSelUnit">
+        	{% if user.cover.gender == 0 %}
+                <img src="{{ asset('bundles/app/default/pc/') }}images/manB{{ user.cover.cloth2 }}.png" />
+                {% else %}
+                <img src="{{ asset('bundles/app/default/pc/') }}images/girlB{{ user.cover.cloth2 }}.png" />
+              {% endif %}
+            </div><br />
+            ELAND韩国衣恋15年新品牛仔短裙
+        </a>
+        
+        <a href="javascript:void(0);" class="abs btn19"><img src="{{ asset('bundles/app/default/pc/') }}images/btn19.png" /></a>
+
+        <div class="rule pop" style="display:none;">
+        	<div class="innerDiv">
+            	<a href="javascript:void(0);" class="abs closeBtn2" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+            </div>
+        </div>
+        
+        <div class="tmall pop" style="display:none;">
+        	<div class="innerDiv">
+            	<a href="javascript:void(0);" class="abs closeBtn3" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+                
+                <a href="#" class="abs link1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn1" rel="1"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn2" rel="2"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn3" rel="3"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn4" rel="4"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn5" rel="5"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link6"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn6" rel="6"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <a href="#" class="abs link7"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                <a href="#" class="linkBtn linkBtn7" rel="7"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                
+                <img src="{{ asset('bundles/app/default/pc/') }}images/tmallIcon1.png" class="tmallIcon1" style="display:none;" />
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+<script>
+$(document).ready(function(){
+	$('.linkBtn').hover(function(){
+		var lrel=$(this).attr('rel');
+		$('.tmallIcon1').css('top',((parseInt(lrel)-1)*100+80)+'px').show();
+		},function(){
+			$('.tmallIcon1').hide();
+			});
+	});
+	
+    $('.btn18').click(function(){
+        var url = '{{ url("_pc_vote_post",{id:app.request.get("id")}) }}';
+        $.getJSON(url,function(json){
+        	alert(json.msg);
+        })
+    })
+</script>
+{% endblock %}
