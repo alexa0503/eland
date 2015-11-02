@@ -170,22 +170,28 @@ function reDraw(){
     
 function submitImgs(){
     var img_png_src = canvas.toDataURL("image/png");
-    var data = {
-        img: img_png_src,
-        gender:'{{ app.request.get("gender") }}',
-        hair:'{{ app.request.get("hair") }}',
-        cloth1:'{{ app.request.get("cloth1") }}',
-        cloth2:'{{ app.request.get("cloth2") }}',
-        title:$('.titleTxt').val(),
-        cover:mBook
+    if( $('.titleTxt').val().length > 16){
+        alert('标题不能超过16个字符')
     }
-    var url = '{{ url("_pc_combine") }}';
-    $.post(url, data, function(json){
-        if( json.ret == 0)
-            window.location.href='{{ url("_pc_info") }}';
-        else
-            alert(json.msg);
-    },"JSON");
+    else{
+        var data = {
+            img: img_png_src,
+            gender:'{{ app.request.get("gender") }}',
+            hair:'{{ app.request.get("hair") }}',
+            cloth1:'{{ app.request.get("cloth1") }}',
+            cloth2:'{{ app.request.get("cloth2") }}',
+            title:$('.titleTxt').val(),
+            cover:mBook
+        }
+        var url = '{{ url("_pc_combine") }}';
+        $.post(url, data, function(json){
+            if( json.ret == 0)
+                window.location.href='{{ url("_pc_info") }}';
+            else
+                alert(json.msg);
+        },"JSON");
+    }
+    
     }
 </script>
 {% endblock %}

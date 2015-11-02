@@ -233,27 +233,48 @@ class DefaultController extends Controller
 		));
 	}
 	/**
-	 * @Route("/pc/ranking", name="_pc_ranking")
+	 * @Route("/pc/ranking/{page}", name="_pc_ranking")
 	 */
-	public function rankingAction(Request $request)
+	public function rankingAction(Request $request, $page = 1)
 	{
+		$repo = $this->getDoctrine()->getRepository('AppBundle:Cover');
+		$qb = $repo->createQueryBuilder('a');
+		$qb->select('COUNT(a)');
+		$count = $qb->getQuery()->getSingleScalarResult();
+		$pageCount = ceil($count/8);
+		$page = null == $request->get('page') ? 1 : $request->get('page');
 		$repository = $this->getDoctrine()->getRepository('AppBundle:Cover');
+		$qb = $repository->createQueryBuilder('a');
+		$qb->setMaxResults(8);
 		if( $request->get('order') == 'time' ){
-			$query = $repository->createQueryBuilder('a')
-			->orderBy('a.createTime', 'DESC')
-			->setMaxResults(8)
-			->getQuery();
+			$qb->orderBy('a.createTime', 'DESC');
 		}
 		else{
-			$query = $repository->createQueryBuilder('a')
-			->orderBy('a.favourNum', 'DESC')
-			->setMaxResults(8)
-			->getQuery();
+			$qb->orderBy('a.favourNum', 'DESC');
+		}
+		$qb->setFirstResult(($page-1)*8);
+		$query = $qb->getQuery();
+		$covers = $query->getResult();
+
+		$pageList = '';
+		if($pageCount > 1){
+			if($page -2 >= 1)
+				$pageList .= '<a href="'.$this->generateUrl('_pc_ranking',array('page'=>1)).'">1</a>...';
+			for ($i=1; $i <= $pageCount; $i++) { 
+				if($i < $page + 2 && $i > $page - 2){
+					$pageList .= '<a ';
+					if($page == $i)
+						$pageList .= 'class="cur" ';
+					$pageList .='href="'.$this->generateUrl('_pc_ranking',array('page'=>$i)).'">'.$i.'</a>';
+				}
+			}
+			if($page +2 < $pageCount)
+				$pageList .= '...<a href="'.$this->generateUrl('_pc_ranking',array('page'=>$pageCount)).'">'.$pageCount.'</a>';
 		}
 		
-		$covers = $query->getResult();
 		return $this->render('AppBundle:default:pc/ranking.html.twig', array(
 			'covers' => $covers,
+			'pageList' => $pageList,
 		));
 	}
 	/**
