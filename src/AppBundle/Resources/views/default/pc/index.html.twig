@@ -15,7 +15,7 @@
 				</div>
 			</div>
 
-			<a {% if null == app.request.session.get('user_id') %}href="javascript:void(0);" onclick="showLogin();"{% else %}href="{{ url('_pc_select') }}"{% endif %} class="abs btn01"><img src="{{ asset('bundles/app/default/pc/') }}images/btn01.png" /></a>
+			<a href="{{ url('_pc_select') }}" class="abs btn01"><img src="{{ asset('bundles/app/default/pc/') }}images/btn01.png" /></a>
 
 			<a href="javascript:void(0);" onclick="manGoLeft();" class="abs arrowLeft"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowLeft.png" /></a>
 			<a href="javascript:void(0);" onclick="manGoRight();" class="abs arrowRight"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowRight.png" /></a>

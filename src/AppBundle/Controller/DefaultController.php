@@ -41,12 +41,14 @@ class DefaultController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{
-		if( null != $this->getUser() && null != $this->getUser()->getCover() ){
-			return $this->redirect($this->generateUrl('_m_info'));
-		}
 
-		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') === false)
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') === false){
+
+			if( null != $this->getUser() && null != $this->getUser()->getCover() ){
+				return $this->redirect($this->generateUrl('_m_info'));
+			}
 			return $this->render('AppBundle:default:m/index.html.twig');
+		}
 		else
 			return $this->render('AppBundle:default:pc/index.html.twig');
 	}
@@ -56,14 +58,8 @@ class DefaultController extends Controller
 	 */
 	public function selectAction(Request $request, $step=0, $gender = 0)
 	{
-		if( null != $this->getUser() && null != $this->getUser()->getCover() ){
-			return $this->redirect($this->generateUrl('_m_info'));
-		}
-
 		if( strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false ){
-			if(null == $this->getUser() ){
-				return $this->redirect($this->generateUrl('_pc_index'));
-			}
+			
 			if($step == 1 )
 				return $this->render('AppBundle:default:pc/select_hair.html.twig');
 			elseif($step == 2 )
@@ -74,6 +70,9 @@ class DefaultController extends Controller
 				return $this->render('AppBundle:default:pc/select_gender.html.twig');
 		}
 		else{
+			if( null != $this->getUser() && null != $this->getUser()->getCover() ){
+				return $this->redirect($this->generateUrl('_m_info'));
+			}
 			if($step == 1 )
 				return $this->render('AppBundle:default:m/select_cloth.html.twig');
 			elseif($step == 2 )
@@ -151,7 +150,13 @@ class DefaultController extends Controller
 			'ret'=>0,
 			'msg'=>''
 		);
-		if( null != $this->getUser()->getCover() ){
+		if( null == $this->getUser() ){
+			$json = array(
+				'ret'=>1200,
+				'msg'=>'请先登录/注册哦~'
+			);
+		}
+		elseif( null != $this->getUser()->getCover() ){
 			$json = array(
 				'ret'=>1001,
 				'msg'=>'已经生成过封面了，无法再次生成'
