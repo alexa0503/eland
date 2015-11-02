@@ -187,6 +187,8 @@ function submitImgs(){
         $.post(url, data, function(json){
             if( json.ret == 0)
                 window.location.href='{{ url("_pc_info") }}';
+            else if( json.ret == 1200)
+                showLogin();
             else
                 alert(json.msg);
         },"JSON");
