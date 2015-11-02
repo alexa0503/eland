@@ -443,6 +443,7 @@ class DefaultController extends Controller
 					$em->flush();
 					$em->getConnection()->commit();
 					$session->set('user_id', $wechat_user->getId());
+					$session->set('nickname', $wechat_user->getNickName());
 					$return['nickname'] = $request->get('nickname');
 					$return['mobile'] = $request->get('mobile');
 				}
