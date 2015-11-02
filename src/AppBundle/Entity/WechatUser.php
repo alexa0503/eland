@@ -19,6 +19,14 @@ class WechatUser
      */
     protected $openId;
     /**
+     * @ORM\Column(name="password",type="string", length=40, nullable=true)
+     */
+    protected $password;
+    /**
+     * @ORM\Column(name="mobile",type="string", length=40, nullable=true)
+     */
+    protected $mobile;
+    /**
      * @ORM\Column(name="nick_name",type="string", length=200)
      */
     protected $nickName;
@@ -375,5 +383,51 @@ class WechatUser
     public function getVoteLogs()
     {
         return $this->voteLogs;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return WechatUser
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param string $mobile
+     * @return WechatUser
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return string 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
     }
 }

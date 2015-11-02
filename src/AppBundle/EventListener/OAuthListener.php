@@ -35,39 +35,38 @@ class OAuthListener
 	{
 		$request = $event->getRequest();
 		$session = $request->getSession();
-		//$session->set('open_id', 'o5mOVuGapiB3tzYysVcE4xstN3s4');
-		//$session->set('user_id', 1);
-		if($request->getClientIp() == '127.0.0.1'){
-			$session->set('open_id', 'o2-sBj0oOQJCIq6yR7I9HtrqxZcY');
-			$session->set('user_id', 1);
+		//pc版
+		if( stripos($request->attributes->get('_route'), '_pc') !== false && stripos($request->attributes->get('_controller'), 'DefaultController') !== false){
 		}
-		else{
-			
-			if( $session->get('open_id') === null 
-				&& $request->attributes->get('_route') !== '_callback' 
-				&& stripos($request->attributes->get('_controller'), 'DefaultController') !== false
-			){
-				$app_id = $this->container->getParameter('wechat_appid');
-				$session->set('redirect_url', $request->getUri());
-				$state = '';
-				$callback_url = $request->getUriForPath('/callback');
-				//$callback_url = $this->router->generate('_callback','');
-				$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$app_id."&redirect_uri=".$callback_url."&response_type=code&scope=snsapi_userinfo&state=$state#wechat_redirect";
-				$event->setResponse(new RedirectResponse($url));
+		elseif(stripos($request->attributes->get('_controller'), 'DefaultController') !== false){
+			if($request->getClientIp() == '127.0.0.1'){
+				$session->set('open_id', 'o2-sBj0oOQJCIq6yR7I9HtrqxZcY');
+				$session->set('user_id', 1);
 			}
-			
-			$appId = $this->container->getParameter('wechat_appid');
-			$appSecret = $this->container->getParameter('wechat_secret');
-			$wechat = new Wechat\Wechat($appId, $appSecret);
-			$wx = (Object)$wechat->getSignPackage();
-			$session->set('wx_app_id', $wx->appId);
-			$session->set('wx_timestamp', $wx->timestamp);
-			$session->set('wx_nonce_str', $wx->nonceStr);
-			$session->set('wx_signature', $wx->signature);
-			$session->set('wx_share_url', $request->getUriForPath('/'));
-			$session->set('wx_title', '搭出不一\"Young\"');
-			$session->set('wx_desc', '年轻的Show场，由你搭配不一样的时尚');
-			$session->set('wx_img_url', 'http://'.$request->getHost().'/bundles/app/default/m/images/share.jpg');
+			else{
+				if( $session->get('open_id') === null 
+					&& $request->attributes->get('_route') !== '_callback'
+				){
+					$app_id = $this->container->getParameter('wechat_appid');
+					$session->set('redirect_url', $request->getUri());
+					$state = '';
+					$callback_url = $request->getUriForPath('/callback');
+					$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$app_id."&redirect_uri=".$callback_url."&response_type=code&scope=snsapi_userinfo&state=$state#wechat_redirect";
+					$event->setResponse(new RedirectResponse($url));
+				}
+				$appId = $this->container->getParameter('wechat_appid');
+				$appSecret = $this->container->getParameter('wechat_secret');
+				$wechat = new Wechat\Wechat($appId, $appSecret);
+				$wx = (Object)$wechat->getSignPackage();
+				$session->set('wx_app_id', $wx->appId);
+				$session->set('wx_timestamp', $wx->timestamp);
+				$session->set('wx_nonce_str', $wx->nonceStr);
+				$session->set('wx_signature', $wx->signature);
+				$session->set('wx_share_url', $request->getUriForPath('/'));
+				$session->set('wx_title', '搭出不一\"Young\"');
+				$session->set('wx_desc', '年轻的Show场，由你搭配不一样的时尚');
+				$session->set('wx_img_url', 'http://'.$request->getHost().'/bundles/app/default/m/images/share.jpg');
+			}
 		}
 	}
 	/*

@@ -56,11 +56,45 @@
 				</div>
 
 				<a href="javascript:void(0);" onClick="reDraw();_czc.push(['_trackEvent','Mobile_button','重新书写']);" class="abs btn07"><img src="{{ asset('bundles/app/default/m/') }}images/btn07.png"></a>
-				<a href="javascript:void(0);" onClick="submitImgs();_czc.push(['_trackEvent','Mobile_button','下一步']);" class="abs btn08"><img src="{{ asset('bundles/app/default/m/') }}images/btn08.png"></a>
+				<a href="javascript:void(0);" onClick="showSureImg();_czc.push(['_trackEvent','Mobile_button','下一步']);" class="abs btn08"><img src="{{ asset('bundles/app/default/m/') }}images/btn08.png"></a>
 			</div>
 		</div>
 	</div>
-	<img src="" id="image_png" style="display:none;">
+	
+	<div class="page page12" style="display:none;">
+		<div class="h1008">
+			<div class="innerDiv">
+				<img src="{{ asset('bundles/app/default/m/') }}images/page12.png" class="abs bgImg">
+				
+				<div class="pageEndSel">
+					<img src="" class="bgBook bgBookForShow">
+					<div class="manSeledFace">
+						<img src="" class="manInBookImg">
+					</div>
+					<div class="manSeledBottom">
+						<img src="" class="manInBookImg">
+					</div>
+					<div class="manSeledTop">
+						<img src="" class="manInBookImg">
+					</div>
+					
+					{% if app.request.get('gender') == 1 %}
+					<div class="manSeledFace2">
+							<img src="" class="manInBookImg">
+		                </div>
+		              {% endif %}
+					
+					<img src="" id="image_png" class="abs signImg">
+					
+					<p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
+				</div>
+				
+				<a href="{{ url('_m_index',{'reset':'y'}) }}" class="abs btn21"><img src="{{ asset('bundles/app/default/m/') }}images/btn21.png"></a>
+				<a href="javascript:void(0);" class="abs btn22" onClick="submitImgs();"><img src="{{ asset('bundles/app/default/m/') }}images/btn22.png"></a>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -113,6 +147,24 @@ function manGoLeft(){
 		isMoving=false;
 	}
 }
+
+function showSureImg(){
+	var img_png_src = canvas.toDataURL("image/png");
+	document.getElementById("image_png").src = img_png_src;
+	$('.bgBookForShow').attr('src',$('.bgBook'+mBook).attr('src')).show();
+	$('.popBg').hide();
+	$('.pop').hide();
+	$('.page').hide();
+	$('.page12').fadeIn(500);
+	}
+
+function closeSureImg(){
+	$('.popBg').hide();
+	$('.pop').hide();
+	$('.page').hide();
+	$('.page5').fadeIn(500);
+	}
+
 function manGoRight(){
 	if(!isMoving){
 		isMoving=true;
@@ -234,7 +286,6 @@ function reDraw(){
 
 function submitImgs(){
 	var img_png_src = canvas.toDataURL("image/png");
-	document.getElementById("image_png").src = img_png_src;
 	var data = {
 		img: img_png_src,
 		gender:'{{ app.request.get("gender") }}',

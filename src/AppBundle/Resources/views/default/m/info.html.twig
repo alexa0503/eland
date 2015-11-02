@@ -10,7 +10,7 @@
             <input type="tel" class="infoTxt infoTxt2" placeholder="请输入您手机" maxlength="11">
             
             <a href="javascript:void(0);" onClick="reSetInfo();_czc.push(['_trackEvent','Mobile_button','重新填写']);" class="abs btn09"><img src="{{ asset('bundles/app/default/m/') }}images/btn09.png"></a>
-            <a href="javascript:void(0);" onClick="submitInfo();_czc.push(['_trackEvent','Mobile_button','完成提交']);" class="abs btn10"><img src="{{ asset('bundles/app/default/m/') }}images/btn10.png"></a>
+            <a href="javascript:void(0);" onClick="showSurePop();_czc.push(['_trackEvent','Mobile_button','完成提交']);" class="abs btn10"><img src="{{ asset('bundles/app/default/m/') }}images/btn10.png"></a>
         </div>
     </div>
 </div>
@@ -64,6 +64,16 @@
 	<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
 </div>
 <img src="{{ asset('bundles/app/default/m/') }}images/shareNote.png" class="pop popShare" onClick="closePop();" style="display:none;">
+
+<div class="surePage pop" style="display:none;">
+	<div class="innerDiv">
+    	<p class="sureInfo1"></p>
+        <p class="sureInfo2"></p>
+       	<a href="javascript:void(0);" class="abs btn23" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/btn23.png"></a>
+		<a href="javascript:void(0);" class="abs btn24" onClick="submitInfo();"><img src="{{ asset('bundles/app/default/m/') }}images/btn24.png"></a>
+    </div>
+</div>
+
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -72,6 +82,14 @@
 $(document).ready(function(){
 	
 	});
+	
+function showSurePop(){
+	$('.sureInfo1').html($.trim($('.infoTxt1').val()));
+	$('.sureInfo2').html($.trim($('.infoTxt2').val()));
+	$('.popBg').show();
+	$('.pop').hide();
+	$('.surePage').show();
+	}
 	
 function showRule(){
 	$('.popBg').show();

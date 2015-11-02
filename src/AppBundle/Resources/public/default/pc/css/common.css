@@ -1,0 +1,234 @@
+/* Global Setting */
+body{margin:0; padding:0;text-align:left; font-size:12px; font-family:'Microsoft YaHei',Arial; background:#FFF;}
+table{border-collapse:collapse;}
+td,th{padding:0;}
+ul,li,dd,dl,dt{margin:0; padding:0; list-style:none; word-break:break-all;}
+img{border:0;}
+p{margin:0; word-break:break-all;}
+h1,h2,h3,h4{margin:0;padding:0; font-weight:normal; font-size:14px;}
+em{ font-size:12px; font-style:normal;}
+hr{background:none;border:none;border-bottom:1px solid #CCC;#border-bottom:0;}
+.clear {clear:both;height:0;font-size:1px;line-height: 0px;}
+a{text-decoration:none; border:0; outline:none; blr:expression(this.onFocus=this.blur());}
+select,input,textarea{font-family:inherit; outline:none;}
+
+.wrapper{ width:1000px; height:900px; margin:0 auto; border:none; padding:0;}
+.innerDiv{ width:100%; height:100%; position:relative;}
+.abs{ position:absolute;}
+
+
+.modelBlock{ position:absolute; left:60px; top:65px; overflow:hidden; width:663px; height:834px;}
+.modelScroll{ position:absolute; left:-663px; overflow:hidden; width:4645px;}
+.modelScroll img{ float:left;}
+.btn01{ left:588px; top:511px;}
+.arrowLeft{ left:-185px; top:390px;}
+.arrowRight{ right:-185px; top:390px;}
+
+.navBtn{ right:-235px; top:0;}
+.rightInto{ position:absolute; right:-140px; top:35px; width:175px; color:#FFFFFF; font-size:14px; text-align:right;}
+.rightInto a{ color:#FFF; font-size:14px;}
+.popBg{ position:fixed; left:0; top:0; width:100%; height:100%; background:#000000; filter:alpha(opacity=80); -webkit-opacity:0.8; opacity:0.8;}
+.loginBlock{ background:url(../images/loginBg.png) 0 0 no-repeat; width:1025px; height:650px; position:absolute; left:30px; top:120px;}
+.closeBtn1{ left:658px; top:-65px;}
+.loginTxt{ background:none; border:none; width:225px; height:40px; font-size:14px; color:#333; line-height:40px; padding:0 10px; left:213px;}
+.loginTxt1{ top:73px;}
+.loginTxt2{ top:121px;}
+.loginTxt3{ left:211px; top:316px;}
+.loginTxt4{ left:211px; top:371px; width:125px;}
+.loginTxt5{ left:211px; top:427px;}
+.loginTxt6{ left:211px; top:481px;}
+.loginTxt7{ left:211px; top:535px;}
+.btn02{ left:263px; top:186px;}
+.btn03{ left:375px; top:376px;}
+.btn04{ left:263px; top:593px;}
+
+.openNav{ width:980px; height:87px; position:absolute; right:-235px; top:0; background:#000000;}
+.navBg{ float:left;}
+.navClose{ float:right;}
+.nav1{ left:0; top:0;}
+.nav2{ left:178px; top:0;}
+.nav3{ left:324px; top:0;}
+.nav4{ left:449px; top:0;}
+.nav5{ left:593px; top:0;}
+.nameBlock{ width:185px; color:#FFFFFF; font-size:14px; line-height:86px; height:87px; position:absolute; top:0; right:87px; text-align:right;}
+.nameBlock a{ color:#FFF;}
+.navQc{ left:593px; top:0;}
+
+/*page1*/
+.logo{ top:10px; left:-190px;}
+.selBtn{ top:295px;}
+.selBtn1{ left:205px;}
+.selBtn2{ left:522px;}
+.selBtn .selOn{ display:none;}
+.selBtn .selOff{ display:inline;}
+.selBtnSeled .selOn{ display:inline;}
+.selBtnSeled .selOff{ display:none;}
+.btn05{ left:393px; top:660px;}
+
+/*page2*/
+.selManBtn{ top:315px;}
+.selManBtn1{ left:-9px;}
+.selManBtn2{ left:364px;}
+.selManBtn3{ left:739px;}
+.selManBtn .selManOn{ display:none;}
+.selManBtn .selManOff{ display:inline;}
+.selBtnSeled .selManOn{ display:inline;}
+.selBtnSeled .selManOff{ display:none;}
+.btn061{ left:265px; top:682px;}
+.btn07{ left:515px; top:682px;}
+
+/*page3*/
+.seledBlock{ width:286px; height:740px; position:absolute; left:15px; top:110px;}
+.seledBlock img{ width:100%;}
+.seledManF,.seledManT,.seledManB,.seledManF2{ position:absolute; left:0; top:0; width:286px; height:740px; overflow:hidden;}
+.manPPSel{ position:absolute; left:570px; top:295px; width:650px;}
+.manPPSel li{ height:30px; float:left;}
+.manPPSel li a{ display:block; width:100%; height:100%;}
+.manPPSel li.li01{ width:103px;}
+.manPPSel li.li02{ width:138px;}
+.manPPSel li.li01 a{ background:url(../images/ccBoy.png) 0 -30px;}
+.manPPSel li.li02 a{ background:url(../images/ccBoy.png) -103px -30px;}
+.manPPSel li.li01 a.on,.manPPSel li.li01 a:hover{ background-position:0 0;}
+.manPPSel li.li02 a.on,.manPPSel li.li02 a:hover{ background-position:-103px 0;}
+
+.girlPPSel{ position:absolute; left:350px; top:277px; width:650px;}
+.girlPPSel li{ height:66px; float:left;}
+.girlPPSel li a{ display:block; width:100%; height:100%;}
+.girlPPSel li.li01{ width:124px;}
+.girlPPSel li.li02{ width:151px;}
+.girlPPSel li.li03{ width:148px;}
+.girlPPSel li.li04{ width:139px;}
+.girlPPSel li.li05{ width:84px;}
+.girlPPSel li.li01 a{ background:url(../images/ccGirl.png) 0 -66px;}
+.girlPPSel li.li02 a{ background:url(../images/ccGirl.png) -124px -66px;}
+.girlPPSel li.li03 a{ background:url(../images/ccGirl.png) -275px -66px;}
+.girlPPSel li.li04 a{ background:url(../images/ccGirl.png) -423px -66px;}
+.girlPPSel li.li05 a{ background:url(../images/ccGirl.png) -562px -66px;}
+.girlPPSel li.li01 a.on,.girlPPSel li.li01 a:hover{ background-position:0 0;}
+.girlPPSel li.li02 a.on,.girlPPSel li.li02 a:hover{ background-position:-124px 0;}
+.girlPPSel li.li03 a.on,.girlPPSel li.li03 a:hover{ background-position:-275px 0;}
+.girlPPSel li.li04 a.on,.girlPPSel li.li04 a:hover{ background-position:-423px 0;}
+.girlPPSel li.li05 a.on,.girlPPSel li.li05 a:hover{ background-position:-562px 0;}
+
+.topSelUnit{ width:134px; height:134px; background:#FFF; overflow:hidden;}
+.topSelUnit img{ width:100%; margin-top:-40px;}
+.ppTopBtn1{ left:413px; top:398px; border:2px solid #FFF;}
+.ppTopBtn2{ left:606px; top:398px; border:2px solid #FFF;}
+.ppTopBtn3{ left:800px; top:398px; border:2px solid #FFF;}
+.ppTopSel{ border:2px solid #960606;}
+.ppBottomBtn1{ left:413px; top:566px; border:2px solid #FFF;}
+.ppBottomBtn2{ left:606px; top:566px; border:2px solid #FFF;}
+.ppBottomBtn3{ left:800px; top:566px; border:2px solid #FFF;}
+.ppBottomSel{ border:2px solid #960606;}
+.bottomSelUnit{ width:134px; height:134px; background:#FFF; overflow:hidden;}
+.bottomSelUnit img{ width:100%; margin-top:-140px;}
+.btn062{ left:413px; top:750px;}
+.btn08{ left:645px; top:750px;}
+
+
+/*page4*/
+.pageEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:-10px; top:130px;}
+.pageShareEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:160px;}
+.pageVoteEndSel{ width:506px; height:696px; overflow:hidden; position:absolute; left:67px; top:175px;}
+.signImg{ width:120px; height:120px; left:370px; top:210px;}
+.manSeledFace,.manSeledFace2{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manSeledTop{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manSeledBottom{ position:absolute; left:0; top:95px; width:506px; text-align:center;}
+.manInBookImg{ width:350px;}
+.myTitle{ position:absolute; bottom:80px; right:10px; color:#FFF; font-size:60px; text-align:right; width:490px;}
+
+.selBookBtn{ width:104px; text-align:center; line-height:20px; color:#707070; font-size:14px;}
+.selBookBtn img{ width:100px; height:100px; border:2px solid #d6c9c0;}
+.selBookBtnOn img{ border:2px solid #960606;}
+.selBookBtn1{ left:534px; top:205px;}
+.selBookBtn2{ left:654px; top:205px;}
+.selBookBtn3{ left:773px; top:205px;}
+.selBookBtn4{ left:896px; top:205px;}
+
+.titleTxt{ width:438px; height:50px; background:none; border:none; padding:0 15px; line-height:50px; font-size:14px; color:#333; font-size:14px; left:534px; top:425px;}
+.cOuter{ position:absolute; left:534px; top:560px;}
+
+.btn09{ left:727px; top:560px;}
+.btn063{ left:534px; top:760px;}
+.btn10{ left:741px; top:760px;}
+
+/*page5*/
+.signImg{ width:120px; height:120px; left:370px; top:210px;}
+.btn11{ left:685px; top:560px;}
+.btn12{ left:657px; top:612px;}
+.btn13{ left:657px; top:678px;}
+.page5Img1{ left:550px; top:737px;}
+
+.rule{ background:url(../images/rule.png) 0 0 no-repeat; width:908px; height:686px; position:absolute; left:54px; top:122px;}
+.closeBtn2{ position:absolute; right:-60px; top:-40px;}
+
+.tmall{ background:url(../images/pageTmall.png) 0 0 no-repeat; width:1115px; height:802px; position:absolute; left:-70px; top:40px;}
+.closeBtn3{ position:absolute; right:18px; top:12px;}
+.link1{ left:314px; top:92px;}
+.link2{ left:314px; top:192px;}
+.link3{ left:314px; top:293px;}
+.link4{ left:314px; top:393px;}
+.link5{ left:314px; top:494px;}
+.link6{ left:314px; top:596px;}
+.link7{ left:314px; top:694px;}
+.linkBtn{ position:absolute; left:946px;}
+.linkBtn1{ top:112px;}
+.linkBtn2{ top:212px;}
+.linkBtn3{ top:313px;}
+.linkBtn4{ top:413px;}
+.linkBtn5{ top:514px;}
+.linkBtn6{ top:616px;}
+.linkBtn7{ top:714px;}
+.tmallIcon1{ position:absolute; left:1085px; top:80px;}
+
+/*page6*/
+.zanNumb{ position:absolute; left:535px; top:200px; height:40px; line-height:40px; font-size:22px; color:#FFF;}
+.zanNumb span{ padding:0 10px; color:#960606; font-weight:bold;}
+.btn15{ left:535px; top:253px;}
+.btn16{ left:770px; top:253px;}
+
+.shareLink{ position:absolute; top:406px; width:134px; color:#333; font-size:12px; line-height:16px;}
+.shareLink1{ left:537px;}
+.shareLink2{ left:750px;}
+.btn17{ left:537px; top:640px;}
+
+/*page7*/
+.btn18{ left:520px; top:165px;}
+.voteLink1{ left:537px; top:376px;}
+.voteLink2{ left:750px; top:376px;}
+.btn19{ left:550px; top:735px;}
+
+/*page8*/
+.rank{ position:absolute; width:1055px; left:0; top:123px;}
+.rankBlock{ width:205px; padding:0 58px 30px 0; height:305px; float:left;}
+.rankUnit{ width:205px; height:280px; overflow:hidden;}
+.rankUnit img{ width:100%;}
+.rankUnit img.manInBookImg{ width:130px;}
+
+.rankUnit img.signRankImg{ width:50px; height:50px; left:145px; top:80px;}
+.manRankFace,.manRankFace2{ position:absolute; left:0; top:35px; width:205px; text-align:center;}
+.manRankTop{ position:absolute; left:0; top:35px; width:205px; text-align:center;}
+.manRankBottom{ position:absolute; left:0; top:35px; width:205px; text-align:center;}
+.rankTitle{ position:absolute; bottom:40px; right:5px; color:#FFF; font-size:22px; text-align:right; width:200px;}
+
+.zanLine{ width:100%; padding:10px 0 0 0;}
+.btn20{ float:left;}
+.zanInfo{ float:right; width:140px; height:24px; overflow:hidden; line-height:24px; color:#FFF; text-align:right; font-size:14px;}
+.zanPoint{ padding-left:20px;}
+
+.rpages {width:250px; height:35px; margin:0 auto; padding:810px 0 0 0; font-size:14px;}
+.rpages .btn_pre {float:left; width:17px; height:17px; text-align:left; display:none;}
+.rpages .btn_nums {height:30px; line-height:30px; text-align:center; color:#960606;}
+.rpages .btn_nums a {display:inline-block; height:30px; line-height:30px; text-align:center; color:#960606; margin:0px 10px;}
+.rpages .btn_nums a:hover {text-decoration:underline;}
+.rpages .btn_nums a.cur {width:30px; background:#960606; color:#fff; text-decoration:none;}
+.rpages .btn_nums a.pre {width:30px; text-decoration:none; display:none;}
+.rpages .btn_nums a.next {width:30px; text-decoration:none; display:none;}
+.rpages .btn_next {float:right; width:17px; height:17px; text-align:right; display:none;}
+
+.rankType{ display:inline-block; padding:4px 10px; color:#960606; font-size:14px; position:absolute; top:40px;}
+.rankType1{ left:730px;}
+.rankType2{ left:840px;}
+.rankTypeOn{ background:#960606; color:#FFF;}
+
+

@@ -26,7 +26,12 @@ class DefaultController extends Controller
 	{
 		$session = $this->get('session');
 		//$em = $this->getDoctrine()->getManager();
-		$user = $this->getDoctrine()->getRepository('AppBundle:WechatUser')->findOneByOpenId($session->get('open_id'));
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false && null != $session->get('user_id')){
+			$user = $this->getDoctrine()->getRepository('AppBundle:WechatUser')->find($session->get('user_id'));
+		}
+		else{
+			$user = $this->getDoctrine()->getRepository('AppBundle:WechatUser')->findOneByOpenId($session->get('open_id'));
+		}
 		return $user;
 	}
 	/**
@@ -55,12 +60,23 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
 
-		if($step == 1 )
-			return $this->render('AppBundle:default:m/select_cloth.html.twig');
-		elseif($step == 2 )
-			return $this->render('AppBundle:default:m/sign.html.twig');
-		else
-			return $this->render('AppBundle:default:m/select_gender.html.twig');
+		if( $request->attributes->get('_route') !== '_pc_index' ){
+			if($step == 1 )
+				return $this->render('AppBundle:default:pc/select_cloth.html.twig');
+			elseif($step == 2 )
+				return $this->render('AppBundle:default:pc/sign.html.twig');
+			else
+				return $this->render('AppBundle:default:pc/select_gender.html.twig');
+		}
+		else{
+			if($step == 1 )
+				return $this->render('AppBundle:default:m/select_cloth.html.twig');
+			elseif($step == 2 )
+				return $this->render('AppBundle:default:m/sign.html.twig');
+			else
+				return $this->render('AppBundle:default:m/select_gender.html.twig');
+		}
+		
 	}
 	/**
 	 * @Route("/m/info", name="_m_info")
@@ -74,8 +90,13 @@ class DefaultController extends Controller
 		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
 	            'id' => $this->getUser()->getId(),
 	        )));
-		return $this->render('AppBundle:default:m/info.html.twig',array(
-			'user'=>$this->getUser()
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false)
+			return $this->render('AppBundle:default:pc/info.html.twig',array(
+				'user'=>$this->getUser()
+			));
+		else
+			return $this->render('AppBundle:default:m/info.html.twig',array(
+				'user'=>$this->getUser()
 			));
 	}
 	/**
@@ -155,52 +176,6 @@ class DefaultController extends Controller
 			$em->persist($cover);
 			$em->flush();
 		}
-		
-		//$cover->save();
-		/*
-		$imagine = new Imagine();
-		$options = array(
-				'png_quality' => 100,
-		);
-
-		$img = $request->get('img');
-		$img = str_replace('data:image/png;base64,', '', $img);
-		$img = str_replace(' ', '+', $img);
-		$data = base64_decode($img);
-		$sign_path = 'uploads/' . uniqid() . '.png';
-		$file1 = 'uploads/' . uniqid() . '.png';
-		file_put_contents($sign_path, $data);
-		
-		$cover_path = 'bundles/app/default/m/images/book'.$request->get('cover').'.jpg';
-		$hair_path = 'bundles/app/default/m/images/girlF'.$request->get('hair').'.png';
-		$cloth1_path = 'bundles/app/default/m/images/girlT'.$request->get('cloth1').'.png';
-		$cloth2_path = 'bundles/app/default/m/images/girlB'.$request->get('cloth2').'.png';
-		
-		$options = array(
-				'png_quality' => 100,
-		);
-		$collage = $imagine->create(new Box(506,1400));
-		$cover = $imagine->open($cover_path);
-		$hair = $imagine->open($hair_path);
-		$cloth1 = $imagine->open($cloth1_path);
-		$cloth2 = $imagine->open($cloth2_path);
-		$sign = $imagine->open($sign_path);
-		$sign->resize(new Box(128, 128))->save($sign_path, $options);
-		$collage->paste($cover, new Point(0 , 0))
-			->paste($hair, new Point(26 , 95))
-			->paste($cloth1, new Point(26 , 95))
-			->paste($cloth2, new Point(26 , 95))
-			->paste($sign, new Point(365 , 240))
-			->crop(new Point(0, 0), new Box(506, 696));
-		$collage->save($file1,$options);
-		$collage = $imagine->open($file1);
-		//$palette = new RGB();
-		$color = new \Imagine\Image\Color('#FFFFFF');
-		$font = new \Imagine\Gd\Font('/Users/Alexa/website/eland/web/fonts/SIMHEI.TTF', 40, $color);
-		$collage->draw()->text('搭配出属于我的', $font, new Point(20,426));
-		$collage->save($file1,$options);
-		*/
-		
 		return new Response(json_encode($json));
 	}
 	/**
@@ -209,7 +184,10 @@ class DefaultController extends Controller
 	 */
 	public function tmallAction(Request $request)
 	{
-		return $this->render('AppBundle:default:m/tmall.html.twig');
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false)
+			return $this->render('AppBundle:default:pc/tmall.html.twig');
+		else
+			return $this->render('AppBundle:default:m/tmall.html.twig');
 	}
 	/**
 	 * @Route("/m/share", name="_m_share")
@@ -254,6 +232,9 @@ class DefaultController extends Controller
 		if( null == $user || null == $user->getCover()){
 			return $this->redirect($this->generateUrl('_index'));
 		}
+		$request->getSession()->set('wx_share_url', 'http://'.$request->getHost().$this->generateUrl('_m_vote', array(
+	            'id' => $id,
+	        )));
 		return $this->render('AppBundle:default:m/vote.html.twig', array(
 			'user'=>$user,
 		));
@@ -293,14 +274,16 @@ class DefaultController extends Controller
 				$repo = $em->getRepository('AppBundle:VoteLog');
 				$qb = $repo->createQueryBuilder('a');
 				$qb->select('COUNT(a)');
-				$qb->where('a.user = :user AND a.voter = :voter');
+				$qb->where('a.user = :user AND a.voter = :voter AND a.createTime >= :createTime1 AND a.createTime <= :createTime2');
 				$qb->setParameter('user', $user);
 				$qb->setParameter('voter', $this->getUser());
+				$qb->setParameter('createTime1', date('Y-m-d'));
+				$qb->setParameter('createTime2', date('Y-m-d 23:59:59'));
 				$count = $qb->getQuery()->getSingleScalarResult();
 				if($count >= 1){
 					$return = array(
 						'ret'=>1004,
-						'msg'=>'每个人只能投一次票喔'
+						'msg'=>'投票失败，每人每天只能投一次票喔，请明天再来'
 					);
 				}
 				else{
@@ -351,6 +334,157 @@ class DefaultController extends Controller
 		return new Response(json_encode($wx));
 	}
 
+	/**
+	 * @Route("pc/register", name="_pc_register")
+	 */
+	public function registerAction(Request $request)
+	{
+		$return = array(
+			'ret'=>0,
+			'msg'=>'注册成功'
+		);
+		$session = $request->getSession();
+		if(null == $session->get('secode') || null == $request->get('secode') || $session->get('secode') !== strtolower($request->get('secode'))){
+			$return = array(
+				'ret'=>1004,
+				'msg'=>'验证码不正确'
+			);
+		}
+		elseif(null == $request->get('nickname')){
+			$return = array(
+				'ret'=>1005,
+				'msg'=>'昵称不能为空'
+			);
+		}
+		elseif(null == $request->get('mobile')){
+			$return = array(
+				'ret'=>1006,
+				'msg'=>'手机号不能为空'
+			);
+		}
+		elseif(null == $request->get('password')){
+			$return = array(
+				'ret'=>1007,
+				'msg'=>'密码不能为空'
+			);
+		}
+		elseif($request->getMethod() == 'POST'){
+			$em = $this->getDoctrine()->getManager();
+
+			$repo = $em->getRepository('AppBundle:WechatUser');
+			$qb = $repo->createQueryBuilder('a');
+			$qb->select('COUNT(a)');
+			$qb->where('a.mobile = :mobile');
+			$qb->setParameter('mobile', $request->get('mobile'));
+			$count = $qb->getQuery()->getSingleScalarResult();
+			if( $count > 0){
+				$return = array(
+					'ret'=>1100,
+					'msg'=>'该手机号已经被注册'
+				);
+			}
+			else{
+				$em->getConnection()->beginTransaction();
+				try{
+					$wechat_user = new Entity\WechatUser();
+					$wechat_user->setOpenId(0);
+					$wechat_user->setNickName($request->get('nickname'));
+					$wechat_user->setMobile($request->get('mobile'));
+					$wechat_user->setPassword(md5($request->get('password')));
+					$wechat_user->setCity('');
+					$wechat_user->setGender(0);
+					$wechat_user->setProvince('');
+					$wechat_user->setCountry('');
+					$wechat_user->setHeadImg('');
+					$wechat_user->setCreateIp($request->getClientIp());
+					$wechat_user->setCreateTime(new \DateTime('now'));
+					$em->persist($wechat_user);
+					$em->flush();
+					$em->getConnection()->commit();
+					$session->set('user_id', $wechat_user->getId());
+					$return['nickname'] = $request->get('nickname');
+					$return['mobile'] = $request->get('mobile');
+				}
+				catch (Exception $e) {
+					$em->getConnection()->rollback();
+					$return = array(
+						'ret'=>1002,
+						'msg'=>$e->getMessage()
+					);
+					//return new Response($e->getMessage());
+				}
+			}
+				
+		}
+		else{
+			$return = array(
+				'ret'=>1003,
+				'msg'=>'来源不正确'
+			);
+		}
+		return new Response(json_encode($return));
+	}
+	/**
+	 * @Route("pc/login", name="_pc_login")
+	 */
+	public function loginAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$return = array(
+			'ret'=>0,
+			'msg'=>'登录成功'
+		);
+		$session = $request->getSession();
+		if(null == $request->get('mobile')){
+			$return = array(
+				'ret'=>1006,
+				'msg'=>'手机号不能为空'
+			);
+		}
+		elseif(null == $request->get('password')){
+			$return = array(
+				'ret'=>1007,
+				'msg'=>'密码不能为空'
+			);
+		}
+		else{
+			$repo = $em->getRepository('AppBundle:WechatUser');
+			$qb = $repo->createQueryBuilder('a');
+			$qb->select('COUNT(a)');
+			$qb->where('a.mobile = :mobile AND a.password = :password');
+			$qb->setParameter('mobile', $request->get('mobile'));
+			$qb->setParameter('password', md5($request->get('password')));
+			$count = $qb->getQuery()->getSingleScalarResult();
+			if($count <= 0){
+				$return = array(
+					'ret'=>1008,
+					'msg'=>'手机号与密码不匹配'
+				);
+			}
+			else{
+				$user = $this->getDoctrine()->getRepository('AppBundle:WechatUser')->findOneByMobile($request->get('mobile'));
+				$return['nickname'] = $user->getNickName();
+				$session->set('user_id', $user->getId());
+				$session->set('nickname', $user->getNickName());
+			}
+		}
+		return new Response(json_encode($return));
+	}
+	/**
+	 * @Route("pc/secode", name="_pc_secode")
+	 */
+	public function secodeAction(Request $request)
+	{
+		$return = array(
+			'ret'=>0,
+			'msg'=>'获取成功'
+		);
+		$session = $request->getSession();
+		$mobile = $request->get('mobile');
+		$secode = '999999';
+		$session->set('secode', $secode);
+		return new Response(json_encode($return));
+	}
 	/**
 	 * @Route("callback/", name="_callback")
 	 */

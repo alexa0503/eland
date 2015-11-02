@@ -41,9 +41,16 @@
             <img src="{{ asset('bundles/app/default/m/') }}images/page11Img01.png" class="abs page11Img01" style="display:none;">
             <a href="javascript:void(0);" onClick="voteThis();_czc.push(['_trackEvent','Mobile_button','为TA增加人气']);" class="abs btn20"><img src="{{ asset('bundles/app/default/m/') }}images/btn20.png"></a>
             <a href="{{ url('_m_index') }}" class="abs btn19" onClick="_czc.push(['_trackEvent','Mobile_button','搭出我的不一Young']);"><img src="{{ asset('bundles/app/default/m/') }}images/btn19.png"></a>
+			
+			<a href="javascript:void(0);" class="abs indexRule" onClick="showRule();"><img src="{{ asset('bundles/app/default/m/') }}images/indexRule.png"></a>
         </div>
     </div>
 </div>
+
+	<div class="popBg" style="display:none;"></div>
+	<div class="pop popRule" style="display:none;">
+		<a href="javascript:void(0);" class="closeBtn" onClick="closePop();"><img src="{{ asset('bundles/app/default/m/') }}images/closeBtn.png"></a>
+	</div>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -74,6 +81,12 @@
 				}
 			},"JSON");
 		}
+		
+		function showRule(){
+			$('.popBg').show();
+			$('.pop').hide();
+			$('.popRule').show();
+			}
 
 	</script>
 {% endblock %}

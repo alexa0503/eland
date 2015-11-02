@@ -1,0 +1,136 @@
+{% extends 'AppBundle:default:pc/layout.html.twig' %}
+{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page5Bg.jpg) center top no-repeat #000000;}{% endblock %}
+    {% block content %}
+        <div class="wrapper">
+           <div class="innerDiv">
+            
+               <div class="pageEndSel">
+                <img src="{{ asset('bundles/app/default/pc/') }}images/book1.jpg" class="bgBook">
+                <div class="manSeledFace">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlF1.png" class="manInBookImg">
+                </div>
+                <div class="manSeledBottom">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlB1.png" class="manInBookImg">
+                </div>
+                <div class="manSeledTop">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlT1.png" class="manInBookImg">
+                </div>
+                <div class="manSeledFace2">
+                    <img src="{{ asset('bundles/app/default/pc/') }}images/girlF1b.png" class="manInBookImg">
+                </div>
+                
+                <img src="{{ asset('bundles/app/default/pc/') }}images/sign.png" class="abs signImg">
+                
+                <p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
+            </div>
+            
+            <a href="javascript:void(0);" class="abs btn11" onclick="showRule();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn11.png" /></a>
+            
+            <a href="javascript:void(0);" class="abs btn12"><img src="{{ asset('bundles/app/default/pc/') }}images/btn12.png" /></a>
+            <a href="javascript:void(0);" class="abs btn13" onclick="showTmall();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn13.png" /></a>
+            
+            <img src="{{ asset('bundles/app/default/pc/') }}images/page5Img1.png" class="abs page5Img1" />
+            
+            
+            <img src="{{ asset('bundles/app/default/pc/') }}images/logo.png" class="abs logo" />
+            
+            
+            <a href="javascript:void(0);" class="abs navBtn" onclick="showNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navBtn.png" /></a>
+            <div class="rightInto"><a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a></div>
+            <div class="openNav" style="display:none; width:0;">
+                <div class="innerDiv">
+                   <a href="javascript:void(0);" class="navClose" onclick="closeNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navCloseBtn.jpg" /></a>
+                   <img src="{{ asset('bundles/app/default/pc/') }}images/navBg.png" class="navBg" />
+                   <a href="javascript:void(0);" class="abs nav1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="178" height="87" /></a>
+                   <a href="javascript:void(0);" class="abs nav2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="146" height="87" /></a>
+                   <a href="javascript:void(0);" class="abs nav3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="125" height="87" /></a>
+                   <a href="javascript:void(0);" class="abs nav4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="144" height="87" /></a>
+                   <a href="javascript:void(0);" class="abs nav5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="115" height="87" /></a>
+                   <div class="nameBlock">
+                       <a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a>
+                   </div>
+                   <img src="{{ asset('bundles/app/default/pc/') }}images/navQc.jpg" class="abs navQc" style="display:none;" />
+               </div>
+           </div>
+           
+           <div class="popBg" style="display:none;"></div>
+           <div class="loginBlock pop" style="display:none;">
+               <div class="innerDiv">
+                   <a href="javascript:void(0);" class="abs closeBtn1" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+                   <input type="text" class="abs loginTxt loginTxt1" />
+                   <input type="text" class="abs loginTxt loginTxt2" />
+                   <input type="text" class="abs loginTxt loginTxt3" maxlength="11" />
+                   <input type="text" class="abs loginTxt loginTxt4" />
+                   <input type="password" class="abs loginTxt loginTxt5" />
+                   <input type="password" class="abs loginTxt loginTxt6" />
+                   <input type="text" class="abs loginTxt loginTxt7" />
+                   
+                   <a href="javascript:void(0);" class="abs btn02" onclick="login();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn02.png" /></a>
+                   <a href="javascript:void(0);" class="abs btn03" onclick="getYzm();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn03.png" /></a>
+                   <a href="javascript:void(0);" class="abs btn04" onclick="register();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn04.png" /></a>
+               </div>
+           </div>
+           
+           <div class="rule pop" style="display:none;">
+               <div class="innerDiv">
+                   <a href="javascript:void(0);" class="abs closeBtn2" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+               </div>
+           </div>
+           
+           <div class="tmall pop" style="display:none;">
+               <div class="innerDiv">
+                   <a href="javascript:void(0);" class="abs closeBtn3" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
+                   
+                   <a href="#" class="abs link1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn1" rel="1"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn2" rel="2"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn3" rel="3"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn4" rel="4"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn5" rel="5"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link6"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn6" rel="6"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <a href="#" class="abs link7"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="256" height="80" /></a>
+                   <a href="#" class="linkBtn linkBtn7" rel="7"><img src="{{ asset('bundles/app/default/pc/') }}images/btn14.png" /></a>
+                   
+                   <img src="{{ asset('bundles/app/default/pc/') }}images/tmallIcon1.png" class="tmallIcon1" style="display:none;" />
+               </div>
+           </div>
+       </div>
+   </div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('.linkBtn').hover(function(){
+                var lrel=$(this).attr('rel');
+                $('.tmallIcon1').css('top',((parseInt(lrel)-1)*100+80)+'px').show();
+            },function(){
+                $('.tmallIcon1').hide();
+            });
+        });
+        
+        function showRule(){
+            $('.popBg').show();
+            $('.pop').hide();
+            $('.rule').show();
+        }
+        
+        function showTmall(){
+            $('.popBg').show();
+            $('.pop').hide();
+            $('.tmall').show();
+        }
+    </script>
+{% endblock %}

@@ -83,13 +83,13 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 /*page7*/
 .btn11{ left:256px; top:286px;}
-.btn09{ left:70px; top:890px;}
-.btn10{ left:343px; top:890px;}
+.btn09{ left:70px; top:930px;}
+.btn10{ left:343px; top:930px;}
 .infoTxt{ background:none; border:none; position:absolute; left:65px; padding:0 20px 0 100px; width:390px; height:76px; line-height:76px; color:#282828; font-size:40px;}
-.infoTxt1{ top:682px;}
-.infoTxt2{ top:771px;}
+.infoTxt1{ top:722px;}
+.infoTxt2{ top:811px;}
 
-.popRule{ background:url(../images/rule.png) 0 0 no-repeat; width:513px; height:899px; position:fixed; left:50%; top:50%; margin:-450px 0 0 -256px;}
+.popRule{ background:url(../images/rule.png) 0 0 no-repeat; width:431px; height:830px; position:fixed; left:50%; top:50%; margin:-415px 0 0 -215px;}
 
 /*page8*/
 .endImg{ position:absolute; left:64px; top:220px;}
@@ -134,8 +134,8 @@ select,input,textarea{font-family:inherit; outline:none;}
 .link1{ background:url(../images/page9Img01.png) 0 0 no-repeat;}
 .link2{ background:url(../images/page9Img02.png) 0 0 no-repeat;}
 .link3{ background:url(../images/page9Img03.png) 0 0 no-repeat;}
-.link4{ background:url(../images/page9Img04.png) 0 0 no-repeat;}
-.link5{ background:url(../images/page9Img05.png) 0 0 no-repeat;}
+.link4{ background:url(../images/page9Img05.png) 0 0 no-repeat;}
+.link5{ background:url(../images/page9Img04.png) 0 0 no-repeat;}
 .link6{ background:url(../images/page9Img06.png) 0 0 no-repeat;}
 .link7{ background:url(../images/page9Img07.png) 0 0 no-repeat;}
 .linkLink1{ position:absolute; left:0; top:170px;}
@@ -163,3 +163,13 @@ select,input,textarea{font-family:inherit; outline:none;}
 .rightArrow{ left:594px; top:554px;}
 
 .manInBookImg{ width:350px;}
+
+.btn21{ left:70px; top:950px;}
+.btn22{ left:343px; top:950px;}
+
+.surePage{ background:url(../images/surePage.png) 0 0 no-repeat; width:513px; height:505px; position:fixed; left:50%; top:50%; margin:-252px 0 0 -256px;}
+
+.sureInfo1{ color:#960606; font-size:34px; line-height:100%; padding:0; text-align:center; width:100%; height:36px; overflow:hidden; position:absolute; left:0; top:138px;}
+.sureInfo2{ color:#960606; font-size:34px; line-height:100%; padding:0; text-align:center; width:100%; height:36px; overflow:hidden; position:absolute; left:0; top:228px;}
+.btn23{ left:18px; top:410px;}
+.btn24{ left:264px; top:410px;}
