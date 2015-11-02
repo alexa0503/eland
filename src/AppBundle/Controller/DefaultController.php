@@ -89,6 +89,9 @@ class DefaultController extends Controller
 	 */
 	public function infoAction(Request $request)
 	{
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false && null == $this->getUser()){
+			return $this->redirect($this->generateUrl('_pc_index'));
+		}
 		if( null != $this->getUser()->getCover() && null != $this->getUser()->getCover()->getUsername() ){
 			return $this->redirect($this->generateUrl('_m_share'));
 		}
