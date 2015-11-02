@@ -41,7 +41,7 @@ class DefaultController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{
-		if( null != $this->getUser()->getCover() ){
+		if( null != $this->getUser() && null != $this->getUser()->getCover() ){
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
 
