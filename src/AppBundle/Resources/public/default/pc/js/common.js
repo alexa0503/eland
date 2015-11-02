@@ -83,7 +83,8 @@ function register(url){
 	var rName=$.trim($('.loginTxt7').val());
 	var regTel=/^1[3456789]\d{9}$/;
 	
-	if(rTel==''||rYzm==''||rPwd1==''||rPwd2==''||rName==''){
+	/*if(rTel==''||rYzm==''||rPwd1==''||rPwd2==''||rName==''){*/
+	if(rTel==''||rPwd1==''||rPwd2==''||rName==''){
 		alert('请输入完整信息');
 		return;
 		}

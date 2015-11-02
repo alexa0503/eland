@@ -1,5 +1,8 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
-{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page5Bg.jpg) center top no-repeat #000000;}{% endblock %}
+{% block style %}
+.wrapper{ background:url({{ asset('bundles/app/default/pc/') }}images/page5Bg.jpg) center top no-repeat;}
+body{ background:url({{ asset('bundles/app/default/pc/') }}images/scrollBg.png) center top repeat-x #c6a793;}
+{% endblock %}
     {% block content %}
                <div class="pageEndSel">
                 <img src="{{ asset('bundles/app/default/pc/') }}images/book{{ user.cover.style }}.jpg" class="bgBook">

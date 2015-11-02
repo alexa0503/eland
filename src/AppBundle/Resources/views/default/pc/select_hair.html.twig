@@ -1,9 +1,11 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
 {% block style %}
      {% if app.request.get('gender') == 0 %}
-    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg1.jpg) center top no-repeat #000000;}
+	 body{ background:url({{ asset('bundles/app/default/pc/') }}images/scrollBg.png) center top repeat-x #c6a793;}
+	.wrapper{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg1.jpg) center top no-repeat;}
     {% else %}
-    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg2.jpg) center top no-repeat #000000;}
+	body{ background:url({{ asset('bundles/app/default/pc/') }}images/scrollBg.png) center top repeat-x #c6a793;}
+	.wrapper{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg2.jpg) center top no-repeat;}
     {% endif %}
 {% endblock %}
 {% block content %}

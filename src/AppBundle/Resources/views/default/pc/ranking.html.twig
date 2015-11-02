@@ -1,5 +1,8 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
-{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page8Bg.jpg) center top no-repeat #000000;}{% endblock %}
+{% block style %}
+.wrapper{ background:url({{ asset('bundles/app/default/pc/') }}images/page8Bg.jpg) center top no-repeat;}
+body{ background:url({{ asset('bundles/app/default/pc/') }}images/scrollBg.png) center top repeat-x #c6a793;}
+{% endblock %}
     {% block content %}
                <div class="rpages">
 <div id="rnums" class="btn_nums"><!--<a onclick="setPage(10,1,'rnums')" class="cur" href="javascript:void(0)">1</a><a onclick="setPage(10,2,'rnums')" href="javascript:void(0)">2</a><a onclick="setPage(10,3,'rnums')" href="javascript:void(0)">3</a><a onclick="setPage(10,4,'rnums')" href="javascript:void(0)">4</a>...<a onclick="setPage(10,10,'rnums')" href="javascript:void(0)">10</a><a onclick="setPage(10,2,'rnums')" class="next" href="javascript:void(0)">&nbsp;</a>-->{{ pageList | raw }}</div>
@@ -108,7 +111,7 @@
                 <img src="{{ asset('bundles/app/default/pc/') }}images/tmallIcon1.png" class="tmallIcon1" style="display:none;" />
             </div>
         </div>
-
+<img src="{{ asset('bundles/app/default/pc/') }}images/logo.png" class="abs logo" onclick="window.location.href='/pc'" />
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}

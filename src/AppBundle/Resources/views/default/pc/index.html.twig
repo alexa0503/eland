@@ -3,22 +3,20 @@
 	
 			<div class="modelBlock">
 				<div class="innerDiv">
-					<div class="modelScroll">
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg7.png" />
 						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg1.png" />
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg2.png" />
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg3.png" />
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg4.png" />
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg5.png" />
-						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg6.png" />
-					</div>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg2.png" style="display:none;"/>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg3.png" style="display:none;"/>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg4.png" style="display:none;"/>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg5.png" style="display:none;"/>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg6.png" style="display:none;"/>
+						<img src="{{ asset('bundles/app/default/pc/') }}images/indexImg7.png" style="display:none;"/>
 				</div>
 			</div>
 
 			<a href="{{ url('_pc_select') }}" class="abs btn01"><img src="{{ asset('bundles/app/default/pc/') }}images/btn01.png" /></a>
 
-			<a href="javascript:void(0);" onclick="manGoLeft();" class="abs arrowLeft"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowLeft.png" /></a>
-			<a href="javascript:void(0);" onclick="manGoRight();" class="abs arrowRight"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowRight.png" /></a>
+			<a href="javascript:void(0);" onclick="manGoRight();" class="abs arrowLeft"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowLeft.png" /></a>
+			<a href="javascript:void(0);" onclick="manGoLeft();" class="abs arrowRight"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowRight.png" /></a>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -35,13 +33,9 @@
 				else{
 					mCloth=parseInt(mCloth)+1;
 				}
-				$('.modelScroll').stop().animate({marginLeft:-663},550,'linear',function(){
-					var firstHtml='<img src="'+$('.modelScroll img').eq(0).attr('src')+'" />';
-					$('.modelScroll img').eq(0).remove();
-					$('.modelScroll').append(firstHtml);
-					$('.modelScroll').css('margin-left','0');
-					isMoving=false;
-				});
+				
+				$('.modelBlock img').eq(mCloth-1).fadeIn(500).siblings('img').fadeOut(500);
+				setTimeout(function(){isMoving=false;},550);
 			}
 		}
 
@@ -54,14 +48,8 @@
 				else{
 					mCloth=parseInt(mCloth)-1;
 				}
-				$('.modelScroll').stop().animate({marginLeft:663},550,'linear',function(){
-					var lastHtml='<img src="'+$('.modelScroll img').eq(parseInt(mMax)-1).attr('src')+'" />';
-					$('.modelScroll img').eq(parseInt(mMax)-1).remove();
-					var oldHtml=$('.modelScroll').html();
-					$('.modelScroll').html(lastHtml+oldHtml);
-					$('.modelScroll').css('margin-left','0');
-					isMoving=false;
-				});
+				$('.modelBlock img').eq(mCloth-1).fadeIn(500).siblings('img').fadeOut(500);
+				setTimeout(function(){isMoving=false;},550);
 			}
 		}
 	</script>

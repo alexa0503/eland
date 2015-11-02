@@ -12,20 +12,21 @@ hr{background:none;border:none;border-bottom:1px solid #CCC;#border-bottom:0;}
 a{text-decoration:none; border:0; outline:none; blr:expression(this.onFocus=this.blur());}
 select,input,textarea{font-family:inherit; outline:none;}
 
-.wrapper{ width:1000px; height:900px; margin:0 auto; border:none; padding:0;}
+.wrapper{ width:1000px; height:900px; margin:0 auto; border:none; padding:0 50px;}
 .innerDiv{ width:100%; height:100%; position:relative;}
 .abs{ position:absolute;}
 
 
 .modelBlock{ position:absolute; left:60px; top:65px; overflow:hidden; width:663px; height:834px;}
+.modelBlock img{ position:absolute; left:0; top:0;}
 .modelScroll{ position:absolute; left:-663px; overflow:hidden; width:4645px;}
 .modelScroll img{ float:left;}
 .btn01{ left:588px; top:511px;}
 .arrowLeft{ left:-185px; top:390px;}
 .arrowRight{ right:-185px; top:390px;}
 
-.navBtn{ right:-235px; top:0;}
-.rightInto{ position:absolute; right:-140px; top:35px; width:175px; color:#FFFFFF; font-size:14px; text-align:right;}
+.navBtn{ position:fixed; right:0; top:0;}
+.rightInto{ position:fixed; right:90px; top:33px; width:175px; color:#FFFFFF; font-size:14px; text-align:right;}
 .rightInto a{ color:#FFF; font-size:14px;}
 .popBg{ position:fixed; left:0; top:0; width:100%; height:100%; background:#000000; filter:alpha(opacity=80); -webkit-opacity:0.8; opacity:0.8;}
 .loginBlock{ background:url(../images/loginBg.png) 0 0 no-repeat; width:1025px; height:650px; position:absolute; left:30px; top:120px;}
@@ -35,14 +36,14 @@ select,input,textarea{font-family:inherit; outline:none;}
 .loginTxt2{ top:121px;}
 .loginTxt3{ left:211px; top:316px;}
 .loginTxt4{ left:211px; top:371px; width:125px;}
-.loginTxt5{ left:211px; top:427px;}
-.loginTxt6{ left:211px; top:481px;}
-.loginTxt7{ left:211px; top:535px;}
+.loginTxt5{ left:211px; top:371px;/*top:427px;*/}
+.loginTxt6{ left:211px; top:427px;/*top:481px;*/}
+.loginTxt7{ left:211px; top:481px;/*top:535px;*/}
 .btn02{ left:263px; top:186px;}
 .btn03{ left:375px; top:376px;}
-.btn04{ left:263px; top:593px;}
+.btn04{ left:263px; top:535px;/*top:593px;*/}
 
-.openNav{ width:980px; height:87px; position:absolute; right:-235px; top:0; background:#000000;}
+.openNav{ width:980px; height:87px; position:fixed; right:0; top:0; background:#000000;}
 .navBg{ float:left;}
 .navClose{ float:right;}
 .nav1{ left:0; top:0;}
@@ -55,7 +56,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 .navQc{ left:593px; top:0;}
 
 /*page1*/
-.logo{ top:10px; left:-190px;}
+.logo{ position:fixed; top:10px; left:10px;}
 .selBtn{ top:295px;}
 .selBtn1{ left:205px;}
 .selBtn2{ left:522px;}
@@ -231,4 +232,4 @@ select,input,textarea{font-family:inherit; outline:none;}
 .rankType2{ left:840px;}
 .rankTypeOn{ background:#960606; color:#FFF;}
 
-
+.noteImg{ position:fixed; bottom:10px; right:10px;}

@@ -1,6 +1,7 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
 {% block style %}
-	body{ background:url({{ asset('bundles/app/default/pc/') }}images/page3Bg.jpg) center top no-repeat #000000;}
+	body{ background:url({{ asset('bundles/app/default/pc/') }}images/scrollBg.png) center top repeat-x #c6a793;}
+	.wrapper{ background:url({{ asset('bundles/app/default/pc/') }}images/page3Bg.jpg) center top no-repeat #000000;}
 {% endblock %}
 {% block content %}
 	{% if app.request.get('gender') == 1 %}

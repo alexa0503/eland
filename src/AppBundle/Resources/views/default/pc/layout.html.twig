@@ -16,12 +16,11 @@
 					<div class="nameBlock">
 						{% if null == app.request.session.get('user_id') %}<a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a>{% else %}用户名：{{ app.request.session.get('nickname') }}{% endif %}
 					</div>
-					<img src="{{ asset('bundles/app/default/pc/') }}images/navQc.jpg" class="abs navQc" style="display:none;" />
+					<img src="{{ asset('bundles/app/default/pc/') }}images/navQc.png" class="abs navQc" style="display:none;" />
 				</div>
 			</div>
 		{% block content %}
 		{% endblock %}
-			<img src="{{ asset('bundles/app/default/pc/') }}images/logo.png" class="abs logo" />
 			 <div class="popBg" style="display:none;"></div>
 	           <div class="loginBlock pop" style="display:none;">
 	               <div class="innerDiv">
@@ -76,4 +75,6 @@
         </div>
 	</div>
 	</div>
+	
+	<img src="{{ asset('bundles/app/default/pc/') }}images/noteImg.png" class="abs noteImg" />
 {% endblock %}
