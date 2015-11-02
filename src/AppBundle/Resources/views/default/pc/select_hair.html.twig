@@ -1,0 +1,43 @@
+{% extends 'AppBundle:default:pc/layout.html.twig' %}
+{% block style %}
+     {% if app.request.get('gender') == 0 %}
+    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg1.jpg) center top no-repeat #000000;}
+    {% else %}
+    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg2.jpg) center top no-repeat #000000;}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+        <a href="javascript:void(0);" class="abs selManBtn selManBtn1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
+        <a href="javascript:void(0);" class="abs selManBtn selManBtn2 selBtnSeled"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
+        <a href="javascript:void(0);" class="abs selManBtn selManBtn3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
+        
+        <a href="javascript:void(0);" class="abs btn061" onclick="history.go(-1);"><img src="{{ asset('bundles/app/default/pc/') }}images/btn06.png" /></a>
+        <form action="{{ url('_pc_select',{step:2,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn07" onclick="goPage3();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn07.png" /></a><input type="hidden" value="2" name="hair" id="hair" /></form>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+$(document).ready(function(){
+    $('.selManBtn').click(function(){
+        $('.selManBtn').removeClass('selBtnSeled');
+        $(this).addClass('selBtnSeled');
+        });
+    });
+    
+function goPage3(){
+    var selMan=$('.selManBtn').index($('.selBtnSeled'))+1;//头像
+    {% if app.request.get('gender') == 1 %}
+    if(selMan==3){
+        selMan=1;
+        }
+        else if(selMan==1){
+            selMan=3;
+        }
+        {% endif %}
+            $('#hair').val(selMan);
+            $('#form-select').submit();
+    //window.location.href="selGirlCloth.html?mRle="+selMan;
+    }
+</script>
+{% endblock %}

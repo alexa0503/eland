@@ -1,8 +1,6 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
 {% block content %}
 	
-	<div class="wrapper">
-		<div class="innerDiv">
 			<div class="modelBlock">
 				<div class="innerDiv">
 					<div class="modelScroll">
@@ -17,48 +15,10 @@
 				</div>
 			</div>
 
-			<a href="{{ url('_pc_select') }}" class="abs btn01"><img src="{{ asset('bundles/app/default/pc/') }}images/btn01.png" /></a>
+			<a {% if null == app.request.session.get('user_id') %}href="javascript:void(0);" onclick="showLogin();"{% else %}href="{{ url('_pc_select') }}"{% endif %} class="abs btn01"><img src="{{ asset('bundles/app/default/pc/') }}images/btn01.png" /></a>
 
 			<a href="javascript:void(0);" onclick="manGoLeft();" class="abs arrowLeft"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowLeft.png" /></a>
 			<a href="javascript:void(0);" onclick="manGoRight();" class="abs arrowRight"><img src="{{ asset('bundles/app/default/pc/') }}images/arrowRight.png" /></a>
-
-			<a href="javascript:void(0);" class="abs navBtn" onclick="showNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navBtn.png" /></a>
-			<div class="rightInto">{% if null == app.request.session.get('user_id') %}<a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a>{% else %}{{ app.request.session.get('nickname') }}{% endif %}</div>
-			<div class="openNav" style="display:none; width:0;">
-				<div class="innerDiv">
-					<a href="javascript:void(0);" class="navClose" onclick="closeNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navCloseBtn.jpg" /></a>
-					<img src="{{ asset('bundles/app/default/pc/') }}images/navBg.png" class="navBg" />
-					<a href="javascript:void(0);" class="abs nav1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="178" height="87" /></a>
-					<a href="javascript:void(0);" class="abs nav2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="146" height="87" /></a>
-					<a href="javascript:void(0);" class="abs nav3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="125" height="87" /></a>
-					<a href="javascript:void(0);" class="abs nav4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="144" height="87" /></a>
-					<a href="javascript:void(0);" class="abs nav5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="115" height="87" /></a>
-					<div class="nameBlock">
-						{% if null == app.request.session.get('user_id') %}<a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a>{% else %}{{ app.request.session.get('nickname') }}{% endif %}
-					</div>
-					<img src="{{ asset('bundles/app/default/pc/') }}images/navQc.jpg" class="abs navQc" style="display:none;" />
-				</div>
-			</div>
-
-			<div class="popBg" style="display:none;"></div>
-			<div class="loginBlock pop" style="display:none;">
-				<div class="innerDiv">
-					<a href="javascript:void(0);" class="abs closeBtn1" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
-					<input type="text" class="abs loginTxt loginTxt1" />
-					<input type="password" class="abs loginTxt loginTxt2" />
-					<input type="text" class="abs loginTxt loginTxt3" maxlength="11" />
-					<input type="text" class="abs loginTxt loginTxt4" />
-					<input type="password" class="abs loginTxt loginTxt5" />
-					<input type="password" class="abs loginTxt loginTxt6" />
-					<input type="text" class="abs loginTxt loginTxt7" />
-
-					<a href="javascript:void(0);" class="abs btn02" onclick="login('{{ url("_pc_login") }}');"><img src="{{ asset('bundles/app/default/pc/') }}images/btn02.png" /></a>
-					<a href="javascript:void(0);" class="abs btn03" onclick="getYzm('{{ url("_pc_secode") }}');"><img src="{{ asset('bundles/app/default/pc/') }}images/btn03.png" /></a>
-					<a href="javascript:void(0);" class="abs btn04" onclick="register('{{ url("_pc_register") }}');"><img src="{{ asset('bundles/app/default/pc/') }}images/btn04.png" /></a>
-				</div>
-			</div>
-		</div>
-	</div>
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}

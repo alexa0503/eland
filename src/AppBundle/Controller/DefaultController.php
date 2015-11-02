@@ -45,7 +45,7 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
 
-		if($request->attributes->get('_route') !== '_pc_index')
+		if(strripos($this->getRequest()->attributes->get('_route'), '_pc') === false)
 			return $this->render('AppBundle:default:m/index.html.twig');
 		else
 			return $this->render('AppBundle:default:pc/index.html.twig');
@@ -60,12 +60,14 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('_m_info'));
 		}
 
-		if( $request->attributes->get('_route') !== '_pc_index' ){
+		if( strripos($this->getRequest()->attributes->get('_route'), '_pc') !== false ){
 			if($step == 1 )
-				return $this->render('AppBundle:default:pc/select_cloth.html.twig');
+				return $this->render('AppBundle:default:pc/select_hair.html.twig');
 			elseif($step == 2 )
+				return $this->render('AppBundle:default:pc/select_cloth.html.twig');
+			elseif($step == 3 )
 				return $this->render('AppBundle:default:pc/sign.html.twig');
-			else
+			elseif($step == 0 )
 				return $this->render('AppBundle:default:pc/select_gender.html.twig');
 		}
 		else{

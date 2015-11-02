@@ -1,77 +1,418 @@
 {% extends 'AppBundle:default:pc/layout.html.twig' %}
-{% block style %}body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg2.jpg) center top no-repeat #000000;}{% endblock %}
+{% block style %}
+	body{ background:url({{ asset('bundles/app/default/pc/') }}images/page3Bg.jpg) center top no-repeat #000000;}
+{% endblock %}
 {% block content %}
-  <div class="wrapper">
-    <div class="innerDiv">
-    
-        <a href="javascript:void(0);" class="abs selManBtn selManBtn1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
-        <a href="javascript:void(0);" class="abs selManBtn selManBtn2 selBtnSeled"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
-        <a href="javascript:void(0);" class="abs selManBtn selManBtn3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" class="selManOff" width="277" height="277" /><img src="{{ asset('bundles/app/default/pc/') }}images/manSelIcon.png" class="selManOn" /></a>
-        
-        <a href="javascript:void(0);" class="abs btn061" onclick="history.go(-1);"><img src="{{ asset('bundles/app/default/pc/') }}images/btn06.png" /></a>
-        <a href="javascript:void(0);" class="abs btn07" onclick="goPage3();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn07.png" /></a>
-        
-        <img src="{{ asset('bundles/app/default/pc/') }}images/logo.png" class="abs logo" />
-        
-        
-        <a href="javascript:void(0);" class="abs navBtn" onclick="showNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navBtn.png" /></a>
-        <div class="rightInto"><a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a></div>
-        <div class="openNav" style="display:none; width:0;">
-            <div class="innerDiv">
-                <a href="javascript:void(0);" class="navClose" onclick="closeNav();"><img src="{{ asset('bundles/app/default/pc/') }}images/navCloseBtn.jpg" /></a>
-                <img src="{{ asset('bundles/app/default/pc/') }}images/navBg.png" class="navBg" />
-                <a href="javascript:void(0);" class="abs nav1"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="178" height="87" /></a>
-                <a href="javascript:void(0);" class="abs nav2"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="146" height="87" /></a>
-                <a href="javascript:void(0);" class="abs nav3"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="125" height="87" /></a>
-                <a href="javascript:void(0);" class="abs nav4"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="144" height="87" /></a>
-                <a href="javascript:void(0);" class="abs nav5"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="115" height="87" /></a>
-                <div class="nameBlock">
-                    <a href="javascript:void(0);" onclick="showLogin();">登入</a> / <a href="javascript:void(0);" onclick="showLogin();">注册</a>
+	{% if app.request.get('gender') == 1 %}
+	<div class="seledBlock">
+		<div class="innerDiv">
+			<div class="seledManB">
+				<img src="{{ asset('bundles/app/default/pc/') }}images/girlB10.png" />
+			</div>
+			
+			<div class="seledManF">
+				<img src="" />
+			</div>
+			
+			<div class="seledManT">
+				<img src="{{ asset('bundles/app/default/pc/') }}images/girlT1.png" />
+			</div>
+			
+			<div class="seledManF2">
+				<img src="">
+			</div>
+		</div>
+	</div>
+	<ul class="girlPPSel">
+		<li class="li01"><a href="javascript:void(0);"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="124" height="66" /></a></li>
+		<li class="li02"><a href="javascript:void(0);" class="on"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="151" height="66" /></a></li>
+		<li class="li03"><a href="javascript:void(0);"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="148" height="66" /></a></li>
+		<li class="li04"><a href="javascript:void(0);"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="139" height="66" /></a></li>
+		<li class="li05"><a href="javascript:void(0);"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="84" height="66" /></a></li>
+	</ul>
+	<div class="topSel">
+		<div class="ppTop ppTop1" style="display:none;">
+			<a href="javascript:void(0);" ctRel="13" class="abs ppTopBtn1">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT13.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="14" class="abs ppTopBtn2">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT14.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="8" class="abs ppTopBtn3">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT8.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppTop ppTop2">
+			<a href="javascript:void(0);" ctRel="1" class="abs ppTopBtn1 ppTopSel">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT1.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="2" class="abs ppTopBtn2">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT2.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="3" class="abs ppTopBtn3">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT3.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppTop ppTop3" style="display:none;">
+			<a href="javascript:void(0);" ctRel="7" class="abs ppTopBtn1">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT7.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="10" class="abs ppTopBtn2">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT10.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="4" class="abs ppTopBtn3">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT4.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppTop ppTop4" style="display:none;">
+			<a href="javascript:void(0);" ctRel="11" class="abs ppTopBtn1">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT11.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="12" class="abs ppTopBtn2">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT12.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="15" class="abs ppTopBtn3">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT15.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppTop ppTop5" style="display:none;">
+			<a href="javascript:void(0);" ctRel="5" class="abs ppTopBtn1">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT5.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="6" class="abs ppTopBtn2">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT6.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" ctRel="7" class="abs ppTopBtn3">
+				<div class="topSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlT7.png" />
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="bottomSel">
+		<div class="ppBottom ppBottom1" style="display:none;">
+			<a href="javascript:void(0);" cbRel="5" class="abs ppBottomBtn1">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB5.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="3" class="abs ppBottomBtn2">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB3.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="4" class="abs ppBottomBtn3">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB4.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppBottom ppBottom2">
+			<a href="javascript:void(0);" cbRel="10" class="abs ppBottomBtn1 ppBottomSel">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB10.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="11" class="abs ppBottomBtn2">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB11.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="1" class="abs ppBottomBtn3">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB1.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppBottom ppBottom3" style="display:none;">
+			<a href="javascript:void(0);" cbRel="13" class="abs ppBottomBtn1">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB13.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="14" class="abs ppBottomBtn2">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB14.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="12" class="abs ppBottomBtn3">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB12.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppBottom ppBottom4" style="display:none;">
+			<a href="javascript:void(0);" cbRel="15" class="abs ppBottomBtn1">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB15.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="16" class="abs ppBottomBtn2">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB16.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="2" class="abs ppBottomBtn3">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB2.png" />
+				</div>
+			</a>
+		</div>
+		
+		<div class="ppBottom ppBottom5" style="display:none;">
+			<a href="javascript:void(0);" cbRel="6" class="abs ppBottomBtn1">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB6.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="7" class="abs ppBottomBtn2">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB7.png" />
+				</div>
+			</a>
+			
+			<a href="javascript:void(0);" cbRel="8" class="abs ppBottomBtn3">
+				<div class="bottomSelUnit">
+					<img src="{{ asset('bundles/app/default/pc/') }}images/girlB8.png" />
+				</div>
+			</a>
+		</div>
+	</div>
+	{% else %}
+	<div class="seledBlock">
+        	<div class="innerDiv">
+            	<div class="seledManB">
+                	<img src="{{ asset('bundles/app/default/pc/') }}images/manB1.png" />
                 </div>
-                <img src="{{ asset('bundles/app/default/pc/') }}images/navQc.jpg" class="abs navQc" style="display:none;" />
+            
+            	<div class="seledManF">
+                	<img src="" />
+                </div>
+                
+                <div class="seledManT">
+                	<img src="{{ asset('bundles/app/default/pc/') }}images/manT1.png" />
+                </div>
             </div>
         </div>
         
-        <div class="popBg" style="display:none;"></div>
-        <div class="loginBlock pop" style="display:none;">
-            <div class="innerDiv">
-                <a href="javascript:void(0);" class="abs closeBtn1" onclick="closePop();"><img src="{{ asset('bundles/app/default/pc/') }}images/closeBtn.png" /></a>
-                <input type="text" class="abs loginTxt loginTxt1" />
-                <input type="text" class="abs loginTxt loginTxt2" />
-                <input type="text" class="abs loginTxt loginTxt3" maxlength="11" />
-                <input type="text" class="abs loginTxt loginTxt4" />
-                <input type="password" class="abs loginTxt loginTxt5" />
-                <input type="password" class="abs loginTxt loginTxt6" />
-                <input type="text" class="abs loginTxt loginTxt7" />
+        <ul class="manPPSel">
+        	<li class="li01"><a href="javascript:void(0);" class="on"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="103" height="30" /></a></li>
+            <li class="li02"><a href="javascript:void(0);"><img src="{{ asset('bundles/app/default/pc/') }}images/space.gif" width="138" height="30" /></a></li>
+        </ul>
+        
+        <div class="topSel">
+        	<div class="ppTop ppTop1">
+            	<a href="javascript:void(0);" ctRel="1" class="abs ppTopBtn1  ppTopSel">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT1.png" />
+                    </div>
+                </a>
                 
-                <a href="javascript:void(0);" class="abs btn02" onclick="login();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn02.png" /></a>
-                <a href="javascript:void(0);" class="abs btn03" onclick="getYzm();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn03.png" /></a>
-                <a href="javascript:void(0);" class="abs btn04" onclick="register();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn04.png" /></a>
+                <a href="javascript:void(0);" ctRel="2" class="abs ppTopBtn2">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT2.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" ctRel="3" class="abs ppTopBtn3">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT3.png" />
+                    </div>
+                </a>
+            </div>
+            
+            <div class="ppTop ppTop2" style="display:none;">
+            	<a href="javascript:void(0);" ctRel="4" class="abs ppTopBtn1">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT4.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" ctRel="5" class="abs ppTopBtn2">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT5.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" ctRel="6" class="abs ppTopBtn3">
+                    <div class="topSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manT6.png" />
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
-</div>
-
+        
+        <div class="bottomSel">
+        	<div class="ppBottom ppBottom1">
+            	<a href="javascript:void(0);" cbRel="1" class="abs ppBottomBtn1  ppBottomSel">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB1.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" cbRel="2" class="abs ppBottomBtn2">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB2.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" cbRel="3" class="abs ppBottomBtn3">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB3.png" />
+                    </div>
+                </a>
+            </div>
+            
+            <div class="ppBottom ppBottom2" style="display:none;">
+            	<a href="javascript:void(0);" cbRel="4" class="abs ppBottomBtn1">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB4.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" cbRel="5" class="abs ppBottomBtn2">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB5.png" />
+                    </div>
+                </a>
+                
+                <a href="javascript:void(0);" cbRel="5" class="abs ppBottomBtn3">
+                    <div class="bottomSelUnit">
+                    	<img src="{{ asset('bundles/app/default/pc/') }}images/manB6.png" />
+                    </div>
+                </a>
+            </div>
+        </div>
+	{% endif %}
+	
+	<a href="javascript:void(0);" class="abs btn062" onclick="history.go(-1);"><img src="{{ asset('bundles/app/default/pc/') }}images/btn06.png" /></a>
+	<a href="javascript:void(0);" class="abs btn08" onclick="goPage4();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn08.png" /></a>
+	<form action="{{ url('_pc_select',{step:3,gender:app.request.get('gender')}) }}" id="form-select" method="get"><a href="javascript:void(0);" class="abs btn08" onclick="goPage4();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn08.png" /></a><input type="hidden" value="3" name="cloth1" id="cloth1" /><input type="hidden" value="3" name="cloth2" id="cloth2" /><input type="hidden" value="{{ app.request.get('hair') }}" name="hair" id="hair" /></form>
+	
+	
 {% endblock %}
 {% block javascripts %}
-	{{ parent() }}
-<script>
-$(document).ready(function(){
-    $('.selManBtn').click(function(){
-        $('.selManBtn').removeClass('selBtnSeled');
-        $(this).addClass('selBtnSeled');
-        });
-    });
-    
-function goPage3(){
-    var selMan=$('.selManBtn').index($('.selBtnSeled'))+1;//头像
-    if(selMan==3){
-        selMan=1;
-        }
-        else if(selMan==1){
-            selMan=3;
-            }
-    window.location.href="selGirlCloth.html?mRle="+selMan;
-    }
+{{ parent() }}
+	<script>
+		var mRle;
+		var ctNum=1;
+		{% if app.request.get('gender') == 1 %}
+		var cbNum=10;
+		{% else %}
+		var cbNum=1;
+		{% endif %}
+
+		$(document).ready(function(){
+	//初始化人脸
+	mRle='{{ app.request.get("hair") }}';
+	{% if app.request.get('gender') == 1 %}
+	$('.seledManF img').attr('src','{{ asset('bundles/app/default/pc/') }}images/girlF'+mRle+'.png');
+	$('.seledManF2 img').attr('src','{{ asset('bundles/app/default/pc/') }}images/girlF'+mRle+'b.png');
+	{% else %}
+	$('.seledManF img').attr('src','{{ asset('bundles/app/default/pc/') }}images/manF'+mRle+'.png');
+	{% endif %}
+	
+	
+	//选择品牌
+	$('.girlPPSel a').click(function(){
+		$('.girlPPSel a').removeClass('on');
+		$(this).addClass('on');
+		var pIndex=$('.girlPPSel a').index($('.girlPPSel a.on'))+1;
+		$('.ppTop').hide();
+		$('.ppBottom').hide();
+		$('.ppTop'+pIndex).show();
+		$('.ppBottom'+pIndex).show();
+	});
+	//选择品牌
+	$('.manPPSel a').click(function(){
+		$('.manPPSel a').removeClass('on');
+		$(this).addClass('on');
+		var pIndex=$('.manPPSel a').index($('.manPPSel a.on'))+1;
+		$('.ppTop').hide();
+		$('.ppBottom').hide();
+		$('.ppTop'+pIndex).show();
+		$('.ppBottom'+pIndex).show();
+		});
+	
+	//选择衣服
+	$('.ppTop a').click(function(){
+		$('.ppTop a').removeClass('ppTopSel');
+		$(this).addClass('ppTopSel');
+		var pptSrc=$(this).find('img').attr('src');
+		$('.seledManT img').attr('src',pptSrc);
+		ctNum=$(this).attr('ctRel');
+
+		$('#cloth1').val(ctNum);
+	});
+	
+	//选择裤子
+	$('.ppBottom a').click(function(){
+		$('.ppBottom a').removeClass('ppBottomSel');
+		$(this).addClass('ppBottomSel');
+		var ppbSrc=$(this).find('img').attr('src');
+		$('.seledManB img').attr('src',ppbSrc);
+		cbNum=$(this).attr('cbRel');
+		$('#cloth2').val(cbNum);
+	});
+});
+
+function goPage4(){
+	$('#form-select').submit();
+	//window.location.href="selGirlSign.html?mRle="+mRle+"&mCloth="+ctNum+"&mCloth2="+cbNum;
+}
 </script>
 {% endblock %}

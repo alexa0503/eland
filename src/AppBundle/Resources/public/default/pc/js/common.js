@@ -38,6 +38,8 @@ function login(url){
 					closePop();
 					$('.nameBlock').html('用户名：'+json.nickname);
 					$('.rightInto').html('用户名：'+ json.nickname);
+					$('.btn01').attr('href','/pc/select');
+					$('.btn-01').unbind('click');
 				}
 				else{
 					alert(json.msg)
@@ -100,6 +102,8 @@ function register(url){
 						alert('注册成功');
 						$('.nameBlock').html('用户名：'+json.nickname);
 						$('.rightInto').html('用户名：'+json.nickname);
+						$('.btn01').attr('href','/pc/select');
+						$('.btn-01').unbind('click');
 					}
 					else{
 						alert(json.msg);

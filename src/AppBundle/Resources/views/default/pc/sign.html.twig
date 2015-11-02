@@ -1,0 +1,191 @@
+{% extends 'AppBundle:default:pc/layout.html.twig' %}
+{% block style %}
+     {% if app.request.get('gender') == 0 %}
+    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page4Bg.jpg) center top no-repeat #000000;}
+    {% else %}
+    body{ background:url({{ asset('bundles/app/default/pc/') }}images/page2Bg2.jpg) center top no-repeat #000000;}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+        <div class="pageEndSel">
+            <img src="{{ asset('bundles/app/default/pc/') }}images/book1.jpg" class="bgBook">
+            <div class="manSeledFace">
+                <img src="" class="manInBookImg">
+            </div>
+            <div class="manSeledBottom">
+                <img src="" class="manInBookImg">
+            </div>
+            <div class="manSeledTop">
+                <img src="" class="manInBookImg">
+            </div>
+             {% if app.request.get('gender') == 1 %}
+            <div class="manSeledFace2">
+                <img src="" class="manInBookImg">
+            </div>
+        {% endif %}
+            
+            <p class="myTitle">搭配出属于我的<br>不一Young的时尚</p>
+        </div>
+        
+        <div class="selBook">
+            <a href="javascript:void(0);" class="abs selBookBtn selBookBtn1 selBookBtnOn">
+                <img src="{{ asset('bundles/app/default/pc/') }}images/book1.jpg" /><br />店铺橱窗
+            </a>
+            
+            <a href="javascript:void(0);" class="abs selBookBtn selBookBtn2">
+                <img src="{{ asset('bundles/app/default/pc/') }}images/book2.jpg" /><br />T台秀场
+            </a>
+            
+            <a href="javascript:void(0);" class="abs selBookBtn selBookBtn3">
+                <img src="{{ asset('bundles/app/default/pc/') }}images/book3.jpg" /><br />伦敦街头
+            </a>
+            
+            <a href="javascript:void(0);" class="abs selBookBtn selBookBtn4">
+                <img src="{{ asset('bundles/app/default/pc/') }}images/book4.jpg" /><br />广场街拍
+            </a>
+        </div>
+        
+        <input type="text" max="16" class="abs titleTxt" placeholder="标题限制16个字" onblur="changeTitle();" />
+        
+        <div class="cOuter">
+            <canvas id="canvas" width="190" height="184"></canvas>
+        </div>
+        <img src="" id="image_png" style="display:none;">
+        
+        <a href="javascript:void(0);" class="abs btn09" onclick="reDraw();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn09.png" /></a>
+                
+        <a href="javascript:void(0);" class="abs btn063" onclick="history.go(-1);"><img src="{{ asset('bundles/app/default/pc/') }}images/btn22.png" /></a>
+        <a href="javascript:void(0);" class="abs btn10" onclick="submitImgs();"><img src="{{ asset('bundles/app/default/pc/') }}images/btn10.png" /></a>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+<script>
+var mRle;
+var mCloth;
+var mCloth2;
+var mBook=1;
+
+$(document).ready(function(){
+    //初始化人脸衣服裤子
+    mRle = '{{ app.request.get("hair") }}';
+    mCloth = '{{ app.request.get("cloth1") }}';
+    mCloth2 = '{{ app.request.get("cloth2") }}';
+    {% if app.request.get('gender') == 1 %}
+    $('.manSeledFace img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlF'+mRle+'.png');
+    $('.manSeledFace2 img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlF'+mRle+'b.png');
+    $('.manSeledTop img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlT'+mCloth+'.png');
+    $('.manSeledBottom img').attr('src','{{ asset('bundles/app/default/m/') }}images/girlB'+mCloth2+'.png');
+    {% else %}
+    $('.manSeledFace img').attr('src','{{ asset('bundles/app/default/m/') }}images/manF'+mRle+'.png');
+    $('.manSeledTop img').attr('src','{{ asset('bundles/app/default/m/') }}images/manT'+mCloth+'.png');
+    $('.manSeledBottom img').attr('src','{{ asset('bundles/app/default/m/') }}images/manB'+mCloth2+'.png');
+    {% endif %}
+    
+    cOffLeft=$('.cOuter').offset().left;
+    cOffTop=$('.cOuter').offset().top;
+    goDraw();
+    
+    //选择封面
+    $('.selBookBtn').click(function(){
+        $('.selBookBtn').removeClass('selBookBtnOn');
+        $(this).addClass('selBookBtnOn');
+        mBook=$('.selBookBtn').index($('.selBookBtnOn'))+1;
+        $('.bgBook').attr('src',$(this).find('img').attr('src'));
+        });
+    });
+    
+function changeTitle(){
+    var tv=$.trim($('.titleTxt').val());
+    if(tv==''){
+        $('.myTitle').html("搭配出属于我的<br>不一Young的时尚");
+        }
+        else{
+            $('.myTitle').html(tv);
+            }
+    }
+    
+var canvas;
+var ctx;
+//按下标记
+var onoff = false;
+var oldx = 0;
+var oldy = 0;
+//设置颜色
+var linecolor = "black";
+//设置线宽
+var linw = 5;
+var cOffLeft;   
+var cOffTop;
+    
+function down(event){
+    onoff = true;
+    oldx=event.pageX-cOffLeft;
+    oldy=event.pageY-cOffTop;
+    
+}
+
+function up(){
+    onoff = false;
+}
+
+function draw(event){
+    if(onoff == true){
+        event.stopPropagation();//禁止手势缩放
+        event.preventDefault();//在页面滑动时禁止事件
+        
+        var newx=event.pageX-cOffLeft;
+        var newy=event.pageY-cOffTop;
+        
+        ctx.beginPath();
+        ctx.moveTo(oldx,oldy);
+        ctx.lineTo(newx,newy);
+        ctx.strokeStyle='black';
+        ctx.lineWidth=linw;
+        ctx.lineCap="round";
+        ctx.stroke();
+
+        oldx = newx;
+        oldy = newy;
+    };
+};
+ 
+ 
+function goDraw(){
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+            
+    //添加鼠标移动事件
+    canvas.addEventListener("mousemove",draw,true);
+    //添加鼠标按下事件
+    canvas.addEventListener("mousedown",down,false);
+    //添加鼠标弹起事件
+    canvas.addEventListener("mouseup",up,false);
+    }
+    
+function reDraw(){
+    ctx.clearRect(0,0,190,184);
+    }
+    
+function submitImgs(){
+    var img_png_src = canvas.toDataURL("image/png");
+    var data = {
+        img: img_png_src,
+        gender:'{{ app.request.get("gender") }}',
+        hair:'{{ app.request.get("hair") }}',
+        cloth1:'{{ app.request.get("cloth1") }}',
+        cloth2:'{{ app.request.get("cloth2") }}',
+        title:$('.titleTxt').val(),
+        cover:mBook
+    }
+    var url = '{{ url("_pc_combine") }}';
+    $.post(url, data, function(json){
+        if( json.ret == 0)
+            window.location.href='{{ url("_pc_info") }}';
+        else
+            alert(json.msg);
+    },"JSON");
+    }
+</script>
+{% endblock %}
