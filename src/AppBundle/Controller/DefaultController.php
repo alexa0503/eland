@@ -411,13 +411,16 @@ class DefaultController extends Controller
 			'msg'=>'注册成功'
 		);
 		$session = $request->getSession();
+		/*
 		if(null == $session->get('secode') || null == $request->get('secode') || $session->get('secode') !== strtolower($request->get('secode'))){
 			$return = array(
 				'ret'=>1004,
 				'msg'=>'验证码不正确'
 			);
 		}
-		elseif(null == $request->get('nickname')){
+		else
+		*/
+		if(null == $request->get('nickname')){
 			$return = array(
 				'ret'=>1005,
 				'msg'=>'昵称不能为空'
