@@ -12,7 +12,7 @@
           <div class="rankBlock">
               <div class="rankUnit">
                   <div class="innerDiv">
-                      <a href="#">
+                      <a href="{{ url('_pc_vote',{id:cover.user.id}) }}">
                             <img src="{{ asset('bundles/app/default/pc/') }}images/book{{ cover.style }}.jpg" class="bgBook">
                             {% if cover.gender == 1 %}
                               <div class="manRankFace">
